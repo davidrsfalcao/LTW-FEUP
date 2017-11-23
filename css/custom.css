@@ -48,9 +48,9 @@ header .header-content .header-content-inner h1 {
     margin-bottom: 20px;
     font-size: 50px;
     font-weight:600;
-    -webkit-text-fill-color: rgba(255,255,255,.7);
+    -webkit-text-fill-color: rgba(0,153,153,.7);
     -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-width: 0.9px;
 
 }
 
@@ -58,9 +58,9 @@ header .header-content .header-content-inner p {
     margin-bottom: 50px;
     font-size: 25px;
     font-weight: 600;
-    -webkit-text-fill-color: rgba(255,255,255,.7);
+    -webkit-text-fill-color: rgba(255,255,255,0.7);
     -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-width: 0.9px;
 }
 
 @media(min-width:768px) {
@@ -465,4 +465,14 @@ img::-moz-selection {
 }
 .icon-github:before {
     content: "\eab0";
+}
+
+#question1 {
+    line-height: 2;
+    font-size:  50px;
+}
+
+
+#par_question{
+    font-size: 40px;
 }
