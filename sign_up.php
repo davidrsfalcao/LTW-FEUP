@@ -15,7 +15,7 @@ include('templates/header.php');
                 <p class="message">Already registered? <a href="sign_in.php">Sign In</a>
                     <br>
                     <br>
-                    <a href="/">Cancel</a>
+                    <a href="index.php">Cancel</a>
                 </p>
             </form>
         </div>

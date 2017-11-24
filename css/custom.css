@@ -476,3 +476,35 @@ img::-moz-selection {
 #par_question{
     font-size: 40px;
 }
+
+#logout {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    border-top: 0;
+    background-color: rgba(255, 0, 0, 0.5);
+    color: white;
+}
+
+#logout:hover
+ {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    border-top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+#form_logout{
+    padding-left: 3.5em;
+}
+
+#profile_form{
+    text-align: center;
+}
+
+#avatar {
+    width: 10px;
+    height: 10px;
+}

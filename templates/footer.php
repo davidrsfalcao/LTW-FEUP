@@ -13,10 +13,8 @@
                 <a target="_blank" href="https://github.com/chaotixkilla">Sérgio Salgado</a>
                 <br>
                 <a target="_blank" href="https://github.com/veronicafradique">Verónica Fradique</a>
+                <br>
             </p>
-        </div>
-        <php include 'store/index.php';?>
-        </div>
 
     </footer>
 

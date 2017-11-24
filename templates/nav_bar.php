@@ -60,15 +60,12 @@
                     <li class="active">
                         <a href="#">Home</a>
                     </li>
-                    <li>
-                        <a href="#">Sign In</a>
-                    </li>
-                    <li>
-                        <a href="#">Sign Up</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
+                    <?php
+                    if (isset($_SESSION['username']))
+                    include ('templates/logout_form.php');
+                    else
+                    include ('templates/login_form.php');
+                    ?>
                 </ul>
 
             </div>

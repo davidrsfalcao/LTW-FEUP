@@ -1,5 +1,9 @@
-<form action="action_login.php" method="post">
-  <input type="text" placeholder="username" name="username">
-  <input type="password" placeholder="password" name="password">
-  <input type="submit" value="&gt;&gt;">
-</form>
+<li>
+    <a href="sign_in.php">Sign In</a>
+</li>
+<li>
+    <a href="sign_up.php">Sign Up</a>
+</li>
+<li>
+    <a href="#contact">Contact</a>
+</li>

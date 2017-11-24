@@ -6,14 +6,14 @@
 <body>
     <div class="login-page">
         <div class="form">
-            <form class="login-form">
-                <input type="text" placeholder="username"/>
-                <input type="password" placeholder="password"/>
+            <form class="login-form" action="action_login.php" method="post">
+                <input type="text" placeholder="username" name="username"/>
+                <input type="password" placeholder="password" name="password"/>
                 <button>login</button>
                 <p class="message">Not registered? <a href="sign_up.php">Create an account</a>
                     <br>
                     <br>
-                    <a href="/">Cancel</a>
+                    <a href="index.php">Cancel</a>
                 </p>
             </form>
         </div>
