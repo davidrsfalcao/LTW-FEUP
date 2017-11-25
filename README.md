@@ -13,4 +13,4 @@
 username                   | first name                | last name                 | password
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 root                       | Root                      |  Master                   | root
-davidrsfalcao              | David                     |  Falcão                   | 1234
+davidrsfalcao             | David                     |  Falcão                   | 1234
