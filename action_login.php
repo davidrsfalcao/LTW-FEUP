@@ -7,9 +7,12 @@ $password = $_POST['password'];
 
 if (verifyUser($username, $password)) {
     $_SESSION['username'] = $username;
-    header('Location: index.php');
+    $_SESSION['first_name'] = get_user_first_name($username);
+    $_SESSION['last_name'] = get_user_last_name($username);
     $_SESSION["flag_password"] = "correct";
     $_SESSION["flag_username"] = "correct";
+    header('Location: index.php');
+
 
 }
 else {

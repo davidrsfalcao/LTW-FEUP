@@ -26,7 +26,24 @@ function userExists($username){
         return true;
     }
     return false;
+}
 
+function get_user_first_name($username){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT first_name FROM User WHERE username = ?');
+    $stmt->execute(array($username));
+    $first_name = $stmt->fetch();
+
+    return reset($first_name);
+}
+
+function get_user_last_name($username){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT last_name FROM User WHERE username = ?');
+    $stmt->execute(array($username));
+    $last_name = $stmt->fetch();
+
+    return reset($last_name);
 }
 
 ?>

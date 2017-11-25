@@ -4,7 +4,7 @@
 </li>
 
 <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?=$_SESSION['username']?>  <span class="caret"></span></a>
+    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?=$_SESSION['first_name']?> <?=$_SESSION['last_name']?><span class="caret"></span></a>
     <ul class="dropdown-menu" aria-labelledby="about-us">
         <li><a href="#" id="profile_form">Profile</a></li>
         <li>
