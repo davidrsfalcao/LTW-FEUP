@@ -7,10 +7,19 @@ $password = $_POST['password'];
 
 if (verifyUser($username, $password)) {
     $_SESSION['username'] = $username;
+    header('Location: index.php');
+    $_SESSION["flag_password"] = "correct";
+    $_SESSION["flag_username"] = "correct";
 
 }
-
-header('Location: index.php');
-
-
+else {
+    if(userExists($username)){
+        $_SESSION["flag_username"] = $username;
+        $_SESSION["flag_password"] = "fail";
+    }
+    else {
+        $_SESSION["flag_username"] = "fail";
+    }
+     header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
 ?>

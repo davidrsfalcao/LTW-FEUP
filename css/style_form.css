@@ -26,6 +26,34 @@
   box-sizing: border-box;
   font-size: 14px;
 }
+
+#wrong{
+  font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+  outline: 0;
+  background: rgba(250,128,114,0.3);
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+
+}
+
+#wrong:focus
+ {
+  font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+
 .form button {
   font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
   text-transform: uppercase;
