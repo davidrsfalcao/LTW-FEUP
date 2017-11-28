@@ -115,3 +115,8 @@ h2{
     color: #FF6666;
     transform: translate(55%, -600%);
 }
+
+#error1 {
+    color: #FF6666;
+    transform: translate(55%, -275%);
+}

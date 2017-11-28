@@ -17,7 +17,7 @@ include('templates/header_forms.php');
                 <input type="password" name="password" placeholder="password" required="required" />
                 <?php
                     if($_SESSION["flag_error"]){
-                        echo '<p id="error">
+                        echo '<p id="error1">
                         *
                         </p>';
                     }

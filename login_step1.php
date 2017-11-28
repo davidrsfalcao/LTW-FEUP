@@ -21,7 +21,7 @@
                 <input type="text" name="username" placeholder="username" required="required" />
                 <?php
                     if($_SESSION["flag_error"]){
-                        echo '<p id="error">
+                        echo '<p id="error1">
                         *
                         </p>';
                     }
