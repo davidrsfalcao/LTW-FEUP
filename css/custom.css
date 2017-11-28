@@ -482,22 +482,16 @@ img::-moz-selection {
     border: 0 none;
     outline: 0;
     border-top: 0;
-    background-color: rgba(255, 0, 0, 0.5);
-    color: white;
-}
-
-#logout:hover
- {
-    box-shadow: 0 0 0 0;
-    border: 0 none;
-    outline: 0;
-    border-top: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: transparent;
+    color: black;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 #form_logout{
-    padding-left: 3.5em;
+    padding-left: 3.3em;
+    padding-bottom: 0.5em;
 }
 
 #profile_form{
@@ -505,6 +499,16 @@ img::-moz-selection {
 }
 
 #avatar {
-    width: 10px;
-    height: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+#menu_icons{
+    color: black;
+}
+
+#menu_icons:focus, #menu_icons:hover{
+    color: red;
 }

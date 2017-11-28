@@ -11,7 +11,15 @@ include('templates/header_forms.php');
 
     <body>
         <div class="loginBox">
-            <img src="images/avatar.png" class="user"/>
+            <?php
+                if (file_exists ("images/". $user . ".png" )){
+                    echo ('<img src="images/' . $user. '.png" class="user"/>');
+                }
+                else {
+                    echo '<img src="images/avatar.png" class="user"/>';
+                }
+             ?>
+
             <h2><?=$first_name?> <?=$last_name?></h2>
             <form action="action_login.php?username=<?=$user?>" method="post">
                 <input type="password" name="password" placeholder="password" required="required" />
