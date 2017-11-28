@@ -9,14 +9,12 @@ $password = $_POST['password'];
 
 
 if (userExists($username)){
-    // acrescentar flag erros
+    $_SESSION['flag_error'] = true;
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 else {
     createUser($first_name, $last_name, $username, $password);
     $_SESSION['username'] = $username;
-    $_SESSION['first_name'] = get_user_first_name($username);
-    $_SESSION['last_name'] = get_user_last_name($username);
-    header('Location: index.php');
+    header('Location: index.php?username=' . $username);
 }
 ?>

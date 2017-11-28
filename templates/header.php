@@ -26,10 +26,13 @@
 
     <title>Easy Notes</title>
 
+    <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/style_form.css" rel="stylesheet">
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="css/custom.css" rel="stylesheet">
 
+    <!-- Custom Fonts from Google -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
 </head>

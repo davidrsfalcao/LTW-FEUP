@@ -5,7 +5,7 @@
         <div class="header-content-inner">
             <h1>Easy Notes</h1>
             <p>Keep It Simple</p>
-            <a href="sign_up.php" class="btn btn-primary btn-lg">Register Now</a>
+            <a href="register.php" class="btn btn-primary btn-lg">Register Now</a>
         </div>
     </div>
 </header>
@@ -103,7 +103,7 @@
     <div class="container">
         <h2 class="section-header"><span class="glyphicon glyphicon-pushpin text-primary"></span><br> Sanity Check</h2>
         <p class="lead text-muted">Holisticly predominate extensible testing procedures for reliable supply chains. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
-        <a href="#" class="btn btn-primary btn-lg">Register Now</a>
+        <a href="register.php" class="btn btn-primary btn-lg">Register Now</a>
     </div>
 </div>
 </section>
