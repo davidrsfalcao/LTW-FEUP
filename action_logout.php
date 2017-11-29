@@ -5,5 +5,5 @@
 
   session_start();
 
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  header('Location: index.html');
 ?>
