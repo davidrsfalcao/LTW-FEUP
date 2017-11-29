@@ -510,3 +510,20 @@ img::-moz-selection {
 #menu_icons:focus, #menu_icons:hover{
     color: red;
 }
+
+#logged_body{
+    background: url(../images/To_Do_List.png);
+    background-size: cover;
+}
+
+.background_Box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 100%;
+    padding: 80px 40px;
+    box-sizing: border-box;
+    background: rgba(255,255,255,.8);
+}

@@ -1,7 +1,15 @@
 <?php
     include('templates/header.php');
 
+    if (isset($_SESSION['username']))
+    {
+        echo '<body id="logged_body">';
+    }
+    else {
+        echo '<body>';
+    }
  ?>
+
 
 <body>
 

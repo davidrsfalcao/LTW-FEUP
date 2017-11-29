@@ -10,7 +10,6 @@ if (verifyUser($username, $password)) {
     $_SESSION['flag_error'] = false;
     header('Location: index.php?username=' . $username);
 
-
 }
 else {
     $_SESSION['flag_error'] = true;
