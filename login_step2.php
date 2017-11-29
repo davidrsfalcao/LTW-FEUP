@@ -33,7 +33,9 @@ include('templates/header_forms.php');
                 <input type="submit" name="" value="Enter" />
             </form>
             <br />
-            <br />
+            <p>
+                This isn't your account? <a href="login_step1.php">Go Back</a>
+            </p>
             <a href="index.php">Cancel</a>
         </div>
 

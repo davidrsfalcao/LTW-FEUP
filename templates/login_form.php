@@ -5,5 +5,5 @@
     <a href="register.php">Sign Up</a>
 </li>
 <li>
-    <a href="#contact">Contact</a>
+    <a href="#contact">About Us</a>
 </li>
