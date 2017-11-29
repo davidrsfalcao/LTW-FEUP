@@ -1,7 +1,6 @@
 <?php
-include_once('config/init.php');
-include('templates/header_forms.php');
-
+    include_once('config/init.php');
+    include_once('templates/header_forms.php');
     include_once('database/user.php');
     $user = $_GET['username'];
     $first_name = get_user_first_name($user);

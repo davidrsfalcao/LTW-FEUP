@@ -9,10 +9,12 @@ if (verifyUser($username, $password)) {
     $_SESSION['username'] = $username;
     $_SESSION['flag_error'] = false;
     header('Location: index.php?username=' . $username);
+    exit();
 
 }
 else {
     $_SESSION['flag_error'] = true;
     header('Location: login_step2.php?username=' . $username);
+    exit();
 }
 ?>
