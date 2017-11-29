@@ -5,6 +5,8 @@
         include('templates/main_page.php');
         include('templates/footer.php');
     }
-    else include('templates/main_page_logged.php');
+    else {
+        include('templates/footer_logged.php');
+    }
     $_SESSION["flag_error"] = false;
 ?>

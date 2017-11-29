@@ -1,8 +1,5 @@
 
-<div class="background_Box">
-
 </div>
-
 
 
 <!-- jQuery -->

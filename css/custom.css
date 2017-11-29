@@ -521,9 +521,69 @@ img::-moz-selection {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
+    width: 85%;
     height: 100%;
     padding: 80px 40px;
     box-sizing: border-box;
-    background: rgba(255,255,255,.8);
+    background: rgba(255,255,255,.9);
+}
+
+.h2_centered{
+    text-align: center;
+}
+
+.profile_img{
+    width: 25vw;
+    height: 25vw;
+    border: 20px 20px;
+    border: 10px double black;
+    top: 50%;
+    left: 50%;
+    display: block;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile_text_Box{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-color: black;
+    float: rigth;
+}
+
+.left_box {
+    width: 40%;
+    height: 80%;
+    border: 1px solid green;
+    float: left;
+    margin: 5px;
+    align-items: center;
+}
+
+.right_box {
+    width: 50%;
+    height: 80%;
+    border: 1px solid red;
+    margin: 5px;
+    padding-top: 1.5%;
+    float: left;
+}
+
+.bottom_box {
+    width: 91%;
+    height: 20%;
+    border: 1px solid blue;
+    margin: 5px;
+    clear: both;
+}
+
+.profile_p{
+    margin-left: 5%;
+    line-height: 30px;
+}
+
+.bold_text{
+    font-weight: bold;
 }
