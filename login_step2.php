@@ -21,7 +21,10 @@
 
             <h2><?=$first_name?> <?=$last_name?></h2>
             <form action="action_login.php?username=<?=$user?>" method="post">
-                <input type="password" name="password" placeholder="password" required="required" />
+                <button type="button" id="eye">
+                    <img src="images/eye.png" alt="eye" />
+                </button>
+                <input type="password" name="password" id="pwd" placeholder="password" required="required" />
                 <?php
                     if($_SESSION["flag_error"]){
                         echo '<p id="error1">
@@ -38,5 +41,6 @@
             <a href="index.php">Cancel</a>
         </div>
 
+        <script src="js/show_password.js"></script>
     </body>
 </html>

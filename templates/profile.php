@@ -6,12 +6,12 @@ $last_name = get_user_last_name($user);
 
 <div class="left_box">
     <?php
-        if (file_exists ("images/". $user . ".png" )){
-            echo ('<img src="images/' . $user. '.png" class="profile_img"/>');
-        }
-        else {
-            echo '<img src="images/avatar.png" class="profile_img"/>';
-        }
+    if (file_exists ("images/". $user . ".png" )){
+        echo ('<img src="images/' . $user. '.png" class="profile_img"/>');
+    }
+    else {
+        echo '<img src="images/avatar.png" class="profile_img"/>';
+    }
     ?>
 
 </div>
@@ -28,7 +28,6 @@ $last_name = get_user_last_name($user);
     <p class="profile_p">
         <span class="bold_text">Birthday:  </span> not defined
     </p>
-
 
 </div>
 <div class="bottom_box"></div>
