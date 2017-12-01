@@ -15,7 +15,7 @@ include('templates/header_forms.php');
 
 <body>
     <div class="loginBox">
-        <img src="images/avatar.png" class="user"/>
+        <img src="images/avatars/avatar.jpg" class="user"/>
         <h2>Login</h2>
         <form method="get">
             <input type="text" name="username" placeholder="username" required="required" />

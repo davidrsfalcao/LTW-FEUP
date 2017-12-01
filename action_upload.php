@@ -27,7 +27,14 @@ else if (preg_match('/bmp/i',$ext)){
 else {
     header('Location: profile.php?username=' . $user);
 }
-imagejpeg($imageTmp, $originalFileName, 100);
+$width = imagesx($imageTmp);
+$height = imagesy($imageTmp);
+$square = min($width, $height);
+$final = imagecreatetruecolor($square, $square);
+imagecopyresized($final, $imageTmp, 0, 0, ($width>$square)?($width-$square)/2:0, ($height>$square)?($height-$square)/2:0, $square, $square, $square, $square);
+imagejpeg($final, $originalFileName, 100);
 imagedestroy($imageTmp);
+imagedestroy($final);
+clearstatcache();
 header('Location: profile.php?username=' . $user);
 ?>
