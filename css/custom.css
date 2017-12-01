@@ -535,11 +535,10 @@ img::-moz-selection {
 .profile_img{
     width: 20vw;
     height: 20vw;
-    border: 20px 20px;
-    border: 5px solid #000;
+    border: 1px solid #000;
     position: absolute;
     margin-top: 5%;
-    left: 19%;
+    left: 25%;
     margin-left: auto;
     margin-right: auto;
     -webkit-transition: opacity 0.5s ease-in-out;
@@ -577,30 +576,23 @@ img::-moz-selection {
 }
 
 .left_box {
-    width: 40%;
-    height: 80%;
-    border: 1px solid green;
+    width: 50%;
+    height: 100%;
     float: left;
-    margin: 5px;
     align-items: center;
     position:relative;
+    background-color: rgba(0,0,0,0.7);
+    border: 1px solid black;
 }
 
 .right_box {
     width: 50%;
-    height: 80%;
-    border: 1px solid red;
-    margin: 5px;
+    height: 100%;
     padding-top: 1.5%;
+    background-color: rgba(255,255,255,0.7);
     float: left;
-}
-
-.bottom_box {
-    width: 91%;
-    height: 20%;
-    border: 1px solid blue;
-    margin: 5px;
-    clear: both;
+    border: 1px solid black;
+    border-left: none;
 }
 
 .profile_p{
@@ -612,11 +604,42 @@ img::-moz-selection {
     font-weight: bold;
 }
 
-#teste{
+.btn_hidden{
     visibility:hidden;
 }
 
+.profile_button{
+    border-radius: 0;
+    position: absolute;
+    border: 1px solid black;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    width: 10vw;
+    top: calc(5% + 20vw);
+    color: black;
+}
 
-#teste1{
-    visibility:visible;
+.profile_button:hover{
+    color: white;
+}
+
+.save{
+    left: 25%;
+    background: #33FF99;
+}
+.save:hover{
+    background: #00994C;
+}
+
+.cancel{
+    border-left: none;
+    background: #FF6666;
+    left: calc(25% + 10vw);
+}
+
+.cancel:hover{
+    background: #CC0000
 }

@@ -23,6 +23,30 @@ $last_name = get_user_last_name($user);
         name="profile_photo" placeholder="Photo" required="required"capture>
     </form>
 
+    <?php
+        if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
+            echo ('<form action="./action_update_profile_image.php"  method="get">
+                    <input type="submit" name="" value="Save" class="profile_button save" />
+                </form>');
+        }
+        else {
+            echo ('<form>
+                    <input type="submit" name="" value="Save" class="profile_button btn_hidden" />
+                </form>');
+        }
+
+        if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
+            echo ('<form action="./action_cancel_update_profile.php"  method="get">
+                    <input type="submit" name="" value="Cancel" class="profile_button cancel" />
+                </form>');
+        }
+        else {
+            echo ('<form>
+                    <input type="submit" name="" value="Cancel" class="profile_button btn_hidden" />
+                </form>');
+        }
+    ?>
+
 
 </div>
 <div class="right_box">
@@ -42,29 +66,6 @@ $last_name = get_user_last_name($user);
 </div>
 
 <div class="bottom_box">
-    <?php
-        if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
-            echo ('<form action="./action_update_profile_image.php"  method="get">
-                    <input type="submit" name="" value="Save" id="teste1" />
-                </form>');
-        }
-        else {
-            echo ('<form>
-                    <input type="submit" name="" value="Save" id="teste" />
-                </form>');
-        }
-
-        if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
-            echo ('<form action="./action_cancel_update_profile.php"  method="get">
-                    <input type="submit" name="" value="Cancel" id="teste1" />
-                </form>');
-        }
-        else {
-            echo ('<form>
-                    <input type="submit" name="" value="Cancel" id="teste" />
-                </form>');
-        }
-    ?>
 
 </div>
 

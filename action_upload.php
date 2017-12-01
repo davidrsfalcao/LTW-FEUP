@@ -6,6 +6,10 @@ $originalImage = $_FILES['profile_photo']['tmp_name'];
 
 if($originalImage == null){
     header('Location: profile.php?username=' . $user . '&error=filesize');
+    $_SESSION['flag_upload'] = false;
+    include_once('templates/clean_tmp_folder.php');
+    unlinkRecursive('images/avatars/tmp/', false );
+    exit();
 }
 
 $tmp = getimagesize($originalImage);
