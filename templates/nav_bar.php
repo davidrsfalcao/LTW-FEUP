@@ -20,10 +20,18 @@ else {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
-                <span class="glyphicon glyphicon-calendar"></span>
-                Easy Notes
-            </a>
+            <?php
+                if (isset($_SESSION['username'])){
+                    echo ('<a class="navbar-brand" href="index.php?username=' .$_SESSION['username']. '">
+                    <span class="glyphicon glyphicon-calendar">
+                    </span>Easy Notes</a>');
+                }
+                else {
+                    echo ('<a class="navbar-brand" href="index.php">
+                    <span class="glyphicon glyphicon-calendar">
+                    </span>Easy Notes</a>');
+                }
+            ?>
         </div>
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbar">
@@ -35,7 +43,7 @@ else {
                     include ('templates/logout_form.php');
                 }
                 else{
-                    echo ('<li class="active"><a href="#">Home</a></li>');
+                    echo ('<li class="active"><a href="index.php">Home</a></li>');
                     include ('templates/login_form.php');
                 }
                 ?>
