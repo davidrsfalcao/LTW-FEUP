@@ -533,16 +533,39 @@ img::-moz-selection {
 }
 
 .profile_img{
-    width: 25vw;
-    height: 25vw;
+    width: 20vw;
+    height: 20vw;
     border: 20px 20px;
-    border: 10px double black;
-    top: 50%;
-    left: 50%;
-    display: block;
+    border: 5px solid #000;
+    position: absolute;
     margin-top: 5%;
+    left: 19%;
     margin-left: auto;
     margin-right: auto;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#profile_bottom{
+    opacity: 0;
+}
+
+#profile_bottom:hover{
+    opacity: 1;
+}
+
+
+#imageUpload
+{
+    display: none;
+
+}
+
+#profileImage
+{
+    cursor: pointer;
 }
 
 .profile_text_Box{
@@ -560,6 +583,7 @@ img::-moz-selection {
     float: left;
     margin: 5px;
     align-items: center;
+    position:relative;
 }
 
 .right_box {

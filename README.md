@@ -13,3 +13,14 @@
 username                   | first name                | last name                 | password
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 root                       | Root                      |  Master                   | root
+
+<br>
+<br>
+**NOTA:**
+Upload a funcionar, falta melhorar no css. <br>
+Para testar:  <br>
+1. Fazer Login
+2. Ir ao Profile
+3. Carregar sobre a imagem
+4. Escolher nova imagem
+5. Carrega no botão upload (ao lado do canto superior esquerdo)

@@ -4,14 +4,14 @@
     $first_name = get_user_first_name($user);
     $last_name = get_user_last_name($user);
 
-    if (file_exists ("images/". $user . ".png" )){
+    if (file_exists ("images/avatars/". $user . ".jpg" )){
         echo('<li>
-            <img  src="images/' . $user .'.png" alt="" id="avatar">
+            <img  src="images/avatars/' . $user .'.jpg?' . time() . '" alt="" id="avatar">
         </li>');
     }
     else {
         echo ('<li>
-            <img src="images/avatar.png" alt="" id="avatar">
+            <img src="images/avatars/avatar.jpg" alt="" id="avatar">
         </li>');
     }
 ?>

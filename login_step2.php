@@ -11,11 +11,11 @@
     <body>
         <div class="loginBox">
             <?php
-                if (file_exists ("images/". $user . ".png" )){
-                    echo ('<img src="images/' . $user. '.png" class="user"/>');
+                if (file_exists ("images/avatars/". $user . ".jpg" )){
+                    echo ('<img src="images/avatars/' . $user. '.jpg?' . time() . '" class="user"/>');
                 }
                 else {
-                    echo '<img src="images/avatar.png" class="user"/>';
+                    echo '<img src="images/avatars/avatar.jpg" class="user"/>';
                 }
              ?>
 

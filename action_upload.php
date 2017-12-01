@@ -1,0 +1,33 @@
+<?php
+include_once('config/init.php');
+$user = $_SESSION['username'];
+$originalFileName = "images/avatars/$user.jpg";
+$originalImage = $_FILES['profile_photo']['tmp_name'];
+
+$tmp = getimagesize($originalImage);
+$ext = $tmp['mime'];
+
+if (preg_match('/jpg|jpeg/i',$ext)){
+    $imageTmp=imagecreatefromjpeg($originalImage);
+}
+else if (preg_match('/png/i',$ext)){
+    $imageTmp1 = imagecreatefrompng($originalImage);
+    list($width, $height) = getimagesize($originalImage);
+    $imageTmp = imagecreatetruecolor($width, $height);
+    $white = imagecolorallocate($imageTmp,  255, 255, 255);
+    imagefilledrectangle($imageTmp, 0, 0, $width, $height, $white);
+    imagecopy($imageTmp, $imageTmp1, 0, 0, 0, 0, $width, $height);
+}
+else if (preg_match('/gif/i',$ext)){
+    $imageTmp=imagecreatefromgif($originalImage);
+}
+else if (preg_match('/bmp/i',$ext)){
+    $imageTmp=imagecreatefrombmp($originalImage);
+}
+else {
+    header('Location: profile.php?username=' . $user);
+}
+imagejpeg($imageTmp, $originalFileName, 100);
+imagedestroy($imageTmp);
+header('Location: profile.php?username=' . $user);
+?>
