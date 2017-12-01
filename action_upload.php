@@ -4,6 +4,11 @@ $user = $_SESSION['username'];
 $originalFileName = "images/avatars/tmp/$user.jpg";
 $originalImage = $_FILES['profile_photo']['tmp_name'];
 
+$dir = "images/avatars/tmp/";
+if (!file_exists($dir) && !is_dir($dir)) {
+    mkdir($dir, 0777);
+}
+
 if($originalImage == null){
     header('Location: profile.php?username=' . $user . '&error=filesize');
     $_SESSION['flag_upload'] = false;
