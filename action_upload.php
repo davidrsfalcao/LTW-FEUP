@@ -4,6 +4,10 @@ $user = $_SESSION['username'];
 $originalFileName = "images/avatars/$user.jpg";
 $originalImage = $_FILES['profile_photo']['tmp_name'];
 
+if($originalImage == null){
+    header('Location: profile.php?username=' . $user . '&error=filesize');
+}
+
 $tmp = getimagesize($originalImage);
 $ext = $tmp['mime'];
 
