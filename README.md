@@ -15,10 +15,14 @@ username                   | first name                | last name              
 root                       | Root                      |  Master                   | root
 
 <br>
-<br>
+
 **NOTA:**
-Upload a funcionar, falta melhorar no css. <br>
-Para testar:  <br>
+Upload a funcionar, falta melhorar no css. 
+<br>
+<br>
+
+Para testar:  
+
 1. Fazer Login
 2. Ir ao Profile
 3. Carregar sobre a imagem
