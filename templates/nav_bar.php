@@ -28,14 +28,16 @@ else {
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active">
-                    <a href="#">Home</a>
-                </li>
+
                 <?php
-                if (isset($_SESSION['username']))
+                if (isset($_SESSION['username'])){
+                    echo ('<li class="active"><a href="index.php?username=' .  $_SESSION['username']  .'">Home</a></li>');
                     include ('templates/logout_form.php');
-                else
+                }
+                else{
+                    echo ('<li class="active"><a href="#">Home</a></li>');
                     include ('templates/login_form.php');
+                }
                 ?>
             </ul>
 

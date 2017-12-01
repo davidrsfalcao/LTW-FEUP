@@ -1,7 +1,7 @@
 <?php
 include_once('config/init.php');
 $user = $_SESSION['username'];
-$originalFileName = "images/avatars/$user.jpg";
+$originalFileName = "images/avatars/tmp/$user.jpg";
 $originalImage = $_FILES['profile_photo']['tmp_name'];
 
 if($originalImage == null){
@@ -40,5 +40,6 @@ imagejpeg($final, $originalFileName, 100);
 imagedestroy($imageTmp);
 imagedestroy($final);
 clearstatcache();
+$_SESSION['flag_upload'] = true;
 header('Location: profile.php?username=' . $user);
 ?>

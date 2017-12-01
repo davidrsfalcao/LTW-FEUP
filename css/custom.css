@@ -611,3 +611,12 @@ img::-moz-selection {
 .bold_text{
     font-weight: bold;
 }
+
+#teste{
+    visibility:hidden;
+}
+
+
+#teste1{
+    visibility:visible;
+}
