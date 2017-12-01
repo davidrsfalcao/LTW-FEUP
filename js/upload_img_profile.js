@@ -11,5 +11,4 @@ function upload( uploader ) {
 
 $("#imageUpload").change(function(){
     upload( this );
-
 });

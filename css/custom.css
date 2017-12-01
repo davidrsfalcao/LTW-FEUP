@@ -581,7 +581,7 @@ img::-moz-selection {
     float: left;
     align-items: center;
     position:relative;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.8);
     border: 1px solid black;
 }
 
