@@ -1,4 +1,5 @@
 var error = false;
+var user_exist = false;
 
 function verifyUser() {
     var user = document.getElementById("user").value;
@@ -14,7 +15,10 @@ function verifyUser() {
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText == 1){
                 document.getElementById("user").style.background = "#FF6666";
-                error = true;
+                user_exist = true;
+            }
+            else {
+                user_exist = false;
             }
         }
     };
@@ -32,7 +36,6 @@ function try_submit(){
 
 
 function verifyErrors(){
-    error = false;
 
     //First name not null
     if(document.getElementById("f_n").value == ""){
@@ -46,20 +49,17 @@ function verifyErrors(){
         document.getElementById("l_n").style.background = "#FF6666";
     }
 
-    //username not null and not equal
-    if(document.getElementById("user").value == ""){
+    //username not null and not already exist
+    if(document.getElementById("user").value == "" || user_exist){
         error = true;
         document.getElementById("user").style.background = "#FF6666";
     }
-    verifyUser();
-    
+
     //password not null
     if(document.getElementById("pwd").value == ""){
         error = true;
         document.getElementById("pwd").style.background = "#FF6666";
     }
-
-
 
 }
 
