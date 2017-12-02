@@ -42,6 +42,7 @@ function verifyPassword(user) {
             }
             else {
                 document.getElementById("pwd").style.background = "#FF6666";
+                document.getElementById("pwd").value = null;
             }
         }
     };

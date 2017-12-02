@@ -34,6 +34,8 @@ function try_submit(){
 }
 
 function verifyErrors(){
+    error = false;
+
     //First name not null
     if(document.getElementById("f_n").value == ""){
         error = true;
