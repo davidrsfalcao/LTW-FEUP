@@ -10,23 +10,15 @@ if(isset($_GET["username"])){
     else $_SESSION["flag_error"] = true;
 }
 include('templates/header_forms.php');
-
 ?>
 
 <body>
     <div class="loginBox">
         <img src="images/avatars/avatar.jpg" class="user"/>
         <h2>Login</h2>
-        <form method="get">
-            <input type="text" name="username" placeholder="username" required="required" />
-            <?php
-            if($_SESSION["flag_error"]){
-                echo '<p id="error1">
-                *
-                </p>';
-            }
-            ?>
-            <input type="submit" name="" value="Next" />
+        <form >
+            <input type="text" name="username" id="user" placeholder="username"/>
+            <button class="form_button" type="button" onclick="next()">Next</button>
         </form>
         <br />
         <p>
@@ -34,6 +26,7 @@ include('templates/header_forms.php');
         </p>
         <a href="index.php">Cancel</a>
     </div>
-
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>

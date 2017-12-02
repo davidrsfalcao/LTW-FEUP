@@ -5,16 +5,8 @@ include_once('database/user.php');
 $username = $_GET['username'];
 $password = $_POST['password'];
 
-if (verifyUser($username, $password)) {
-    $_SESSION['username'] = $username;
-    $_SESSION['flag_error'] = false;
-    header('Location: index.php?username=' . $username);
-    exit();
-
-}
-else {
-    $_SESSION['flag_error'] = true;
-    header('Location: login_step2.php?username=' . $username);
-    exit();
-}
+$_SESSION['username'] = $username;
+$_SESSION['flag_error'] = false;
+header('Location: index.php?username=' . $username);
+exit();
 ?>

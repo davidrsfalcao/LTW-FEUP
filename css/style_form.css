@@ -112,11 +112,6 @@ h2{
     text-decoration: none;
 }
 
-#error1 {
-    color: #FF6666;
-    transform: translate(55%, -275%);
-}
-
 #eye{
     background: transparent;
     box-shadow: 0 0 0 0;

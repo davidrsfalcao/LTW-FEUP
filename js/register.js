@@ -29,14 +29,11 @@ function verifyUser() {
 function try_submit(){
     verifyErrors();
     if(!error){
-        console.log("here");
         $('#form_register').submit();
     }
 }
 
-
 function verifyErrors(){
-
     //First name not null
     if(document.getElementById("f_n").value == ""){
         error = true;
