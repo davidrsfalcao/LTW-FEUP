@@ -596,12 +596,37 @@ img::-moz-selection {
 }
 
 .profile_p{
+    margin-top: 10%;
     margin-left: 5%;
-    line-height: 30px;
+    line-height: 35px;
+    width: 90%;
+    font-size: 20px;
+}
+
+.profile_form{
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 90%;
+    font-size: 20px;
+}
+
+.profile_form input{
+    margin-bottom: 35px;
+    border: 0 none;
+    outline: 0;
+    border-top: 0;
+    border-bottom: 1px solid black;
+    width: 100%;
+    background: transparent;
 }
 
 .bold_text{
     font-weight: bold;
+}
+
+.profile_label{
+    font-size: 27px;
+    color: rgb(0,153, 153);
 }
 
 .btn_hidden{
@@ -641,5 +666,54 @@ img::-moz-selection {
 }
 
 .cancel:hover{
-    background: #CC0000
+    background: #CC0000;
+}
+
+.btn_profile{
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+}
+
+.div_btns{
+    align-items: center;
+    width: 100%;
+    position:relative;
+    align-items: center;
+}
+
+#btn_1{
+    left: calc(50% - 60px - 2%);
+    background: #33FF99;
+    color: black;
+    visibility: hidden;
+}
+
+#btn_1:hover{
+    background: #00994C;
+    color: white;
+}
+
+#btn_2{
+    left: calc(50% - 20px);
+    background: #A9A9A9;
+    color: black;
+}
+
+#btn_2:hover{
+    background: #696969;
+    color: white;
+}
+
+#btn_3{
+    left: calc(50% + 20px + 2%);
+    background: #FF6666;
+    color: black;
+    visibility: hidden;
+}
+
+#btn_3:hover{
+    background: #CC0000;
+    color: white;
 }

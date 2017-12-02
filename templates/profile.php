@@ -24,52 +24,53 @@ $last_name = get_user_last_name($user);
     </form>
 
     <?php
-        if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
-            echo ('<form action="./action_update_profile_image.php"  method="get">
-                    <input type="submit" name="" value="Save" class="profile_button save" />
-                </form>');
-        }
-        else {
-            echo ('<form>
-                    <input type="submit" name="" value="Save" class="profile_button btn_hidden" />
-                </form>');
-        }
+    if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
+        echo ('<form action="./action_update_profile_image.php"  method="get">
+        <input type="submit" name="" value="Save" class="profile_button save" />
+        </form>');
+    }
+    else {
+        echo ('<form>
+        <input type="submit" name="" value="Save" class="profile_button btn_hidden" />
+        </form>');
+    }
 
-        if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
-            echo ('<form action="./action_cancel_update_profile.php"  method="get">
-                    <input type="submit" name="" value="Cancel" class="profile_button cancel" />
-                </form>');
-        }
-        else {
-            echo ('<form>
-                    <input type="submit" name="" value="Cancel" class="profile_button btn_hidden" />
-                </form>');
-        }
+    if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
+        echo ('<form action="./action_cancel_update_profile.php"  method="get">
+        <input type="submit" name="" value="Cancel" class="profile_button cancel" />
+        </form>');
+    }
+    else {
+        echo ('<form>
+        <input type="submit" name="" value="Cancel" class="profile_button btn_hidden" />
+        </form>');
+    }
     ?>
 
 
 </div>
 <div class="right_box">
-    <p class="profile_p">
-        <span class="bold_text">First Name:  </span><?=$first_name?>
-    </p>
-    <p class="profile_p">
-        <span class="bold_text">Last Name:  </span><?=$last_name?>
-    </p>
-    <p class="profile_p">
-        <span class="bold_text">Username:  </span><?=$user?>
-    </p>
-    <p class="profile_p">
-        <span class="bold_text">Birthday:  </span> not defined
-    </p>
+    <form action="action_update_user.php" method="post" id="edit_form" class="profile_form">
+        <label for="name_1" class="bold_text profile_label">First Name: </label>
+        <input type="text" name="first_name" value="<?=$first_name?>" id="name_1" readonly required/>
+        <label for="name_2" class="bold_text profile_label">Last Name: </label>
+        <input type="text" name="last_name" value="<?=$last_name?>" id="name_2" readonly required/>
+        <label for="user_1" class="bold_text profile_label">Username: </label>
+        <input type="text" name="username" value="<?=$user?>" id="user_1" readonly required/>
+    </form>
+
+    <div class="div_btns">
+        <button id="btn_1" type="button" class="btn_profile" onclick="save_edit()"><span class="glyphicon glyphicon-ok"></span></button>
+        <button id="btn_2" type="button" class="btn_profile" onclick="begin_edit()"><span class="glyphicon glyphicon-pencil"></span></button>
+        <button id="btn_3" type="button" class="btn_profile" onclick="cancel_edit()"><span class="glyphicon glyphicon-remove"></span></button>
+
+    </div>
 
 </div>
 
-<div class="bottom_box">
-
-</div>
 
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/upload_img_profile.js"></script>
+<script src="js/edit_profile.js"></script>
 
 <input type="button" value="Refresh Page" onClick="window.location.reload()">
