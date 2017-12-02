@@ -70,3 +70,11 @@ function has_changes(){
 
     return false;
 }
+
+// $('#name_1').on('input',function(e){
+//     console.log(e.originalEvent.data);
+//     if (e.originalEvent.data == " "){
+//         document.getElementById("name_1").value = first_name1;
+//     }
+//     else first_name1 = document.getElementById("name_1").value;
+// });

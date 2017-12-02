@@ -589,14 +589,7 @@ img::-moz-selection {
     float: left;
     border: 1px solid black;
     border-left: none;
-}
-
-.profile_p{
-    margin-top: 10%;
-    margin-left: 5%;
-    line-height: 35px;
-    width: 90%;
-    font-size: 20px;
+    position: relative;
 }
 
 .profile_form{

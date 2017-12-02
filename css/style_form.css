@@ -84,8 +84,7 @@ h2{
     color: rgba(255,255,255,0.5);
 }
 
-.loginBox input[type="submit"],
-.registerBox input[type="submit"]{
+.form_button{
     border: none;
     outline: none;
     height: 40px;
@@ -94,6 +93,8 @@ h2{
     background: rgb(0,153,153);
     cursor: pointer;
     border-radius: 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .loginBox input[type="submit"]:hover,
@@ -109,11 +110,6 @@ h2{
     font-weight: bold;
     align-content: center;
     text-decoration: none;
-}
-
-#error {
-    color: #FF6666;
-    transform: translate(55%, -600%);
 }
 
 #error1 {

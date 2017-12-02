@@ -6,22 +6,15 @@ include('templates/header_forms.php');
 <body>
     <div class="registerBox">
         <h2>Registration</h2>
-        <form action="action_register.php" method="post">
-            <input type="text" name="first_name" placeholder="first name" required="required" autocomplete="off"/>
-            <input type="text" name="last_name" placeholder="last name" required="required" autocomplete="off"/>
-            <input type="text" name="username" placeholder="username" required="required" autocomplete="off"/>
+        <form action="action_register.php" method="post" id="form_register">
+            <input type="text" name="first_name" placeholder="first name" id="f_n" autocomplete="off"/>
+            <input type="text" name="last_name" placeholder="last name" id="l_n" autocomplete="off"/>
+            <input type="text"  id="user" name="username" placeholder="username" autocomplete="off"/>
             <button type="button" id="eye">
                 <img src="images/eye.png" alt="eye" />
             </button>
-            <input type="password" name="password" id="pwd" placeholder="password" required="required" />
-            <?php
-                if ($_SESSION['flag_error']){
-                    echo '<p id= "error">
-                    *
-                    </p>';
-                }
-            ?>
-            <input type="submit" name="" value="Enter" />
+            <input type="password" name="password" id="pwd" placeholder="password" autocomplete="off"/>
+            <button class="form_button" type="button" onclick="try_submit()"> ENTER</button>
         </form>
         <br />
         <p>
@@ -29,6 +22,8 @@ include('templates/header_forms.php');
         </p>
         <a href="index.php">Cancel</a>
     </div>
+    <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/show_password.js"></script>
+    <script src="js/register.js"></script>
 </body>
 </html>
