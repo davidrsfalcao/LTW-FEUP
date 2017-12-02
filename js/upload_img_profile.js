@@ -12,3 +12,7 @@ function upload( uploader ) {
 $("#imageUpload").change(function(){
     upload( this );
 });
+
+function back_to_normal(){
+    document.getElementById("profile_bottom").style.visibility = "visible";
+}

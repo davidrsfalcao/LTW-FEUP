@@ -28,21 +28,11 @@ $last_name = get_user_last_name($user);
         echo ('<form action="./action_update_profile_image.php"  method="get">
         <input type="submit" name="" value="Save" class="profile_button save" />
         </form>');
+        echo ('<script type="text/javascript">document.getElementById("profile_bottom").style.visibility = "hidden";</script>');
     }
-    else {
-        echo ('<form>
-        <input type="submit" name="" value="Save" class="profile_button btn_hidden" />
-        </form>');
-    }
-
     if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
         echo ('<form action="./action_cancel_update_profile.php"  method="get">
         <input type="submit" name="" value="Cancel" class="profile_button cancel" />
-        </form>');
-    }
-    else {
-        echo ('<form>
-        <input type="submit" name="" value="Cancel" class="profile_button btn_hidden" />
         </form>');
     }
     ?>
@@ -68,9 +58,6 @@ $last_name = get_user_last_name($user);
 
 </div>
 
-
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/upload_img_profile.js"></script>
 <script src="js/edit_profile.js"></script>
-
-<input type="button" value="Refresh Page" onClick="window.location.reload()">

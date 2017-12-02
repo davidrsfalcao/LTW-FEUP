@@ -533,12 +533,12 @@ img::-moz-selection {
 }
 
 .profile_img{
-    width: 20vw;
-    height: 20vw;
-    border: 1px solid #000;
+    width: 100%;
+    height: 100%;
+    /*border: 1px solid #000;*/
     position: absolute;
-    margin-top: 5%;
-    left: 25%;
+    /*margin-top: 5%;*/
+    /*left: 25%;*/
     margin-left: auto;
     margin-right: auto;
     -webkit-transition: opacity 0.5s ease-in-out;
@@ -562,10 +562,6 @@ img::-moz-selection {
 
 }
 
-#profileImage
-{
-    cursor: pointer;
-}
 
 .profile_text_Box{
     position: absolute;
@@ -643,7 +639,7 @@ img::-moz-selection {
     font-size: 16px;
     cursor: pointer;
     width: 10vw;
-    top: calc(5% + 20vw);
+    top: calc(100% - 39px);
     color: black;
 }
 
@@ -677,6 +673,7 @@ img::-moz-selection {
 }
 
 .div_btns{
+    margin-top: 5%;
     align-items: center;
     width: 100%;
     position:relative;

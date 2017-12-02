@@ -1,6 +1,5 @@
 var first_name;
 var last_name;
-var username;
 var buttons = {btn_1: "hidden" , btn_2:"visible", btn_3:"hidden"};
 var inputs = {name_1: false , name_2: false};
 
@@ -46,17 +45,28 @@ function cancel_edit(){
 function restore_variables(){
     document.getElementById("name_1").value = first_name;
     document.getElementById("name_2").value = last_name;
-    document.getElementById("user_1").value = username;
 }
 
 function save_variables(){
     first_name = document.getElementById("name_1").value;
     last_name = document.getElementById("name_2").value;
-    username = document.getElementById("user_1").value;
 }
 
 function save_edit(){
     change_visibility();
     change_input_type();
-    document.getElementById("edit_form").submit();
+    if(has_changes()){
+        document.getElementById("edit_form").submit();
+    }
+}
+
+function has_changes(){
+    if (first_name != document.getElementById("name_1").value){
+        return true;
+    }
+    if (last_name != document.getElementById("name_2").value){
+        return true;
+    }
+
+    return false;
 }
