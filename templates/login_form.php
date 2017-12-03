@@ -1,9 +1,9 @@
 <li>
-    <a href="login_step1.php">Sign In</a>
+    <a class="selectable" href="login_step1.php">Sign In</a>
 </li>
 <li>
-    <a href="register.php">Sign Up</a>
+    <a class="selectable" href="register.php">Sign Up</a>
 </li>
 <li>
-    <a href="#contact">About Us</a>
+    <a class="selectable" href="#contact">About Us</a>
 </li>

@@ -16,16 +16,11 @@
     }
 ?>
 
-<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?=$first_name?> <?=$last_name?><span class="caret"></span></a>
-    <ul class="dropdown-menu" aria-labelledby="about-us">
-        <li><a href="profile.php?username=<?=$user?>" id="profile_form"><span class="glyphicon glyphicon-user"id="menu_icons"></span> Profile</a></li>
-        <li>
-        <form action="action_logout.php" id="form_logout">
-          <a><span class="glyphicon glyphicon-off"id="menu_icons"><input type="submit" value="Logout" id="logout"></a>
-        </form>
-        </li>
-
-
+<li onmousemove="onFocus()" onmouseleave="onLeave()">
+    <a class="selectable" href="#"><?=$first_name?> <?=$last_name?><span class="icon plus" id="arrow_down"></a>
+    <ul>
+        <li><a class="selectable" href="profile.php?username<?=$user?>">Profile</a></li>
+        <li><a class="selectable" href="#">Settings</a></li>
+        <li><a class="selectable" href="action_logout.php">Logout</a></li>
     </ul>
 </li>

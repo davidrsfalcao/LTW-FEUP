@@ -9,53 +9,27 @@ else {
     echo '<body>';
 }
 ?>
+<nav class="navigation_bar">
+    <p onmousemove="onBrand()" onmouseleave="outBrand()" id="logo_plus_name"><span class="icon bookmark"></span>Easy Notes</p>
+    <ul>
+        <?php
+        if (isset($_SESSION['username'])){
+            echo ('<li><a id="home" class="selectable" href="index.php?username=' . $_SESSION['username'] . '">Home</a></li>');
+            include ('templates/logout_form.php');
+        }
+        else {
+            echo ('<li><a id="home" class="selectable" href="index.php">Home</a></li>');
+             include ('templates/login_form.php');
+        }
+        ?>
 
-<!-- Navigation -->
-<nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <?php
-                if (isset($_SESSION['username'])){
-                    echo ('<a class="navbar-brand" href="index.php?username=' .$_SESSION['username']. '">
-                    <span class="glyphicon glyphicon-calendar">
-                    </span>Easy Notes</a>');
-                }
-                else {
-                    echo ('<a class="navbar-brand" href="index.php">
-                    <span class="glyphicon glyphicon-calendar">
-                    </span>Easy Notes</a>');
-                }
-            ?>
-        </div>
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav navbar-right">
 
-                <?php
-                if (isset($_SESSION['username'])){
-                    echo ('<li class="active"><a href="index.php?username=' .  $_SESSION['username']  .'">Home</a></li>');
-                    include ('templates/logout_form.php');
-                }
-                else{
-                    echo ('<li class="active"><a href="index.php">Home</a></li>');
-                    include ('templates/login_form.php');
-                }
-                ?>
-            </ul>
 
-        </div>
-    </div>
+    </ul>
 </nav>
 
-<?php
-include('templates/header.php');
 
+<?php
 if (isset($_SESSION['username']))
 {
     echo '<div class="background_Box">';
