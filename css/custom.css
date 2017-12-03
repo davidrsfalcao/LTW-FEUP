@@ -28,7 +28,7 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
-    background-image: url('../images/header.jpg');
+    background-image: url('../images/templates/header.jpg');
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -151,15 +151,15 @@ header .header-content .header-content-inner p {
 }
 
 .item-1 {
-    background: url('../images/reminder.png');
+    background: url('../images/templates/reminder.png');
 }
 
 .item-2 {
-    background: url('../images/checklist.png');
+    background: url('../images/templates/checklist.png');
 }
 
 .item-3 {
-    background: url('../images/photolist.png');
+    background: url('../images/templates/photolist.png');
 }
 
 .item-1,
@@ -512,7 +512,7 @@ img::-moz-selection {
 }
 
 #logged_body{
-    background: url(../images/To_Do_List.png);
+    background: url(../images/templates/To_Do_List.png);
     background-size: cover;
 }
 

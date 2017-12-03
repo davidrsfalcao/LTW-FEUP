@@ -21,7 +21,7 @@ $last_name = get_user_last_name($user);
         <h2><?=$first_name?> <?=$last_name?></h2>
         <form action="action_login.php?username=<?=$user?>" method="post" id="register_form">
             <button type="button" id="eye">
-                <img src="images/eye.png" alt="eye" id="eye_visibility"/>
+                <img src="images/templates/eye.png" alt="eye" id="eye_visibility"/>
             </button>
             <input type="password" name="password" id="pwd" placeholder="password"/>
             <button class="form_button" type="button" onclick="verifyPassword('<?=$user?>')">Login</button>

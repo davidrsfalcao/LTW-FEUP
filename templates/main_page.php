@@ -31,7 +31,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <img class="img-responsive center-block" src="images/people.jpg" alt="">
+                <img class="img-responsive center-block" src="images/templates/people.jpg" alt="">
             </div>
             <div class="col-sm-6">
                 <h2 class="section-header">Don't worry, you're not the only one</h2>
@@ -70,7 +70,7 @@
 
             </div>
             <div class="col-sm-6">
-                <img class="img-responsive center-block" src="images/macbookpro.png" alt="">
+                <img class="img-responsive center-block" src="images/templates/macbookpro.png" alt="">
             </div>
 
         </div>

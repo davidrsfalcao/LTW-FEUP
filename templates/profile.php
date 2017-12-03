@@ -16,7 +16,7 @@ $last_name = get_user_last_name($user);
         echo '<img src="images/avatars/avatar.jpg" class="profile_img" id="profileImage"/>';
     }
     ?>
-    <img src="images/profile_bottom.png" class="profile_img" id="profile_bottom"/>
+    <img src="images/templates/profile_bottom.png" class="profile_img" id="profile_bottom"/>
 
     <form action="./action_upload.php?username=<?=$user?>" method="post" enctype="multipart/form-data" id="form">
         <input id="imageUpload" type="file"
