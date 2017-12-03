@@ -707,3 +707,17 @@ img::-moz-selection {
     background: #CC0000;
     color: white;
 }
+
+.icon {
+  display: inline-block;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.icon svg {
+    width: 2em;
+    height: 2em;
+    align-content: center;
+    margin: auto auto;
+}

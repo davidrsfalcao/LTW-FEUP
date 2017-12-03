@@ -1,0 +1,6 @@
+Ex, github svg:
+
+html:
+<span class="icon github"></span>
+
+<script src="js/select_svg.js"></script>
