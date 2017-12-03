@@ -11,7 +11,7 @@ include('templates/header_forms.php');
             <input type="text" name="last_name" placeholder="last name" id="l_n" autocomplete="off"/>
             <input type="text"  id="user" name="username" placeholder="username" autocomplete="off"/>
             <button type="button" id="eye">
-                <img src="images/eye.png" alt="eye" />
+                <img src="images/eye.png" alt="eye" id="eye_visibility" />
             </button>
             <input type="password" name="password" id="pwd" placeholder="password" autocomplete="off"/>
             <button class="form_button" type="button" onclick="try_submit()"> ENTER</button>
