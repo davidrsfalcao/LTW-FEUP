@@ -22,9 +22,6 @@ else {
              include ('templates/login_form.php');
         }
         ?>
-
-
-
     </ul>
 </nav>
 
