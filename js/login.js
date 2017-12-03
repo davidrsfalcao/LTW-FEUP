@@ -26,8 +26,7 @@ function verifyUser() {
 
 function verifyPassword(user) {
     var pass = document.getElementById("pwd").value;
-    console.log(user + "  " + pass);
-
+    
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
