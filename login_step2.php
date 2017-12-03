@@ -19,7 +19,7 @@ $last_name = get_user_last_name($user);
         }
         ?>
         <h2><?=$first_name?> <?=$last_name?></h2>
-        <form action="action_login.php?username=<?=$user?>" method="post" id="register_form">
+        <form action="action_login.php?username=<?=$user?>" method="post" id="login_form">
             <button type="button" id="eye">
                 <img src="images/templates/eye.png" alt="eye" id="eye_visibility"/>
             </button>
@@ -34,7 +34,6 @@ $last_name = get_user_last_name($user);
     </div>
 
     <script src="js/show_password.js"></script>
-    <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/login.js"></script>
 </body>
 </html>

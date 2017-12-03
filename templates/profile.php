@@ -58,6 +58,5 @@ $last_name = get_user_last_name($user);
 
 </div>
 
-<script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/upload_img_profile.js"></script>
 <script src="js/edit_profile.js"></script>

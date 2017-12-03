@@ -1,6 +1,9 @@
 var error = false;
 var user_exist = false;
 
+/*
+Request the database to confirm if user exists
+*/
 function verifyUser() {
     var user = document.getElementById("user").value;
 
@@ -26,13 +29,18 @@ function verifyUser() {
     xmlhttp.send();
 }
 
+/*
+Submit the form if not exist errors
+*/
 function try_submit(){
     verifyErrors();
     if(!error){
-        $('#form_register').submit();
+        document.getElementById('form_register').submit();
     }
 }
-
+/*
+Verifies if exist errors on the form
+*/
 function verifyErrors(){
     error = false;
 
@@ -61,32 +69,38 @@ function verifyErrors(){
     }
 
 }
-
+/*
+Activate Listeners
+*/
+document.getElementById("user").addEventListener('input', handlerInputUser);
+document.getElementById("f_n").addEventListener('input', handlerInputFirstName);
+document.getElementById("l_n").addEventListener('input', handlerInputLastName);
+document.getElementById("pwd").addEventListener('input', handlerInputPassword);
 /*
 Handler input username
 */
-$('#user').on('input',function(e){
+function handlerInputUser(){
     verifyUser();
     document.getElementById("user").style.background = "transparent";
-});
+}
 
 /*
 Handler input first name
 */
-$('#f_n').on('input',function(e){
+function handlerInputFirstName(){
     document.getElementById("f_n").style.background = "transparent";
-});
+}
 
 /*
 Handler input last name
 */
-$('#l_n').on('input',function(e){
+function handlerInputLastName(){
     document.getElementById("l_n").style.background = "transparent";
-});
+}
 
 /*
 Handler input password
 */
-$('#pwd').on('input',function(e){
+function handlerInputPassword(){
     document.getElementById("pwd").style.background = "transparent";
-});
+}

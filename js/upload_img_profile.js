@@ -1,17 +1,22 @@
-$("#profile_bottom").click(function(e) {
-    $("#imageUpload").click();
+document.getElementById("profile_bottom").addEventListener("click", handlerClick);
 
-});
+
+function handlerClick() {
+    document.getElementById("imageUpload").click();
+}
+
 
 function upload( uploader ) {
     if ( uploader.files && uploader.files[0] ){
-            $("#form").submit();
+            document.getElementById("form").submit();
     }
 }
 
-$("#imageUpload").change(function(){
+function handlerInput(){
     upload( this );
-});
+};
+
+document.getElementById("imageUpload").addEventListener("change", handlerInput);
 
 function back_to_normal(){
     document.getElementById("profile_bottom").style.visibility = "visible";

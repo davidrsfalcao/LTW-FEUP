@@ -1,5 +1,8 @@
 var user_exist = false;
 
+/*
+Request the database to confirm if user exists
+*/
 function verifyUser() {
     var user = document.getElementById("user").value;
 
@@ -24,9 +27,12 @@ function verifyUser() {
     xmlhttp.send();
 }
 
+/*
+Resquests the database to confirm the password
+*/
 function verifyPassword(user) {
     var pass = document.getElementById("pwd").value;
-    
+
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -37,7 +43,7 @@ function verifyPassword(user) {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText == 1){
-                $('#register_form').submit();
+            document.getElementById('login_form').submit();
             }
             else {
                 document.getElementById("pwd").style.background = "#FF6666";
@@ -50,6 +56,9 @@ function verifyPassword(user) {
     xmlhttp.send("username="+user+"&password="+pass);
 }
 
+/**
+Verify if exist erros on form, otherwise submit the form
+*/
 function next(){
     if(user_exist){
         var username = document.getElementById("user").value;
@@ -61,16 +70,22 @@ function next(){
 }
 
 /*
+Activate Listeners
+*/
+document.getElementById("user").addEventListener('input', handlerInputUser);
+document.getElementById("pwd").addEventListener('input', handlerInputPassword);
+
+/*
 Handler input username
 */
-$('#user').on('input',function(e){
+function handlerInputUser(){
     verifyUser();
     document.getElementById("user").style.background = "transparent";
-});
+}
 
 /*
 Handler input password
 */
-$('#pwd').on('input',function(e){
+function handlerInputPassword(){
     document.getElementById("pwd").style.background = "transparent";
-});
+}

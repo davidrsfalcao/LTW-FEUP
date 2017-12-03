@@ -14,7 +14,7 @@ include('templates/header_forms.php');
                 <img src="images/templates/eye.png" alt="eye" id="eye_visibility" />
             </button>
             <input type="password" name="password" id="pwd" placeholder="password" autocomplete="off"/>
-            <button class="form_button" type="button" onclick="try_submit()"> ENTER</button>
+            <button class="form_button" type="button" onclick="try_submit()">Register</button>
         </form>
         <br />
         <p>

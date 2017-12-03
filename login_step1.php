@@ -26,7 +26,6 @@ include('templates/header_forms.php');
         </p>
         <a href="index.php">Cancel</a>
     </div>
-    <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/login.js"></script>
 </body>
 </html>
