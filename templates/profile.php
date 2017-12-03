@@ -50,9 +50,9 @@ $last_name = get_user_last_name($user);
     </form>
 
     <div class="div_btns">
-        <button id="btn_1" type="button" class="btn_profile" onclick="save_edit()"><span class="glyphicon glyphicon-ok"></span></button>
-        <button id="btn_2" type="button" class="btn_profile" onclick="begin_edit()"><span class="glyphicon glyphicon-pencil"></span></button>
-        <button id="btn_3" type="button" class="btn_profile" onclick="cancel_edit()"><span class="glyphicon glyphicon-remove"></span></button>
+        <button id="btn_1" type="button" class="btn_profile" onclick="save_edit()"><span class="icon checkmark"></span></button>
+        <button id="btn_2" type="button" class="btn_profile" onclick="begin_edit()"><span class="icon pencil2"></span></button>
+        <button id="btn_3" type="button" class="btn_profile" onclick="cancel_edit()"><span class="icon cross"></span></button>
     </div>
 
 
