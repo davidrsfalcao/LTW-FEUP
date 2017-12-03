@@ -1,14 +1,5 @@
 <?php
 include_once('config/init.php');
-if(isset($_GET["username"])){
-    include_once('database/user.php');
-    if(userExists($_GET["username"])){
-        $_SESSION["flag_error"] = false;
-        $var = $_GET['username'];
-        header('Location: login_step2.php?username=' . $var);
-    }
-    else $_SESSION["flag_error"] = true;
-}
 include('templates/header_forms.php');
 ?>
 

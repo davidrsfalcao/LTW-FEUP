@@ -1,12 +1,7 @@
 <?php
-include_once('config/init.php');
-include_once('database/user.php');
-
+session_start();
 $username = $_GET['username'];
-$password = $_POST['password'];
-
 $_SESSION['username'] = $username;
-$_SESSION['flag_error'] = false;
 header('Location: index.php?username=' . $username);
 exit();
 ?>

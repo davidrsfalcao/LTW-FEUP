@@ -1,11 +1,16 @@
 <?php
 include_once('config/init.php');
-include_once('templates/header_forms.php');
 include_once('database/user.php');
-$user = $_GET['username'];
-$first_name = get_user_first_name($user);
-$last_name = get_user_last_name($user);
-
+if(!isset($_GET['username'])){
+    header('Location: login_step1.php');
+    exit();
+}
+else {
+    $user = $_GET['username'];
+    $first_name = get_user_first_name($user);
+    $last_name = get_user_last_name($user);
+}
+include_once('templates/header_forms.php');
 ?>
 
 <body>
