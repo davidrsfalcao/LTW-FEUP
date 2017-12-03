@@ -72,8 +72,14 @@ function next(){
 /*
 Activate Listeners
 */
-document.getElementById("user").addEventListener('input', handlerInputUser);
-document.getElementById("pwd").addEventListener('input', handlerInputPassword);
+if(document.getElementById("user") != null){
+    document.getElementById("user").addEventListener('input', handlerInputUser);
+}
+if(document.getElementById("pwd") != null){
+    document.getElementById("pwd").addEventListener('input', handlerInputPassword);
+}
+
+
 
 /*
 Handler input username
