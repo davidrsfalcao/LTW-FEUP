@@ -104,3 +104,13 @@ Handler input password
 function handlerInputPassword(){
     document.getElementById("pwd").style.background = "transparent";
 }
+
+/*
+Handler input ENTER
+*/
+document.onkeydown = function(e) {
+    if(e.key == "Enter"){
+        e.preventDefault();
+        try_submit();
+    }
+};
