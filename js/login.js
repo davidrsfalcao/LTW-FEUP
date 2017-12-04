@@ -31,8 +31,7 @@ function verifyUser() {
 Resquests the database to confirm the password
 */
 function verifyPassword(user) {
-    var pass = document.getElementById("pwd").value;
-
+    let pass = document.getElementById("pwd").value;
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -94,4 +93,40 @@ Handler input password
 */
 function handlerInputPassword(){
     document.getElementById("pwd").style.background = "transparent";
+}
+
+/*
+Handler input ENTER on login login_step1
+*/
+let userInput = document.getElementById("user");
+if (userInput){
+    userInput.onkeydown = function(input){
+
+        if(input.key == "Enter"){
+            input.preventDefault();
+            next();
+        }
+    }
+}
+
+/*
+Handler input ENTER on login login_step2
+*/
+let pwdInput = document.getElementById("pwd");
+if (pwdInput){
+    pwdInput.onkeydown = function(input){
+
+        if(input.key == "Enter"){
+            input.preventDefault();
+
+            verifyPassword(user);
+        }
+    }
+}
+/*
+Initialize user on login_step2
+*/
+let user;
+function initializeUser(user1){
+    user = user1;
 }

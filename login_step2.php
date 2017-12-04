@@ -1,6 +1,10 @@
 <?php
 include_once('config/init.php');
 include_once('database/user.php');
+if(isset($_SESSION['username'])){
+    header('Location: index.php?username=' . $_SESSION['username']);
+    exit();
+}
 if(!isset($_GET['username'])){
     header('Location: login_step1.php');
     exit();
@@ -24,6 +28,7 @@ include_once('templates/header_forms.php');
         }
         ?>
         <h2><?=$first_name?> <?=$last_name?></h2>
+
         <form action="action_login.php?username=<?=$user?>" method="post" id="login_form">
             <button type="button" id="eye">
                 <img src="images/templates/eye.png" alt="eye" id="eye_visibility"/>
@@ -37,8 +42,10 @@ include_once('templates/header_forms.php');
         </p>
         <a href="index.php">Cancel</a>
     </div>
-
     <script src="js/show_password.js"></script>
     <script src="js/login.js"></script>
+    <script>
+        initializeUser('<?=$user?>');
+    </script>
 </body>
 </html>
