@@ -20,7 +20,16 @@ function setSVGContent(filename, elem) {
     }
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            elem.innerHTML = this.responseText;
+            let path = this.responseText;
+            let result = path.match(/<path(.*?)<\/path>/g).map(function(val){
+                return val.replace(/<\/?b>/g,'');
+            });
+            let style = window.getComputedStyle(elem, null).getPropertyValue('font-size');
+            let fontSize = parseFloat(style);
+            let header = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"' +
+            ' width="' + fontSize + '" height="'+ fontSize +'" '
+            +'viewBox="0 0 32 32">';
+            elem.innerHTML = header + result + "</svg>";
         }
     };
     xmlhttp.open("GET","templates/read_svg_file.php?filename="+filename,true);

@@ -97,6 +97,10 @@ h2{
     margin-bottom: 20px;
 }
 
+.form_button:hover{
+    background: rgb(13, 91, 91);
+}
+
 .loginBox input[type="submit"]:hover,
 .registerBox input[type="submit"]:hover{
     background: rgb(0,102,102);

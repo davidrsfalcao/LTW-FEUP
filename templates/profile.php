@@ -55,7 +55,6 @@ $last_name = get_user_last_name($user);
         <button id="btn_3" type="button" class="btn_profile" onclick="cancel_edit()"><span class="icon cross"></span></button>
     </div>
 
-
 </div>
 
 <script src="js/upload_img_profile.js"></script>

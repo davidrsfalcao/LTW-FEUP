@@ -10,6 +10,5 @@
     else {
         include('templates/footer_logged.php');
     }
-    $_SESSION["flag_error"] = false;
     $_SESSION['flag_upload'] = false;
 ?>
