@@ -54,16 +54,20 @@ function zoom(html){
     console.log()
     if(id == 0){
         box.innerHTML = displayCreatList();
+        box.style.background = colors[0].background;
+        box.style.color = colors[0].color;
     }
-    else box.innerHTML = html;
+    else {
+        box.innerHTML = html;
+        let cc = (id % (colors.length -1)) + 1;
+        box.style.background = colors[cc].background;
+        box.style.color = colors[cc].color;}
 
     box.className='zoom_box';
     box.setAttribute('onmousemove', 'mouseIsOverZoomBox(true)');
     box.setAttribute('onmouseleave', 'mouseIsOverZoomBox(false)');
 
-    let cc = (id % (colors.length -1)) + 1;
-    box.style.background = colors[cc].background;
-    box.style.color = colors[cc].color;
+
 
     div.appendChild(box);
     document.body.appendChild(div);
@@ -80,7 +84,7 @@ function mouseIsOverZoomBox(state){
 }
 
 function displayCreatList(box){
-    return "<p>OLA</p>";
+    return "<h1>CREAT YOUR LIST</h1>";
 }
 
 function testeLists(){
@@ -88,7 +92,7 @@ function testeLists(){
         let div = document.createElement('div');
         div.className='list';
         div.setAttribute('onclick', 'zoom(this.innerHTML)');
-        div.innerHTML = '<span id="listID">'+k+'</span>List';
+        div.innerHTML = '<span id="listID">'+k+'</span>List '+k;
         let cc = (k % (colors.length -1)) + 1;
         div.style.background = colors[cc].background;
         div.style.color = colors[cc].color;
