@@ -8,72 +8,30 @@
     </div>
 </header>
 
-<div class="question_box" onscroll="alert('body scroll event')">
+<div class="question_box">
     <p>Do you ever forget to do something important </p>
     <span id="question" class="icon question"></span>
 
 </div>
 
 <div class="apresentation_box">
-    <p>
-        Do you ever forget to do something
-        important
-    </p>
+    <div class="box" id="column1">
+        <img class="img-responsive center-block" src="images/templates/people.jpg" alt="">
+    </div>
+    <div class="box" id="column2">
+        <h2>Don't worry, you're not the only one!</h2>
+        <p>People forget things, it's a fact,
+        no one is immune to that!
+        <br>
+        Age, stress, busy life ...  are only a few causes of forgetfulness.
+        But, for many causes, we have only 1 solution :
+        <br>
+        <br>
+        <h1> Easy Notes </h1>
+        </p>
+    </div>
 </div>
 
-
-
-<!-- Header -->
-<!-- <header>
-<div class="header-content">
-<div class="header-content-inner">
-<h1>Easy Notes</h1>
-<p>Keep It Simple</p>
-<a href="register.php" class="btn btn-primary btn-lg">Register Now</a>
-</div>
-</div>
-</header> -->
-
-<!-- Intro Section -->
-<!-- <section class="intro">
-<div class="container">
-<div class="row">
-<div class="col-lg-8 col-lg-offset-2">
-<p id="par_question">
-Do you ever forget to do something
-important
-<br>
-<span class="glyphicon glyphicon-question-sign" id="question1"></span>
-</p>
-</div>
-</div>
-</div>
-</section> -->
-
-<!-- Content 1 -->
-<!-- <section class="content">
-<div class="container">
-<div class="row">
-<div class="col-sm-6">
-<img class="img-responsive center-block" src="images/templates/people.jpg" alt="">
-</div>
-<div class="col-sm-6">
-<h2 class="section-header">Don't worry, you're not the only one</h2>
-<p class="lead text-muted">People forget things, it's a fact,
-no one is immune to that!
-<br>
-Age, stress, busy life ...  are only a few causes of forgetfulness.
-But, for many causes, we have only 1 solution :
-<br>
-<br>
-<h1> Easy Notes </h1>
-
-</p>
-</div>
-
-</div>
-</div>
-</section> -->
 
 <!-- <section class="content content-2">
 <div class="container">

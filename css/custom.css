@@ -179,16 +179,44 @@ header .main_box{
 }
 
 .apresentation_box{
-    display: block;
-    width: 100%;
-    height: 400px;
-    float: left;
-    background-color: white;
-    text-align: center;
-    padding-top: 50px;
+    display: grid;
+    width: 100vw;
+    height: auto;
+    grid-template-columns: 40% 1fr;
 }
 
+.box{
+    background-color: white;
+    height: auto;
+}
 
+#column1{
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+}
+
+#column2{
+    padding-top: 50px;
+    padding-bottom: 30px;
+    padding-right: 200px;
+    padding-left: 100px;
+    text-overflow:ellipsis;
+}
+
+#column2 h2{
+    line-height: 50px;
+}
+
+#column2 h1{
+    line-height: 150px;
+    font-size: 50px;
+}
+
+#column1 img{
+    display:block;
+    margin:auto;
+}
 
 #par_question{
     font-size: 40px;
@@ -415,16 +443,16 @@ header .main_box{
 }
 
 .icon {
-  display: inline-block;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
+    display: inline-block;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
 }
 
 .icon svg{
-  width: 100%;
-  height: 100%;
-  text-align: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
 }
 
 footer{
