@@ -8,6 +8,7 @@
         include('templates/footer.php');
     }
     else {
+        include('templates/lists_page.php');
         include('templates/footer_logged.php');
     }
     $_SESSION['flag_upload'] = false;

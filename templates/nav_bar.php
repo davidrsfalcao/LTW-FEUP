@@ -1,6 +1,5 @@
 <?php
 include('templates/header.php');
-
 if (isset($_SESSION['username']))
 {
     echo '<body id="logged_body">';
@@ -8,9 +7,10 @@ if (isset($_SESSION['username']))
 else {
     echo '<body>';
 }
+$username = $_SESSION['username'];
 ?>
 <nav class="navigation_bar">
-    <p onmousemove="onBrand()" onmouseleave="outBrand()" id="logo_plus_name"><span class="icon bookmark"></span>Easy Notes</p>
+    <p onmousemove="onBrand()" onClick="clickOnBrand('<?=$username?>')" onmouseleave="outBrand()" id="logo_plus_name"><span class="icon bookmark"></span>Easy Notes</p>
     <ul>
         <?php
         if (isset($_SESSION['username'])){

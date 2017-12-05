@@ -1,4 +1,4 @@
-var focus = false;
+let focus = false;
 
 function onFocus(){
     if(focus == false){
@@ -23,7 +23,7 @@ function onLeave(){
     +'1-1v-6c0-0.552-0.448-1-1-1z"></path></svg>';
 }
 
-var onbrand = false;
+let onbrand = false;
 
 function onBrand(){
     document.getElementById("logo_plus_name").style.color = "red";
@@ -32,3 +32,24 @@ function onBrand(){
 function outBrand(){
     document.getElementById("logo_plus_name").style.color = "rgb(0,153,153)";
 }
+
+function clickOnBrand(user){
+    let file = window.location.pathname.replace(/^.*[\\\/]/, '');
+    if(file != "index.php"){
+        if(user != ""){
+            window.location.replace("index.php?username="+user);
+        }
+        else window.location.replace("index.php");
+    }
+}
+
+// function starCounting(){
+//     console.log("HERE");
+//     window.setTimeout(sayHello, 5000);
+// }
+//
+//
+// function sayHello(){
+//     console.log("HELLO");
+//     window.setTimeout(sayHello, 5000);
+// }

@@ -30,47 +30,45 @@
         </p>
     </div>
 
+    <div class="explanation_box">
+        <h2 >Simplicity</h2>
+        <p>
+            Bla bla bla Bla <br>
+            Bla bla bla Bla <br>
+            Bla bla bla Bla <br>
+            Bla bla bla Bla <br>
+            Bla bla bla Bla <br>
+            Bla bla bla Bla <br>
+            <br>
+            <br>
+            Estava a pensar colocar uma animação aqui
+        </p>
+    </div>
+
+    <div class="macbook_box">
+        <img src="images/templates/macbookpro.png" alt="">
+    </div>
+
+    <div class="reminder_box">
+        <h3>
+            Reminder
+        </h3>
+    </div>
+
+    <div class="checklist_box">
+        <h3>
+            Checklist
+        </h3>
+    </div>
+
+    <div class="photo_box">
+        <h3>
+            Photo List
+        </h3>
+    </div>
 
 </div>
 
-<!-- <div class="prom_box">
-<h2>Don't worry, you're not the only one!</h2>
-<p>People forget things, it's a fact,
-no one is immune to that!
-<br>
-Age, stress, busy life ...  are only a few causes of forgetfulness.
-But, for many causes, we have only 1 solution :
-<br>
-<br>
-<h1> Easy Notes </h1>
-</p>
-</div> -->
-
-<!-- <section class="content content-2">
-<div class="container">
-<div class="row">
-<div class="col-sm-6">
-<h2 class="section-header">Simplicity</h2>
-<p class="lead text-light">
-Bla bla bla Bla <br>
-Bla bla bla Bla <br>
-Bla bla bla Bla <br>
-Bla bla bla Bla <br>
-Bla bla bla Bla <br>
-Bla bla bla Bla <br>
-<br>
-<br>
-Estava a pensar colocar uma animação aqui
-</p>
-
-</div>
-<div class="col-sm-6">
-<img class="img-responsive center-block" src="images/templates/macbookpro.png" alt="">
-</div>
-
-</div>
-</div>
-</section> -->
 
 
 <!-- <div class="container-fluid">

@@ -159,15 +159,17 @@ header .main_box{
 }
 
 
-
 .main_grid{
     display: grid;
     grid-template-columns: repeat(8, 1fr);
+    height: auto;
     grid-gap: 0px;
     grid-auto-rows: auto;
     grid-template-areas:
     "a a a a a a a a"
-    "b b b b c c c c";
+    "b b b b c c c c"
+    "d d d d e e e e"
+    "f f f g g h h h";
     align-items: center;
     background-color: white;
 }
@@ -220,6 +222,76 @@ header .main_box{
     font-size: 50px;
 }
 
+.explanation_box{
+    grid-area:d;
+    background-color: #393838;
+    text-align: center;
+    height: 400px;
+    padding-top: 30px;
+    color: white;
+}
+
+.explanation_box h2{
+    font-size: 40px;
+}
+
+.macbook_box{
+    grid-area:e;
+    background-color: #393838;
+    height: 400px;
+}
+
+.macbook_box img{
+    padding-top: 40px;
+    width: auto;
+    height: auto;
+    max-height: 360px;
+    max-width: 560px;
+    display: block;
+    margin:auto;
+}
+
+.reminder_box{
+    grid-area:f;
+    background: url(../images/templates/reminder.png);
+    background-size: cover;
+    height: 200px;
+}
+
+.reminder_box h3{
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 70px;
+}
+
+.checklist_box{
+    grid-area:g;
+    background: url(../images/templates/checklist.png);
+    background-size: cover;
+    height: 200px;
+}
+.checklist_box h3{
+    color: white;
+    font-size: 40px;
+    padding-left: 120px;
+    padding-top: 60px;
+}
+
+.photo_box{
+    grid-area:h;
+    background: url(../images/templates/photolist.png);
+    background-size: cover;
+    height: 200px;
+}
+
+.photo_box h3{
+    color: white;
+    font-size: 40px;
+    padding-left: 240px;
+    padding-top: 60px;
+}
+
 #form_logout{
     padding-left: 3.3em;
     padding-bottom: 0.5em;
@@ -249,16 +321,18 @@ header .main_box{
     background-size: cover;
     width: 100vw;
     height: 100vh;
+    z-index: -100;
+    background-attachment: fixed;
 }
 
 .background_Box {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 85%;
     height: 100%;
-    padding: 80px 40px;
+    padding: 80px 40px 20px 40px;
     box-sizing: border-box;
     background: rgba(255,255,255,.9);
 }
@@ -485,4 +559,81 @@ footer{
     text-decoration: none;
     color: white;
     font-size: 20px;
+}
+
+.list_selector{
+    background: rgb(0,153,153);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    top: 62px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+
+}
+
+.select_type{
+    background-color: rgb(0,153,153);
+    text-align: center;
+}
+
+.select_order{
+    border-left: 3px solid black;
+    text-align: center;
+}
+
+.form_list{
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.display_lists_grid{
+    display: grid;
+    margin-top: 60px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+}
+
+.add img{
+    width: 100%;
+    height: 100%;
+}
+
+#listID{
+    display: none;
+}
+
+.scrollable_div{
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.zoom_background{
+    z-index: 9999;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.8);
+}
+
+.zoom_box{
+    z-index: 10000;
+    position: absolute;
+    display: block;
+    left: 25vw!important;
+    top: 15vh !important;
+    width: 50vw !important;
+    height: 70vh !important;
+    color: white;
+    overflow-y: scroll;
 }
