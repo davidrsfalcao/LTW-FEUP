@@ -38,7 +38,8 @@ else if (preg_match('/bmp/i',$ext)){
     $imageTmp=imagecreatefrombmp($originalImage);
 }
 else {
-    header('Location: profile.php?username=' . $user);
+    header('Location: profile.php?username=' . $user . '&error=filetype');
+    exit();
 }
 $width = imagesx($imageTmp);
 $height = imagesy($imageTmp);
