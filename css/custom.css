@@ -158,11 +158,22 @@ header .main_box{
     background: rgb(13, 91, 91);
 }
 
+
+
+.main_grid{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 0px;
+    grid-auto-rows: auto;
+    grid-template-areas:
+    "a a a a a a a a"
+    "b b b b c c c c";
+    align-items: center;
+    background-color: white;
+}
+
 .question_box{
-    display: block;
-    width: 100%;
-    height: auto;
-    float: left;
+    grid-area: a;
     background-color: rgb(0,153,153);
     text-align: center;
     padding-top: 50px;
@@ -170,6 +181,7 @@ header .main_box{
     color: white;
     font-weight: 500;
     line-height: 80px;
+
 }
 
 #question {
@@ -178,48 +190,34 @@ header .main_box{
     padding-bottom: 50px;
 }
 
-.apresentation_box{
-    display: grid;
-    width: 100vw;
-    height: auto;
-    grid-template-columns: 40% 1fr;
-}
-
-.box{
+.people_box{
+    grid-area: b;
     background-color: white;
+
+}
+
+.people_box img{
+    width: 75%;
     height: auto;
-}
-
-#column1{
-    padding-top: 30px;
-    padding-bottom: 30px;
-
-}
-
-#column2{
-    padding-top: 50px;
-    padding-bottom: 30px;
-    padding-right: 200px;
-    padding-left: 100px;
-    text-overflow:ellipsis;
-}
-
-#column2 h2{
-    line-height: 50px;
-}
-
-#column2 h1{
-    line-height: 150px;
-    font-size: 50px;
-}
-
-#column1 img{
-    display:block;
+    padding: 50px 0px;
+    display: block;
     margin:auto;
 }
 
-#par_question{
-    font-size: 40px;
+.prom_box{
+    grid-area:c;
+    text-align:justify;
+    padding-left: 0px;
+    padding-right: 180px;
+}
+
+.prom_box h2{
+    line-height: 50px;
+}
+
+.prom_box h1{
+    line-height: 100px;
+    font-size: 50px;
 }
 
 #form_logout{
