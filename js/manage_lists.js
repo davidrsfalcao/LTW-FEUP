@@ -62,7 +62,8 @@ function zoom(html){
         box.innerHTML = html;
         let cc = (id % (colors.length -1)) + 1;
         box.style.background = colors[cc].background;
-        box.style.color = colors[cc].color;}
+        box.style.color = colors[cc].color;
+    }
 
     box.className='zoom_box';
     box.setAttribute('onmousemove', 'mouseIsOverZoomBox(true)');
@@ -105,7 +106,7 @@ function createAddList(){
     document.getElementById('display_lists_grid').appendChild(div);
     div.style.background = colors[0].background;
     div.style.color = colors[0].color;
-    testeLists();
+    //testeLists();
 }
 
 function createFormatedDate(){
@@ -201,7 +202,6 @@ let checklist = false;
 let list_name;
 let reminder_date;
 
-
 function verifyForms(){
     if(document.getElementById('list_name').value == ""){
         return false;
@@ -246,16 +246,14 @@ function submitText(){
     window.location.replace('index.php?list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + content);
 }
 
-
-
 let checklistText = [];
 function addCheckBoxItem(){
     let index = checklistText.length;
     let content;
     if(checklist == false){
         content ='<div class="checklist_item_box" style="width=100px;height=100px;background=white;">'
-                    + '<input type="text" class="input_checklist_box" id="input_checklist_box' + index+'"/>'
-                    + '</div>';
+        + '<input type="text" class="input_checklist_box" id="input_checklist_box' + index+'"/>'
+        + '</div>';
         content = '<div class="checklist_zomm_box" id="checklist_box">' + content + '</div>' +
         '<button type="button" onclick="addCheckBoxItem()">Add item</button>'
         + '<button type="button" onclick="submitCheckList()">Submit</button>';
@@ -263,8 +261,8 @@ function addCheckBoxItem(){
     }
     else {
         content ='<div class="checklist_item_box" style="width=100px;height=100px;background=white;">'
-                    + '<input type="text" class="input_checklist_box" id="input_checklist_box' + (index+1) +'"/>'
-                    + '</div>';
+        + '<input type="text" class="input_checklist_box" id="input_checklist_box' + (index+1) +'"/>'
+        + '</div>';
         for(let k=0; k<(index+1); k++){
             checklistText[k] = document.getElementById('input_checklist_box'+k).value;
         }
@@ -298,10 +296,10 @@ function addPhotoItem(){
     checklist = false;
     checklistText = [];
     let content = '<form action="" method="post" enctype="multipart/form-data" id="form">'
-        + '<input type="file"'
-        + 'name="profile_photo" placeholder="Photo" id="input_photo" required="required">'
-        + '</form>'
-        + '<button type="button" onclick="submitPhotoItem()">Submit</button>';
+    + '<input type="file"'
+    + 'name="profile_photo" placeholder="Photo" id="input_photo" required="required">'
+    + '</form>'
+    + '<button type="button" onclick="submitPhotoItem()">Submit</button>';
     return content;
 }
 
@@ -310,6 +308,10 @@ function submitPhotoItem(){
     if(!verifyForms()){
         return;
     }
+
     let content = document.getElementById("input_photo").value;
+    if(content == ""){
+        return;
+    }
     window.location.replace('index.php?list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + content);
 }
