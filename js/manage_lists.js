@@ -69,9 +69,11 @@ function zoom(html){
     box.setAttribute('onmousemove', 'mouseIsOverZoomBox(true)');
     box.setAttribute('onmouseleave', 'mouseIsOverZoomBox(false)');
 
-
     div.appendChild(box);
     document.body.appendChild(div);
+    if(id == 0){
+        addItem(0);
+    }
 }
 
 function verifyClickZoomBox(elem){
@@ -165,7 +167,6 @@ function displayCreateList(box){
         +'<form>'
         +'<label for="users">Type </label>'
         +'<select name="type" onchange="addItem(this.value)">'
-        +'<option value=""></option>'
         +'<option value="0">Note</option>'
         +'<option value="1">Checklist</option>'
         +'<option value="2">Photolist</option>'
