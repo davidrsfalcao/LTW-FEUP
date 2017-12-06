@@ -37,7 +37,6 @@ $last_name = get_user_last_name($user);
     }
     ?>
 
-
 </div>
 <div class="right_box">
     <form action="action_update_user.php" method="post" id="edit_form" class="profile_form">

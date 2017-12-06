@@ -13,13 +13,14 @@ CREATE TABLE List (
     ID INTEGER PRIMARY KEY,
     creator_ID VARCHAR(64) REFERENCES User(username),
     title VARCHAR NOT NULL,
-    creation_date DATE,
-    reminder_date DATE,
-    type CHAR(1) NOT NULL DEFAULT ('text') REFERENCES Type(type)
+    creation_date DATE NOT NULL,
+    reminder_date DATE NOT NULL,
+    type CHAR(1) NOT NULL DEFAULT ('t') REFERENCES Type(type)
 );
 
 CREATE TABLE Item (
     ID INTEGER PRIMARY KEY,
+    visibility BOOLEAN NOT NULL,
     list_ID INTEGER REFERENCES List(ID)
 
 );
@@ -29,6 +30,6 @@ CREATE TABLE Type (
     seq INTEGER
 );
 
-INSERT INTO Type(type, seq) VALUES ('checkbox',1);
-INSERT INTO Type(type, seq) VALUES ('text',2);
-INSERT INTO Type(type, seq) VALUES ('photo',3);
+INSERT INTO Type(type, seq) VALUES ('c',1); /*checkbox */
+INSERT INTO Type(type, seq) VALUES ('t',2); /*text */
+INSERT INTO Type(type, seq) VALUES ('p',3); /*photo */

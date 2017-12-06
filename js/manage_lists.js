@@ -55,9 +55,8 @@ function zoom(html){
 
     let box = document.createElement('div');
 
-    console.log()
     if(id == 0){
-        box.innerHTML = displayCreatList();
+        box.innerHTML = displayCreateList();
         box.style.background = colors[0].background;
         box.style.color = colors[0].color;
     }
@@ -70,7 +69,6 @@ function zoom(html){
     box.className='zoom_box';
     box.setAttribute('onmousemove', 'mouseIsOverZoomBox(true)');
     box.setAttribute('onmouseleave', 'mouseIsOverZoomBox(false)');
-
 
 
     div.appendChild(box);
@@ -87,8 +85,25 @@ function mouseIsOverZoomBox(state){
     mouseIsOver = state;
 }
 
-function displayCreatList(box){
-    return "<h1>CREAT YOUR LIST</h1>";
+function displayCreateList(box){
+     let html =
+        '<h1>Create your List</h1>'
+        + '<p><span>List Name: </h2>'
+        + '<input type="text" name="list_name" id="list_name"/></p>'
+        + '<button type="button">Concluir</button>'
+        +'<form>'
+        +'<label for="users">Type </label>'
+        +'<select name="type" onchange="addItem(this.value)">'
+        +'<option value=""></option>'
+        +'<option value="0">Note</option>'
+        +'<option value="1">Checklist</option>'
+        +'<option value="2">Photolist</option>'
+        +'</select>'
+        +'</form>'
+        +'<div id="zoom_box_item"></div>'
+        ;
+
+    return html;
 }
 
 function testeLists(){
@@ -114,4 +129,58 @@ function createAddList(){
     div.style.background = colors[0].background;
     div.style.color = colors[0].color;
     testeLists();
+}
+
+function addItem(value){
+    let content;
+    value = parseInt(value);
+    switch(value){
+        case 0:
+            content = addTextItem();
+            break;
+        case 1:
+            content = addCheckBoxItem();
+            break;
+        case 2:
+            content = addPhotoItem();
+            break;
+
+        default:
+            break;
+    }
+
+    document.getElementById('zoom_box_item').innerHTML = content;
+    return content;
+}
+
+let checklist = false;
+
+function addTextItem(){
+    checklist = false;
+    let content = '<div class="text_box">'
+                + '<input type="text" class="input_text_box" id="input_text_box"/>'
+                + '</div>';
+    return content;
+}
+
+function addCheckBoxItem(){
+
+    let content ='<div class="checklist_item_box" style="width=100px;height=100px;background=white;">'
+                + '<input type="text" class="input_checklist_box" id="input_checklist_box"/>'
+                + '</div>';
+
+    if(checklist == false){
+        content = '<div class="checklist_zomm_box" id="checklist_box">' + content + '</div>';
+        checklist = true;
+    }
+    else {
+        let tmp = document.getElementById('checklist_box').innerHTML;
+        content = tmp + content;
+    }
+
+    return content;
+}
+
+function addPhotoItem(){
+    checklist = false;
 }
