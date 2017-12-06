@@ -18,8 +18,14 @@ CREATE TABLE List (
     type CHAR(1) NOT NULL DEFAULT ('t') REFERENCES Type(type)
 );
 
+CREATE TABLE Share{
+    ID INTEGER REFERENCES List(ID),
+    user VARCHAR(64) REFERENCES User(username)
+}
+
 CREATE TABLE Item (
     ID INTEGER PRIMARY KEY,
+    content VARCHAR,
     visibility BOOLEAN NOT NULL,
     list_ID INTEGER REFERENCES List(ID)
 
@@ -30,6 +36,6 @@ CREATE TABLE Type (
     seq INTEGER
 );
 
-INSERT INTO Type(type, seq) VALUES ('c',1); /*checkbox */
-INSERT INTO Type(type, seq) VALUES ('t',2); /*text */
+INSERT INTO Type(type, seq) VALUES ('t',1); /*text */
+INSERT INTO Type(type, seq) VALUES ('c',2); /*checkbox */
 INSERT INTO Type(type, seq) VALUES ('p',3); /*photo */

@@ -1,14 +1,12 @@
 var green = {background:"#00CC66", color:"white"};
 var grey = {background:"#C0C0C0", color:"rgb(0,153,153)"};
 var blue = {background:"rgb(0,153,153)", color:"white"};
-// var yellow = {background:"#FFFF66", color:"black"};
-// var red = {background:"#FF9999", color:"black"};
+
 var colors = [];
 colors[0] = green;
 colors[1] = blue;
 colors[2] = grey;
-// colors[3] = yellow;
-// colors[4] = red;
+
 
 function orderBy(value){
     showOrderSettings(value);
@@ -85,27 +83,6 @@ function mouseIsOverZoomBox(state){
     mouseIsOver = state;
 }
 
-function displayCreateList(box){
-     let html =
-        '<h1>Create your List</h1>'
-        + '<p><span>List Name: </h2>'
-        + '<input type="text" name="list_name" id="list_name"/></p>'
-        + '<button type="button">Concluir</button>'
-        +'<form>'
-        +'<label for="users">Type </label>'
-        +'<select name="type" onchange="addItem(this.value)">'
-        +'<option value=""></option>'
-        +'<option value="0">Note</option>'
-        +'<option value="1">Checklist</option>'
-        +'<option value="2">Photolist</option>'
-        +'</select>'
-        +'</form>'
-        +'<div id="zoom_box_item"></div>'
-        ;
-
-    return html;
-}
-
 function testeLists(){
     for(let k=1; k<30; k++){
         let div = document.createElement('div');
@@ -131,6 +108,73 @@ function createAddList(){
     testeLists();
 }
 
+function createFormatedDate(){
+    let date = new Date();
+    let day = date.getDay() +1;
+    let month = date.getMonth()+1;
+    let year = date.getFullYear();
+    let hour = date.getHours();
+    let minutes = date.getMinutes()+1;
+    let finalDate = "";
+
+    finalDate += year;
+    finalDate += "-";
+
+    if(month < 10){
+        finalDate += "0" + month;
+    }
+    else {
+        finalDate += month;
+    }
+    finalDate += "-";
+
+    if(day < 10){
+        finalDate += "0" + day;
+    }
+    else {
+        finalDate += day;
+    }
+    finalDate += "T";
+
+    if(hour < 10){
+        finalDate += "0" + hour;
+    }
+    else {
+        finalDate += hour;
+    }
+    finalDate += ":";
+
+    if(minutes < 10){
+        finalDate += "0" + minutes;
+    }
+    else {
+        finalDate += minutes;
+    }
+    return finalDate;
+}
+
+function displayCreateList(box){
+
+    let finalDate = createFormatedDate();
+     let html ='<h1>Create your List</h1>'
+        +'<p>List Name '
+        +'<input type="text" name="list_name" id="list_name"/></p>'
+        +'<p><label for="reminder_date">Reminder date </label>'
+        +'<input type="datetime-local" name="reminder_date" id="reminder_date" value="'+ finalDate+'"/></p>'
+        +'<form>'
+        +'<label for="users">Type </label>'
+        +'<select name="type" onchange="addItem(this.value)">'
+        +'<option value=""></option>'
+        +'<option value="0">Note</option>'
+        +'<option value="1">Checklist</option>'
+        +'<option value="2">Photolist</option>'
+        +'</select>'
+        +'</form>'
+        +'<div id="zoom_box_item"></div>';
+
+    return html;
+}
+
 function addItem(value){
     let content;
     value = parseInt(value);
@@ -154,33 +198,118 @@ function addItem(value){
 }
 
 let checklist = false;
+let list_name;
+let reminder_date;
+
+
+function verifyForms(){
+    if(document.getElementById('list_name').value == ""){
+        return false;
+    }
+    else {
+        list_name = document.getElementById('list_name').value;
+    }
+
+    if(document.getElementById('reminder_date').value ==""){
+        return false;
+    }
+    else {
+        reminder_date = document.getElementById('reminder_date').value;
+    }
+
+    return true;
+}
 
 function addTextItem(){
     checklist = false;
     let content = '<div class="text_box">'
-                + '<input type="text" class="input_text_box" id="input_text_box"/>'
-                + '</div>';
+                + '<input type="text" name="content" class="input_text_box" id="input_text_box"/>'
+                + '</div>'
+                + '<button type="button" onclick="submitText()" class="zoom_box_button">Submit</button>';
     return content;
 }
 
+
+function submitText(){
+
+    if(!verifyForms()){
+        return;
+    }
+
+    if(document.getElementById('input_text_box').value == ""){
+        return;
+    }
+    else {
+        var content = document.getElementById('input_text_box').value;
+    }
+
+    window.location.replace('index.php?list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + content);
+}
+
+
+
+let checklistText = [];
 function addCheckBoxItem(){
-
-    let content ='<div class="checklist_item_box" style="width=100px;height=100px;background=white;">'
-                + '<input type="text" class="input_checklist_box" id="input_checklist_box"/>'
-                + '</div>';
-
+    let index = checklistText.length;
+    let content;
     if(checklist == false){
-        content = '<div class="checklist_zomm_box" id="checklist_box">' + content + '</div>';
+        content ='<div class="checklist_item_box" style="width=100px;height=100px;background=white;">'
+                    + '<input type="text" class="input_checklist_box" id="input_checklist_box' + index+'"/>'
+                    + '</div>';
+        content = '<div class="checklist_zomm_box" id="checklist_box">' + content + '</div>' +
+        '<button type="button" onclick="addCheckBoxItem()">Add item</button>'
+        + '<button type="button" onclick="submitCheckList()">Submit</button>';
         checklist = true;
     }
     else {
+        content ='<div class="checklist_item_box" style="width=100px;height=100px;background=white;">'
+                    + '<input type="text" class="input_checklist_box" id="input_checklist_box' + (index+1) +'"/>'
+                    + '</div>';
+        for(let k=0; k<(index+1); k++){
+            checklistText[k] = document.getElementById('input_checklist_box'+k).value;
+        }
         let tmp = document.getElementById('checklist_box').innerHTML;
         content = tmp + content;
+        document.getElementById('checklist_box').innerHTML = content;
+
+        for(let k=0; k<index+1; k++){
+            document.getElementById('input_checklist_box'+k).value = checklistText[k];
+        }
+        content = document.getElementById('zoom_box_item').innerHTML;
     }
 
     return content;
+}
+
+function submitCheckList(){
+
+    if(!verifyForms()){
+        return;
+    }
+
+    let child = document.getElementById('checklist_box').getElementsByTagName('div');
+    for(let i=0; i<child.length; i++){
+        checklistText[i] = document.getElementById('input_checklist_box'+i).value;
+    }
+    window.location.replace('index.php?list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + checklistText);
 }
 
 function addPhotoItem(){
     checklist = false;
+    checklistText = [];
+    let content = '<form action="" method="post" enctype="multipart/form-data" id="form">'
+        + '<input type="file"'
+        + 'name="profile_photo" placeholder="Photo" id="input_photo" required="required">'
+        + '</form>'
+        + '<button type="button" onclick="submitPhotoItem()">Submit</button>';
+    return content;
+}
+
+function submitPhotoItem(){
+
+    if(!verifyForms()){
+        return;
+    }
+    let content = document.getElementById("input_photo").value;
+    window.location.replace('index.php?list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + content);
 }
