@@ -115,7 +115,7 @@ function createFormatedDate(){
     let month = date.getMonth()+1;
     let year = date.getFullYear();
     let hour = date.getHours();
-    let minutes = date.getMinutes()+1;
+    let minutes = date.getMinutes();
     let finalDate = "";
 
     finalDate += year;
@@ -223,7 +223,7 @@ function verifyForms(){
 function addTextItem(){
     checklist = false;
     let content = '<div class="text_box">'
-                + '<input type="text" name="content" class="input_text_box" id="input_text_box"/>'
+                + '<textarea name="content" class="input_text_box" id="input_text_box"></textarea>'
                 + '</div>'
                 + '<button type="button" onclick="submitText()" class="zoom_box_button">Submit</button>';
     return content;
@@ -255,8 +255,8 @@ function addCheckBoxItem(){
         + '<input type="text" class="input_checklist_box" id="input_checklist_box' + index+'"/>'
         + '</div>';
         content = '<div class="checklist_zomm_box" id="checklist_box">' + content + '</div>' +
-        '<button type="button" onclick="addCheckBoxItem()">Add item</button>'
-        + '<button type="button" onclick="submitCheckList()">Submit</button>';
+        '<button type="button" onclick="addCheckBoxItem()" class="add_checkbox_item_button" id="add_checkbox_item_button">Add item</button>'
+        + '<button type="button" onclick="submitCheckList()" class="zoom_box_button">Submit</button>';
         checklist = true;
     }
     else {
