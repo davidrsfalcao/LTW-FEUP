@@ -3,11 +3,13 @@ include('templates/header.php');
 if (isset($_SESSION['username']))
 {
     echo '<body id="logged_body">';
+    $username = $_SESSION['username'];
 }
 else {
     echo '<body>';
+    $username = null;
 }
-$username = $_SESSION['username'];
+
 ?>
 <nav class="navigation_bar">
     <p onmousemove="onBrand()" onClick="clickOnBrand('<?=$username?>')" onmouseleave="outBrand()" id="logo_plus_name"><span class="icon bookmark"></span>Easy Notes</p>

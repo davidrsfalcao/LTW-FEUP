@@ -1,10 +1,14 @@
 var green = {background:"#00CC66", color:"white"};
 var grey = {background:"#C0C0C0", color:"rgb(0,153,153)"};
 var blue = {background:"rgb(0,153,153)", color:"white"};
+// var yellow = {background:"#FFFF66", color:"black"};
+// var red = {background:"#FF9999", color:"black"};
 var colors = [];
 colors[0] = green;
-colors[1] = grey;
-colors[2] = blue;
+colors[1] = blue;
+colors[2] = grey;
+// colors[3] = yellow;
+// colors[4] = red;
 
 function orderBy(value){
     showOrderSettings(value);
