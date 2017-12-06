@@ -252,16 +252,18 @@ function addCheckBoxItem(){
     let content;
     if(checklist == false){
         content ='<div class="checklist_item_box">'
-        + '<input type="text" class="input_checklist_box" id="input_checklist_box' + index+'"/>'
+        + '<p><input type="text" class="input_checklist_box" id="input_checklist_box' + index+'"/>'
+        +'<button type="button" onclick="addCheckBoxItem()" class="add_checkbox_item_button" id="add_checkbox_item_button">Add item</button></p>'
         + '</div>';
         content = '<div class="checklist_zomm_box" id="checklist_box">' + content + '</div>'
-        +'<button type="button" onclick="addCheckBoxItem()" class="add_checkbox_item_button" id="add_checkbox_item_button">Add item</button>'
         + '<button type="button" onclick="submitCheckList()" class="zoom_box_button">Submit</button>';
         checklist = true;
     }
     else {
-        content ='<div class="checklist_item_box" style="width=100px;height=100px;background=white;">'
-        + '<input type="text" class="input_checklist_box" id="input_checklist_box' + (index+1) +'"/>'
+        document.getElementById('add_checkbox_item_button').remove();
+        content ='<div class="checklist_item_box">'
+        + '<p><input type="text" class="input_checklist_box" id="input_checklist_box' + (index+1) +'"/>'
+        +'<button type="button" onclick="addCheckBoxItem()" class="add_checkbox_item_button" id="add_checkbox_item_button">Add item</button></p>'
         + '</div>';
         for(let k=0; k<(index+1); k++){
             checklistText[k] = document.getElementById('input_checklist_box'+k).value;

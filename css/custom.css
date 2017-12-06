@@ -665,20 +665,26 @@ footer{
 
 .zoom_box_button{
     width: 10%;
-    margin-left: 30%;
+    margin-left: 25%;
 }
 
 .input_checklist_box{
     width: 50%;
     height: 23px;
-    margin-left: 25%;
+    margin-left: 0%;
     margin-bottom: 2px;
+    margin-right: 3px;
     padding: 2px;
     border: 2px solid #f8f8f8;
+}
+
+.checklist_item_box p{
+    margin-left: 20%;
+    padding-bottom: 1em;
+    padding-bottom: 0 !important;
 }
 
 .add_checkbox_item_button{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    margin-left: 25%;
 }
