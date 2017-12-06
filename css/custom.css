@@ -638,3 +638,48 @@ footer{
     color: white;
     overflow-y: scroll;
 }
+
+.zoom_box h1{
+    text-align: center;
+    padding: 1em;
+}
+
+.zoom_box p{
+    margin-left: 20%;
+    padding-bottom: 1em;
+}
+
+.zoom_box form{
+    margin-left: 20%;
+    padding-bottom: 1em;
+}
+
+.input_text_box{
+    width: 50%;
+    height: 150px;
+    margin-left: 25%;
+    padding: 2px;
+    border: 2px solid #f8f8f8;
+    resize: none;
+}
+
+.zoom_box_button{
+    width: 10%;
+    margin-left: 25%;
+}
+
+.input_checklist_box{
+    width: 50%;
+    height: 23px;
+    margin-left: 25%;
+    margin-bottom: 2px;
+    margin-right: 3px;
+    padding: 2px;
+    border: 2px solid #f8f8f8;
+    float: left;
+}
+
+.add_checkbox_item_button{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
