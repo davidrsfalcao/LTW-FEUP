@@ -679,12 +679,18 @@ footer{
 }
 
 .checklist_item_box p{
-    margin-left: 20%;
-    padding-bottom: 1em;
-    padding-bottom: 0;
+    margin-left: 25%;
+    padding-bottom: 0px;
 }
 
 .add_checkbox_item_button{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.add_photo_item_button{
+    width: 10%;
+    margin-left: 20%;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }

@@ -19,5 +19,5 @@ if($type == 2){
 else if($type == 0){
     createItem($itemID,$listID, $content);
 }
-echo "Sucess";
+echo "Success";
 ?>

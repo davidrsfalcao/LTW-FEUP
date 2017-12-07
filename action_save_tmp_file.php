@@ -43,5 +43,5 @@
     imagedestroy($imageTmp);
     imagedestroy($final);
     clearstatcache();
-    echo "sucess";
+    echo "Success";
 ?>
