@@ -18,4 +18,10 @@ function createList($ID, $creator_ID, $title, $creation_date, $reminder_date, $t
     $stmt = $dbh->prepare('INSERT INTO List VALUES (?, ?, ?, ?, ?, ?)');
     $stmt->execute(array($ID, $creator_ID, $title, $creation_date, $reminder_date, $type));
 }
+
+function createItem($ID,$list_ID, $content){
+    global $dbh;
+    $stmt = $dbh->prepare('INSERT INTO Item VALUES (?, ?, ?, 1)');
+    $stmt->execute(array($ID,$list_ID, $content));
+}
 ?>
