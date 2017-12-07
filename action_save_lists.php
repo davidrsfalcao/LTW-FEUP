@@ -19,5 +19,14 @@ if($type == 2){
 else if($type == 0){
     createItem($itemID,$listID, $content);
 }
+else if($type == 1){
+    $itens = explode(",", $content);
+    $number = count($itens);
+
+    for ($i=0; $i < $number; $i++) {
+        createItem($itemID,$listID, $itens[$i]);
+        $itemID = getLastId('Item')+1;
+    }
+}
 echo "Success";
 ?>
