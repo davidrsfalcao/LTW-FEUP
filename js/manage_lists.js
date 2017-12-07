@@ -293,12 +293,20 @@ function submitCheckList(){
     if(!verifyForms()){
         return;
     }
-
+    else {
+        checklistText=[];
+    }
     let child = document.getElementById('checklist_box').getElementsByTagName('div');
+    let j=0;
     for(let i=0; i<child.length; i++){
-        checklistText[i] = document.getElementById('input_checklist_box'+i).value;
+        let temp = document.getElementById('input_checklist_box'+i).value;
+        if(temp != ''){
+            checklistText[j] = temp;
+            j++;
+        }
     }
     let url ='list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + checklistText + '&type=1';
+    checklistText=[];
     submitList(url);
 }
 
