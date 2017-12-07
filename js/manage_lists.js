@@ -7,6 +7,11 @@ colors[0] = green;
 colors[1] = blue;
 colors[2] = grey;
 
+let user;
+
+function setUser(username){
+    user = username;
+}
 
 function orderBy(value){
     showOrderSettings(value);
@@ -159,20 +164,20 @@ function createFormatedDate(){
 function displayCreateList(box){
 
     let finalDate = createFormatedDate();
-     let html ='<h1>Create your List</h1>'
-        +'<p>List Name '
-        +'<input type="text" name="list_name" id="list_name"/></p>'
-        +'<p><label for="reminder_date">Reminder date </label>'
-        +'<input type="datetime-local" name="reminder_date" id="reminder_date" value="'+ finalDate+'"/></p>'
-        +'<form>'
-        +'<label for="users">Type </label>'
-        +'<select name="type" onchange="addItem(this.value)">'
-        +'<option value="0">Note</option>'
-        +'<option value="1">Checklist</option>'
-        +'<option value="2">Photolist</option>'
-        +'</select>'
-        +'</form>'
-        +'<div id="zoom_box_item"></div>';
+    let html ='<h1>Create your List</h1>'
+    +'<p>List Name '
+    +'<input type="text" name="list_name" id="list_name"/></p>'
+    +'<p><label for="reminder_date">Reminder date </label>'
+    +'<input type="datetime-local" name="reminder_date" id="reminder_date" value="'+ finalDate+'"/></p>'
+    +'<form>'
+    +'<label for="users">Type </label>'
+    +'<select name="type" onchange="addItem(this.value)">'
+    +'<option value="0">Note</option>'
+    +'<option value="1">Checklist</option>'
+    +'<option value="2">Photolist</option>'
+    +'</select>'
+    +'</form>'
+    +'<div id="zoom_box_item"></div>';
 
     return html;
 }
@@ -182,17 +187,17 @@ function addItem(value){
     value = parseInt(value);
     switch(value){
         case 0:
-            content = addTextItem();
-            break;
+        content = addTextItem();
+        break;
         case 1:
-            content = addCheckBoxItem();
-            break;
+        content = addCheckBoxItem();
+        break;
         case 2:
-            content = addPhotoItem();
-            break;
+        content = addPhotoItem();
+        break;
 
         default:
-            break;
+        break;
     }
 
     document.getElementById('zoom_box_item').innerHTML = content;
@@ -224,9 +229,9 @@ function verifyForms(){
 function addTextItem(){
     checklist = false;
     let content = '<div class="text_box">'
-                + '<textarea name="content" class="input_text_box" id="input_text_box"></textarea>'
-                + '</div>'
-                + '<button type="button" onclick="submitText()" class="zoom_box_button">Submit</button>';
+    + '<textarea name="content" class="input_text_box" id="input_text_box"></textarea>'
+    + '</div>'
+    + '<button type="button" onclick="submitText()" class="zoom_box_button">Submit</button>';
     return content;
 }
 
@@ -244,7 +249,8 @@ function submitText(){
         var content = document.getElementById('input_text_box').value;
     }
 
-    window.location.replace('index.php?list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + content);
+    let url = 'list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + content + '&type=0';
+    submitList(url);
 }
 
 let checklistText = [];
@@ -292,7 +298,8 @@ function submitCheckList(){
     for(let i=0; i<child.length; i++){
         checklistText[i] = document.getElementById('input_checklist_box'+i).value;
     }
-    window.location.replace('index.php?list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + checklistText);
+    let url ='list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + checklistText + '&type=1';
+    submitList(url);
 }
 
 function addPhotoItem(){
@@ -300,21 +307,61 @@ function addPhotoItem(){
     checklistText = [];
     let content = '<form action="" method="post" enctype="multipart/form-data" id="form">'
     + '<input type="file"'
-    + 'name="profile_photo" placeholder="Photo" id="input_photo" required="required">'
+    + 'name="input_photo" placeholder="Photo" id="input_photo" required="required">'
     + '</form>'
     + '<button type="button" onclick="submitPhotoItem()">Submit</button>';
     return content;
 }
 
 function submitPhotoItem(){
-
     if(!verifyForms()){
         return;
     }
-
-    let content = document.getElementById("input_photo").value;
-    if(content == ""){
+    let file = document.getElementById("input_photo").files[0];
+    if(document.getElementById("input_photo").value == ""){
         return;
     }
-    window.location.replace('index.php?list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + content);
+
+    var formData = new FormData();
+    formData.append('photos', file, file.name);
+    let url = 'list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + "nulo" + '&type=2';
+    savePhoto(formData, url);
+}
+
+function submitList(url) {
+    let fullURL = "action_save_lists.php?username="+user + "&" + url;
+
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    };
+    xmlhttp.open("GET",fullURL,true);
+    xmlhttp.send();
+}
+
+function savePhoto(formData, url){
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText == "sucess"){
+                submitList(url);
+            }
+        }
+    };
+    xmlhttp.open("POST","action_save_tmp_file.php",true);
+    xmlhttp.send(formData);
 }

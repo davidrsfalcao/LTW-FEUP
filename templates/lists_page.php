@@ -26,3 +26,5 @@
     <div class="display_lists_grid" id="display_lists_grid">
     </div>
 </div>
+<script src="js/manage_lists.js"></script>
+<script>createAddList()</script>
