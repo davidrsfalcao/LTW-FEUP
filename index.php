@@ -2,6 +2,7 @@
     include_once('config/init.php');
     include_once('templates/clean_tmp_folder.php');
     unlinkRecursive('images/avatars/tmp/', false );
+    //unlinkRecursive('images/list/tmp/', false );
     include('templates/nav_bar.php');
     if (!isset($_SESSION['username'])){
         include('templates/main_page.php');

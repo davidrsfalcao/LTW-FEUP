@@ -28,3 +28,4 @@
 </div>
 <script src="js/manage_lists.js"></script>
 <script>createAddList()</script>
+<script>setUser("<?=$_SESSION['username']?>")</script>

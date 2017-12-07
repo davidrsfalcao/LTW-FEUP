@@ -1,41 +1,42 @@
-Drop Table if exists User;
-Drop Table if exists List;
-Drop Table if exists Item;
-
-CREATE TABLE User (
+CREATE TABLE User(
     username VARCHAR(64) PRIMARY KEY,
     first_name VARCHAR(16) NOT NULL,
     last_name VARCHAR(16) NOT NULL,
     password VARCHAR(32) NOT NULL
 );
 
-CREATE TABLE List (
+CREATE TABLE List(
     ID INTEGER PRIMARY KEY,
-    creator_ID VARCHAR(64) REFERENCES User(username),
+    creator_ID VARCHAR(64),
     title VARCHAR NOT NULL,
     creation_date DATE NOT NULL,
     reminder_date DATE NOT NULL,
-    type CHAR(1) NOT NULL DEFAULT ('t') REFERENCES Type(type)
+    type INTEGER NOT NULL,
+    FOREIGN KEY(creator_ID) REFERENCES User(username)
+
 );
 
-CREATE TABLE Share{
-    ID INTEGER REFERENCES List(ID),
-    user VARCHAR(64) REFERENCES User(username)
-}
+-- CREATE TABLE Share(
+--     ID INTEGER,
+--     user VARCHAR(64),
+--     FOREIGN KEY(ID) REFERENCES List(ID),
+--     FOREIGN KEY(user) REFERENCES User(username)
+-- );
 
 CREATE TABLE Item (
     ID INTEGER PRIMARY KEY,
+    list_ID INTEGER,
     content VARCHAR,
     visibility BOOLEAN NOT NULL,
-    list_ID INTEGER REFERENCES List(ID)
+    FOREIGN KEY(list_ID) REFERENCES List(ID)
 
 );
 
-CREATE TABLE Type (
-    type VARCHAR NOT NULL,
-    seq INTEGER
-);
-
-INSERT INTO Type(type, seq) VALUES ('t',1); /*text */
-INSERT INTO Type(type, seq) VALUES ('c',2); /*checkbox */
-INSERT INTO Type(type, seq) VALUES ('p',3); /*photo */
+-- CREATE TABLE Type (
+--     type VARCHAR NOT NULL,
+--     seq INTEGER
+-- );
+--
+-- INSERT INTO Type(type, seq) VALUES ('t',1); /*text */
+-- INSERT INTO Type(type, seq) VALUES ('c',2); /*checkbox */
+-- INSERT INTO Type(type, seq) VALUES ('p',3); /*photo */

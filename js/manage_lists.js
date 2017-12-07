@@ -321,7 +321,6 @@ function submitPhotoItem(){
     if(document.getElementById("input_photo").value == ""){
         return;
     }
-
     var formData = new FormData();
     formData.append('photos', file, file.name);
     let url = 'list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + "nulo" + '&type=2';
