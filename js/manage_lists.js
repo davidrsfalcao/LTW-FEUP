@@ -209,18 +209,27 @@ let list_name;
 let reminder_date;
 
 function verifyForms(){
+    let error = false;
     if(document.getElementById('list_name').value == ""){
-        return false;
+        document.getElementById("list_name").style.borderColor = "#FF0000";
+        error = true;
     }
     else {
         list_name = document.getElementById('list_name').value;
+        document.getElementById("list_name").style.borderColor = "";
     }
 
     if(document.getElementById('reminder_date').value ==""){
-        return false;
+        document.getElementById("reminder_date").style.borderColor = "#FF0000";
+        error = true;
     }
     else {
         reminder_date = document.getElementById('reminder_date').value;
+        document.getElementById("reminder_date").style.borderColor = "";
+    }
+
+    if(error){
+        return false;
     }
 
     return true;
@@ -237,17 +246,24 @@ function addTextItem(){
 
 
 function submitText(){
-
+    let error = false;
     if(!verifyForms()){
-        return;
+        error = true;
     }
 
     if(document.getElementById('input_text_box').value == ""){
-        return;
+        document.getElementById("input_text_box").style.borderColor = "#FF0000";
+        error = true;
     }
     else {
         var content = document.getElementById('input_text_box').value;
+        document.getElementById("input_text_box").style.borderColor = "";
     }
+
+    if(error){
+        return;
+    }
+
     let creation_date = createFormatedDate();
     let url = 'list_name='+list_name+'&creation_date='+creation_date+'&reminder_date='+ reminder_date + '&content=' + content + '&type=0';
     submitList(url);
