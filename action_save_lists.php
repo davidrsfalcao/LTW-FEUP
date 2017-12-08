@@ -29,5 +29,5 @@ else if($type == 1){
         $itemID = getLastId('Item')+1;
     }
 }
-echo "Sucess";
+echo "Success";
 ?>

@@ -318,7 +318,7 @@ function addPhotoItem(){
     + '<input type="file"'
     + 'name="input_photo" placeholder="Photo" id="input_photo" required="required">'
     + '</form>'
-    + '<button type="button" onclick="submitPhotoItem()">Submit</button>';
+    + '<button type="button" onclick="submitPhotoItem()" class="add_photo_item_button" id="add_photo_item_button">Submit</button>';
     return content;
 }
 
