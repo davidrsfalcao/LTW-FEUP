@@ -248,8 +248,8 @@ function submitText(){
     else {
         var content = document.getElementById('input_text_box').value;
     }
-
-    let url = 'list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + content + '&type=0';
+    let creation_date = createFormatedDate();
+    let url = 'list_name='+list_name+'&creation_date='+creation_date+'&reminder_date='+ reminder_date + '&content=' + content + '&type=0';
     submitList(url);
 }
 
@@ -305,7 +305,8 @@ function submitCheckList(){
             j++;
         }
     }
-    let url ='list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + checklistText + '&type=1';
+    let creation_date = createFormatedDate();
+    let url ='list_name='+list_name+'&creation_date='+creation_date+'&reminder_date='+ reminder_date + '&content=' + checklistText + '&type=1';
     checklistText=[];
     submitList(url);
 }
@@ -331,7 +332,8 @@ function submitPhotoItem(){
     }
     var formData = new FormData();
     formData.append('photos', file, file.name);
-    let url = 'list_name='+list_name+'&reminder_date='+ reminder_date + '&content=' + "nulo" + '&type=2';
+    let creation_date = createFormatedDate();
+    let url = 'list_name='+list_name+'&creation_date='+creation_date+'&reminder_date='+ reminder_date + '&content=' + "nulo" + '&type=2';
     savePhoto(formData, url);
 }
 
@@ -371,4 +373,56 @@ function savePhoto(formData, url){
     };
     xmlhttp.open("POST","action_save_tmp_file.php",true);
     xmlhttp.send(formData);
+}
+
+function getUserLists(){
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            handlerInputReceived(this.responseText);
+        }
+    };
+    xmlhttp.open("POST","action_getUserLists.php",true);
+    xmlhttp.send(user);
+}
+let userLists=[]
+
+function handlerInputReceived(input){
+    let lists = input.split("#END_LIST#");
+    for (let i = 0; i < lists.length; i++) {
+        let type = lists[i].split("#ITEM#");
+        formatInputList(type);
+    }
+    console.log(userLists);
+}
+
+function formatInputList(tmp_lists){
+    let tmp_list = tmp_lists[0].split(" ");
+    let list = tmp_list;
+    let id = parseInt(list[0]);
+    let creator_id = list[1];
+    let tit = list[2];
+    let creation_d = list[3];
+    let reminder_d = list[4];
+    let tp = parseInt(list[5]);
+    let itens1 = [];
+    for (let i = 1; i < tmp_lists.length; i++) {
+        let tmp_list = tmp_lists[i].split(" ");
+        let id_i = parseInt(tmp_list[0]);
+        let list_id = parseInt(tmp_list[1]);
+        let cont = tmp_list[2];
+        let vis = parseInt(tmp_list[3]);
+
+        let item = {ID: id_i, list_ID: list_id, content: cont, visibility: vis};
+        itens1.push(item);
+    }
+
+    let final_list = {ID: id, creator_ID: creator_id, title: tit, creation_date: creation_d, reminder_date: reminder_d, type: tp, itens: itens1};
+    userLists.push(final_list);
 }

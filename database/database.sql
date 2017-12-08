@@ -31,12 +31,3 @@ CREATE TABLE Item (
     FOREIGN KEY(list_ID) REFERENCES List(ID)
 
 );
-
--- CREATE TABLE Type (
---     type VARCHAR NOT NULL,
---     seq INTEGER
--- );
---
--- INSERT INTO Type(type, seq) VALUES ('t',1); /*text */
--- INSERT INTO Type(type, seq) VALUES ('c',2); /*checkbox */
--- INSERT INTO Type(type, seq) VALUES ('p',3); /*photo */

@@ -3,6 +3,7 @@ include_once('config/init.php');
 include_once('database/list.php');
 $user = $_GET['username'];
 $list_name = $_GET['list_name'];
+$creation_date = $_GET['creation_date'];
 $reminder_date = $_GET['reminder_date'];
 $type = $_GET['type'];
 $content = $_GET['content'];
