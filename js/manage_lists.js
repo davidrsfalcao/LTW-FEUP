@@ -91,7 +91,6 @@ function createAddList(){
     document.getElementById('display_lists_grid').appendChild(div);
     div.style.background = colors[0].background;
     div.style.color = colors[0].color;
-    //testeLists();
 }
 
 function createFormatedDate(){

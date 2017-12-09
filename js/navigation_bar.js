@@ -41,15 +41,5 @@ function clickOnBrand(user){
         }
         else window.location.replace("index.php");
     }
+    else window.scrollTo(0, 0);
 }
-
-// function starCounting(){
-//     console.log("HERE");
-//     window.setTimeout(sayHello, 5000);
-// }
-//
-//
-// function sayHello(){
-//     console.log("HELLO");
-//     window.setTimeout(sayHello, 5000);
-// }

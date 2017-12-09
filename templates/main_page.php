@@ -68,35 +68,3 @@
     </div>
 
 </div>
-
-
-
-<!-- <div class="container-fluid">
-<div class="row promo">
-<div class="col-md-4 promo-item item-1">
-<h3>
-Reminder
-</h3>
-</div>
-<div class="col-md-4 promo-item item-2">
-<h3>
-Checklist
-</h3>
-</div>
-<div class="col-md-4 promo-item item-3">
-<h3>
-Photo List
-</h3>
-</div>
-</div>
-</div> -->
-
-<!-- Content 3 -->
-<!-- <section class="content content-3">
-<div class="container">
-<h2 class="section-header"><span class="glyphicon glyphicon-pushpin text-primary"></span><br> Sanity Check</h2>
-<p class="lead text-muted">Holisticly predominate extensible testing procedures for reliable supply chains. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
-<a href="register.php" class="btn btn-primary btn-lg">Register Now</a>
-</div>
-</div>
-</section> -->

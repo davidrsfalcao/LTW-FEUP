@@ -1,5 +1,5 @@
 <footer>
-    <div class="div_footer">
+    <div class="div_footer" id="contact">
         <h2>Developers</h2>
         <br />
         <span class="icon github"></span>
