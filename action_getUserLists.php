@@ -2,7 +2,9 @@
 include_once('config/init.php');
 include_once('database/list.php');
 $user = $_SESSION['username'];
-$lists = getListsOfUser($user);
+$order = (int)$_GET['order'];
+$orderType = (int)$_GET['orderType'];
+$lists = getListsOfUser($user, $order, $orderType);
 
 $number = count($lists);
 for ($i=0; $i <$number ; $i++) {

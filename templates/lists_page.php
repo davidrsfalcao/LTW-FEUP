@@ -6,15 +6,14 @@
                 <option value="1">Title</option>
                 <option value="2">Creation Date</option>
                 <option value="3">Reminder Date</option>
-                <option value="4">Group</option>
             </select>
         </form>
     </div>
 
     <div class="select_order form_list" id="select_order">
         <form>
-            <label for="users">Order </label>
-            <select name="users" onchange="refreshGrid()">
+            <label for="orderBySelec">Order </label>
+            <select name="orderByASCDES" id="orderByASCDES" onchange="refreshGrid()">
                 <option value="1">Ascendant</option>
                 <option value="2">Descendant</option>
             </select>

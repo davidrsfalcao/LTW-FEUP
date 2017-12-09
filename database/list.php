@@ -25,9 +25,35 @@ function createItem($ID,$list_ID, $content){
     $stmt->execute(array($ID,$list_ID, $content));
 }
 
-function getListsOfUser($user){
+function getListsOfUser($user, $order, $orderType){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT * FROM List WHERE creator_ID = ?');
+    $dtbO = ' ORDER BY ';
+
+    switch ($order) {
+        case 1:
+            $dtbO =  $dtbO . ' title';
+            break;
+
+        case 2:
+            $dtbO =  $dtbO . ' creation_date';
+            break;
+
+        case 3:
+            $dtbO =  $dtbO . ' reminder_date';
+            break;
+    }
+
+    switch ($orderType) {
+        case 1:
+            $dtbO =  $dtbO . ' ASC';
+            break;
+
+        case 2:
+            $dtbO =  $dtbO . ' DESC;';
+            break;
+    }
+
+    $stmt = $dbh->prepare('SELECT * FROM List WHERE creator_ID = ?' . $dtbO);
     $stmt->execute(array($user));
     $lists = $stmt->fetchAll();
     return $lists;
