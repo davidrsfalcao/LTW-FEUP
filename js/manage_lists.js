@@ -91,18 +91,6 @@ function mouseIsOverZoomBox(state){
     mouseIsOver = state;
 }
 
-function testeLists(){
-    for(let k=1; k<30; k++){
-        let div = document.createElement('div');
-        div.className='list';
-        div.setAttribute('onclick', 'zoom(this.innerHTML)');
-        div.innerHTML = '<span id="listID">'+k+'</span>List '+k;
-        let cc = (k % (colors.length -1)) + 1;
-        div.style.background = colors[cc].background;
-        div.style.color = colors[cc].color;
-        document.getElementById('display_lists_grid').appendChild(div);
-    }
-}
 
 function createAddList(){
     document.getElementById('display_lists_grid').innerHTML = null;
@@ -124,8 +112,6 @@ function createFormatedDate(){
     let hour = date.getHours();
     let minutes = date.getMinutes();
     let finalDate = "";
-
-    console.log(day);
 
     finalDate += year;
     finalDate += "-";
@@ -372,6 +358,7 @@ function submitList(url) {
     };
     xmlhttp.open("GET",fullURL,true);
     xmlhttp.send();
+    refreshGrid();
 }
 
 function savePhoto(formData, url){
@@ -395,10 +382,8 @@ function savePhoto(formData, url){
 
 function getUserLists(){
     if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
     } else {
-        // code for IE6, IE5
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
     xmlhttp.onreadystatechange = function() {
@@ -409,7 +394,7 @@ function getUserLists(){
     xmlhttp.open("POST","action_getUserLists.php",true);
     xmlhttp.send(user);
 }
-let userLists=[]
+let userLists=[];
 
 function handlerInputReceived(input){
     let lists = input.split("#END_LIST#");
@@ -417,11 +402,11 @@ function handlerInputReceived(input){
         let type = lists[i].split("#ITEM#");
         formatInputList(type);
     }
-    console.log(userLists);
+    updateGridLists();
 }
 
 function formatInputList(tmp_lists){
-    let tmp_list = tmp_lists[0].split(" ");
+    let tmp_list = tmp_lists[0].split("#SPACE#");
     let list = tmp_list;
     let id = parseInt(list[0]);
     let creator_id = list[1];
@@ -431,7 +416,7 @@ function formatInputList(tmp_lists){
     let tp = parseInt(list[5]);
     let itens1 = [];
     for (let i = 1; i < tmp_lists.length; i++) {
-        let tmp_list = tmp_lists[i].split(" ");
+        let tmp_list = tmp_lists[i].split("#SPACE#");
         let id_i = parseInt(tmp_list[0]);
         let list_id = parseInt(tmp_list[1]);
         let cont = tmp_list[2];
@@ -443,4 +428,37 @@ function formatInputList(tmp_lists){
 
     let final_list = {ID: id, creator_ID: creator_id, title: tit, creation_date: creation_d, reminder_date: reminder_d, type: tp, itens: itens1};
     userLists.push(final_list);
+}
+
+function updateGridLists(){
+
+    for (let i = 0; i < userLists.length; i++) {
+        let div = document.createElement('div');
+        div.className='list';
+        div.setAttribute('onclick', 'zoom(this.innerHTML)');
+        let type = userLists[i].type;
+
+        let html = '<div class="inside_list"><span id="listID">'+(i+1)+'</span>'
+        + '<h1>' + userLists[i].title + '</h1>'
+        + '<p><span class="selectorsBox">Creator:</span>' + userLists[i].creator_ID + '</p>'
+        + '<p><span class="selectorsBox">Created: </span>' + userLists[i].creation_date + '</p>'
+        + '<p><span class="selectorsBox">Limit: </span>' + userLists[i].reminder_date + '</p>'
+        + '</div>';
+
+        div.innerHTML = html;
+        let cc = ((i+1) % (colors.length -1)) + 1;
+        div.style.background = colors[cc].background;
+        div.style.color = colors[cc].color;
+        document.getElementById('display_lists_grid').appendChild(div);
+    }
+
+}
+
+function refreshGrid(){
+    userLists=[];
+    document.getElementById('display_lists_grid').innerHTML = "";
+    createAddList();
+    getUserLists();
+    let zoom_box = document.getElementsByClassName('zoom_background')[0];
+    zoom_box.parentNode.removeChild(zoom_box);
 }

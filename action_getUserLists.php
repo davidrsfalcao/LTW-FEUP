@@ -14,11 +14,11 @@ for ($i=0; $i <$number ; $i++) {
 }
 
 function sendList($list){
-    echo $list['ID'] . " ";
-    echo $list['creator_ID'] . " ";
-    echo $list['title'] . " ";
-    echo $list['creation_date'] . " ";
-    echo $list['reminder_date'] . " ";
+    echo $list['ID'] . "#SPACE#";
+    echo $list['creator_ID'] . "#SPACE#";
+    echo $list['title'] . "#SPACE#";
+    echo $list['creation_date'] . "#SPACE#";
+    echo $list['reminder_date'] . "#SPACE#";
     echo $list['type'];
 
     $itens = getItensOfList($list['ID']);
@@ -26,14 +26,13 @@ function sendList($list){
     for ($i=0; $i <$number ; $i++) {
         echo "#ITEM#";
         sendItem($itens[$i]);
-
     }
 }
 
 function sendItem($item){
-    echo $item['ID'] . " ";
-    echo $item['list_ID'] . " ";
-    echo $item['content'] . " ";
+    echo $item['ID'] . "#SPACE#";
+    echo $item['list_ID'] . "#SPACE#";
+    echo $item['content'] . "#SPACE#";
     echo $item['visibility'];
 }
 ?>

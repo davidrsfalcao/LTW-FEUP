@@ -2,7 +2,7 @@
     <div class="select_type form_list">
         <form>
             <label for="users">Order Lists by </label>
-            <select name="users" onchange="testeLists()">
+            <select name="users" onchange="getUserLists()">
                 <option value=""></option>
                 <option value="1">Title</option>
                 <option value="2">Creation Date</option>
