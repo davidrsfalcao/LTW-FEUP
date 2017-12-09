@@ -118,12 +118,14 @@ function createAddList(){
 
 function createFormatedDate(){
     let date = new Date();
-    let day = date.getDay() +1;
+    let day = date.getDate();
     let month = date.getMonth()+1;
     let year = date.getFullYear();
     let hour = date.getHours();
     let minutes = date.getMinutes();
     let finalDate = "";
+
+    console.log(day);
 
     finalDate += year;
     finalDate += "-";
@@ -382,7 +384,7 @@ function savePhoto(formData, url){
     }
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            if(this.responseText == "sucess"){
+            if(this.responseText == "Success"){
                 submitList(url);
             }
         }
