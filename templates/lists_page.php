@@ -1,9 +1,8 @@
 <div class="list_selector">
     <div class="select_type form_list">
         <form>
-            <label for="users">Order Lists by </label>
-            <select name="users" onchange="getUserLists()">
-                <option value=""></option>
+            <label for="orderBySelec">Order Lists by </label>
+            <select name="orderBySelec" id="orderBySelec" onchange="orderBy(this.value)">
                 <option value="1">Title</option>
                 <option value="2">Creation Date</option>
                 <option value="3">Reminder Date</option>
@@ -15,8 +14,9 @@
     <div class="select_order form_list" id="select_order">
         <form>
             <label for="users">Order </label>
-            <select name="users" onchange="displayLists(value, this.value)">
-                <option value=""></option>
+            <select name="users" onchange="refreshGrid()">
+                <option value="1">Ascendant</option>
+                <option value="2">Descendant</option>
             </select>
         </form>
     </div>

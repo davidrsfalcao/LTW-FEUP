@@ -14,25 +14,15 @@ function setUser(username){
 }
 
 function orderBy(value){
-    showOrderSettings(value);
-}
-
-function showOrderSettings(value){
     document.getElementById('select_order').innerHTML =
     '<form>' +
     '<label for="users">Order </label>' +
-    '<select name="users" onchange="displayLists(value, this.value)">' +
-    '<option value=""></option>'+
+    '<select name="users" onchange="refreshGrid()">' +
     '<option value="1">Ascendant</option>'+
     '<option value="2">Descendant</option>'+
     '</select>'+
     '</form>';
-    createAddList();
-
-}
-
-function displayLists(value1, value2){
-
+    refreshGrid();
 }
 
 function getListID(html){
@@ -342,7 +332,10 @@ function submitPhotoItem(){
 }
 
 function submitList(url) {
-    let fullURL = "action_save_lists.php?username="+user + "&" + url;
+    let order = document.getElementById('orderBySelec').value;
+    let orderType = document.getElementById('orderBySelec').value;
+
+    let fullURL = "action_save_lists.php?username="+user + "&" + url + "$order=" + order + "&orderType=" + orderType;
 
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -353,12 +346,12 @@ function submitList(url) {
     }
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            refreshGrid();
         }
     };
     xmlhttp.open("GET",fullURL,true);
     xmlhttp.send();
-    refreshGrid();
+
 }
 
 function savePhoto(formData, url){
@@ -460,5 +453,9 @@ function refreshGrid(){
     createAddList();
     getUserLists();
     let zoom_box = document.getElementsByClassName('zoom_background')[0];
-    zoom_box.parentNode.removeChild(zoom_box);
+
+    if(zoom_box != null){
+        zoom_box.parentNode.removeChild(zoom_box);
+    }
+
 }
