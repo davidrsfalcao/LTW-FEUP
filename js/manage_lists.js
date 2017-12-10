@@ -379,7 +379,9 @@ function getUserLists(){
     }
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            handlerInputReceived(this.responseText);
+            if (this.responseText != ''){
+                handlerInputReceived(this.responseText);
+            }
         }
     };
     xmlhttp.open("GET","action_getUserLists.php?order="+order + "&orderType="+orderType,true);
@@ -457,7 +459,43 @@ function showDetails(elem){
     elem.parentNode.style.background = colors[cc].background;
     elem.parentNode.style.color = colors[cc].color;
     let html = '<span id="listID">'+(id)+'</span>'
-    +'<h1>' + userLists[id-1].title + '</h1>';
+    +'<h1>' + userLists[id-1].title + '</h1>'
+    + '<br>'
+    + '<span>Creator: </span>';
+
+    if (userLists[id-1].creator_ID == user){
+        html += 'me';
+    }
+    else {
+        html += userLists[id-1].creator_ID;
+    }
+    html += '<br>';
+    html += '<span>Created: </span>' + userLists[id-1].creation_date + '<br>';
+    html += '<span>Reminder: </span>' + userLists[id-1].reminder_date + '<br>';
+    html += '<span>Type: </span>';
+
+    switch (userLists[id-1].type) {
+        case 0:{
+            html += 'text';
+            break;
+        }
+        case 1:{
+            html += 'checklist';
+            break;
+        }
+        case 2:{
+            html += 'photo';
+            break;
+        }
+
+        default:{
+            html += 'error';
+            break;
+        }
+
+    }
+    html += '<br><br><br><p class="details_message">Click to full view</p>';
+
     elem.innerHTML = html;
 
 }
