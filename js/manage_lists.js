@@ -8,6 +8,7 @@ colors[1] = blue;
 colors[2] = grey;
 
 let user;
+let fullListDetails = false;
 
 function setUser(username){
     user = username;
@@ -74,6 +75,7 @@ function zoom(html){
 function verifyClickZoomBox(elem){
     if(mouseIsOver == false){
         elem.parentNode.removeChild(elem);
+		fullListDetails = false;
     }
 }
 
@@ -120,6 +122,51 @@ function createFormatedDate(){
         finalDate += day;
     }
     finalDate += "T";
+
+    if(hour < 10){
+        finalDate += "0" + hour;
+    }
+    else {
+        finalDate += hour;
+    }
+    finalDate += ":";
+
+    if(minutes < 10){
+        finalDate += "0" + minutes;
+    }
+    else {
+        finalDate += minutes;
+    }
+    return finalDate;
+}
+
+function createReadableDate(dateString){
+    let date = new Date(dateString);
+    let day = date.getDate();
+    let month = date.getMonth()+1;
+    let year = date.getFullYear();
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    let finalDate = "";
+
+    finalDate += year;
+    finalDate += "/";
+
+    if(month < 10){
+        finalDate += "0" + month;
+    }
+    else {
+        finalDate += month;
+    }
+    finalDate += "/";
+
+    if(day < 10){
+        finalDate += "0" + day;
+    }
+    else {
+        finalDate += day;
+    }
+    finalDate += " ";
 
     if(hour < 10){
         finalDate += "0" + hour;
@@ -432,7 +479,7 @@ function updateGridLists(){
         div.setAttribute('onclick', 'zoom(this.innerHTML)');
         let type = userLists[i].type;
 
-        let html = '<div class="inside_list" onmouseenter="showDetails(this)" onmouseleave="hideDetails(this)"><span id="listID">'+(i+1)+'</span>';
+        let html = '<div class="inside_list" onclick="showFullDetails(this)" onmouseenter="showListHandler(this)" onmouseleave="hideDetails(this)"><span id="listID">'+(i+1)+'</span>';
 
         let cc = ((i+1) % (colors.length -1)) + 1;
         div.style.background = colors[cc].background;
@@ -472,14 +519,11 @@ function showDetails(elem){
     }
     html += '<br>';
 
-    let creationDate = new Date(userLists[id-1].creation_date);
-    let creationString = creationDate.getDate() + '/' + (creationDate.getMonth()+1) + '/' + creationDate.getFullYear() + ' ' + creationDate.getHours() + ':' + creationDate.getMinutes();
+    let creationDate = createReadableDate(userLists[id-1].creation_date);
+    let reminderDate = createReadableDate(userLists[id-1].reminder_date);
 
-    let reminderDate = new Date(userLists[id-1].reminder_date);
-    let reminderString = reminderDate.getDate() + '/' + (reminderDate.getMonth()+1) + '/' + reminderDate.getFullYear() + ' ' + reminderDate.getHours() + ':' + reminderDate.getMinutes();
-
-    html += '<span>Created: </span>' + creationString + '<br>';
-    html += '<span>Reminder: </span>' + reminderString + '<br>';
+    html += '<span>Created: </span>' + creationDate + '<br>';
+    html += '<span>Reminder: </span>' + reminderDate + '<br>';
     html += '<span>Type: </span>';
 
     switch (userLists[id-1].type) {
@@ -503,19 +547,78 @@ function showDetails(elem){
 
     }
 
-    // if(userLists[id-1].type !== 2){
-    //     html += '<br><span>Content: </span><br>';
-    //     for(i = 0; i < userLists[id-1].itens.length; i++){
-    //         if(userLists[id-1].itens[i].visibility === 1){
-    //             html += '<p>' + userLists[id-1].itens[i].content + '</p>';
-    //         }
-    //     }
-    // }
-
-    html += '<br><br><br><p class="details_message">Click to full view</p>';
+    html += '<br><br><br><p class="details_message" id="details_message">Click to full view</p>';
 
     elem.innerHTML = html;
 
+}
+
+function showFullDetails(elem){
+    fullListDetails = true;
+    let id = getListID(elem.innerHTML);
+    let cc = ((id) % (colors.length -1)) + 1;
+    elem.parentNode.style.background = colors[cc].background;
+    elem.parentNode.style.color = colors[cc].color;
+    let html = '<span id="listID">'+(id)+'</span>'
+        +'<h1>' + userLists[id-1].title + '</h1>'
+        + '<br>'
+        + '<span>Creator: </span>';
+
+    if (userLists[id-1].creator_ID == user){
+        html += 'Me';
+    }
+    else {
+        html += userLists[id-1].creator_ID;
+    }
+    html += '<br>';
+
+    let creationDate = createReadableDate(userLists[id-1].creation_date);
+    let reminderDate = createReadableDate(userLists[id-1].reminder_date);
+
+    html += '<span>Created: </span>' + creationDate + '<br>';
+    html += '<span>Reminder: </span>' + reminderDate + '<br>';
+    html += '<span>Type: </span>';
+
+    switch (userLists[id-1].type) {
+        case 0:{
+            html += 'Text';
+            break;
+        }
+        case 1:{
+            html += 'Checklist';
+            break;
+        }
+        case 2:{
+            html += 'Photo';
+            break;
+        }
+
+        default:{
+            html += 'Error';
+            break;
+        }
+
+    }
+
+    if(userLists[id-1].type !== 2){
+        html += '<br><span>Content: </span><br>';
+        for(i = 0; i < userLists[id-1].itens.length; i++){
+            if(userLists[id-1].itens[i].visibility === 1){
+                html += '<p>' + userLists[id-1].itens[i].content + '</p>';
+            }
+        }
+    }
+
+    elem.innerHTML = html;
+}
+
+function showListHandler(elem){
+    if(fullListDetails){
+        showFullDetails(elem);
+    }
+    else{
+        showDetails(elem);
+    }
 }
 
 function hideDetails(elem){
