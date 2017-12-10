@@ -451,12 +451,11 @@ function updateGridLists(){
 }
 
 
-
 function showDetails(elem){
-    console.log(elem);
-    temp_html = elem.innerHTML;
-    console.log('ENTER' + temp_html);
     let id = getListID(elem.innerHTML);
+    let cc = ((id) % (colors.length -1)) + 1;
+    elem.parentNode.style.background = colors[cc].background;
+    elem.parentNode.style.color = colors[cc].color;
     let html = '<span id="listID">'+(id)+'</span>'
     +'<h1>' + userLists[id-1].title + '</h1>';
     elem.innerHTML = html;
@@ -464,8 +463,23 @@ function showDetails(elem){
 }
 
 function hideDetails(elem){
-    console.log(temp_html);
-    elem.innerHTML = temp_html;
+
+    let id = getListID(elem.innerHTML);
+    let html = '<span id="listID">'+(id)+'</span>';
+    let type = userLists[id-1].type;
+
+    if(type == 2){
+        let itemId = userLists[id-1].itens[0].ID;
+        let url = 'images/list/' + itemId + '.jpg';
+        elem.parentNode.style.background = "#f3f3f3 url("+url+") no-repeat center center";
+        elem.parentNode.style.backgroundSize = "cover";
+
+    }
+    else {
+        html += '<h1 class="centered_in_box">' + userLists[id-1].title + '</h1>';
+    }
+
+    elem.innerHTML = html;
 }
 
 function refreshGrid(){
