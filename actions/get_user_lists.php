@@ -3,7 +3,7 @@ include_once(__DIR__ . '/../config/init.php');
 include_once('../database/list.php');
 $user = $_SESSION['username'];
 $order = (int)$_GET['order'];
-$orderType = (int)$_GET['orderType'];
+$orderType = $_GET['orderType'];
 $lists = getListsOfUser($user, $order, $orderType);
 
 $number = count($lists);

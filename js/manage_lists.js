@@ -14,15 +14,31 @@ function setUser(username){
 }
 
 function orderBy(value){
-    document.getElementById('select_order').innerHTML =
-    '<form>' +
-    '<label for="orderByASCDES">Order </label>' +
-    '<select name="orderByASCDES" id="orderByASCDES" onchange="refreshGrid()">' +
-    '<option value="1">Ascendant</option>'+
-    '<option value="2">Descendant</option>'+
-    '</select>'+
-    '</form>';
+    if(document.getElementById('orderBySelec').value < 4){
+        document.getElementById('select_order').innerHTML =
+        '<form>' +
+        '<label for="orderByASCDES">Order </label>' +
+        '<select name="orderByASCDES" id="orderByASCDES" onchange="refreshGrid()">' +
+        '<option value="1">Ascendant</option>'+
+        '<option value="2">Descendant</option>'+
+        '</select>'+
+        '</form>';
+    }
+    else {
+        document.getElementById('select_order').innerHTML =
+        '<form>' +
+        '<label for="orderByASCDES">Search: </label>' +
+        '<input type="text" name="orderByASCDES" id="orderByASCDES" onkeydown="searchInput(event)" onkeyup="refreshGrid()"/>' +
+        '</form>';
+    }
+
     refreshGrid();
+}
+
+function searchInput(input){
+    if(input.key == "Enter"){
+        input.preventDefault();
+    }
 }
 
 function getListID(html){
@@ -40,6 +56,7 @@ function getListID(html){
 }
 
 let mouseIsOver = true;
+
 function zoom(html){
     let id = getListID(html);
     let div = document.createElement('div');
@@ -221,7 +238,6 @@ function addTextItem(){
     return content;
 }
 
-
 function submitText(){
     let error = false;
     if(!verifyForms()){
@@ -243,7 +259,6 @@ function submitText(){
 
     let creation_date = createFormatedDate();
     let url = 'list_name='+list_name+'&creation_date='+creation_date+'&reminder_date='+ reminder_date + '&content=' + content + '&type=0';
-    console.log(url);
     submitList(url);
 }
 
@@ -383,6 +398,7 @@ function getUserLists(){
             if (this.responseText != ''){
                 handlerInputReceived(this.responseText);
             }
+            console.log(this.responseText);
         }
     };
     xmlhttp.open("GET","actions/get_user_lists.php?order="+order + "&orderType="+orderType,true);
@@ -452,7 +468,6 @@ function updateGridLists(){
     }
 
 }
-
 
 function showDetails(elem){
     let id = getListID(elem.innerHTML);

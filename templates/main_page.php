@@ -1,7 +1,7 @@
 <header>
     <div class="main_box">
         <video autoplay muted loop id="myVideo">
-            <source src="images/video.mp4" type="video/mp4"/>
+            <source src="images/templates/video.mp4" type="video/mp4"/>
         </video>
         <h1 class="title">EASY NOTES</h1>
         <h1 class="title subtitle">Take it Easy</h1>

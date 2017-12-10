@@ -6,6 +6,7 @@
                 <option value="1">Title</option>
                 <option value="2">Creation Date</option>
                 <option value="3">Reminder Date</option>
+                <option value="4">Search</option>
             </select>
         </form>
     </div>

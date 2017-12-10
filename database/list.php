@@ -1,5 +1,4 @@
 <?php
-
 function getLastId($type){
     global $dbh;
 
@@ -43,7 +42,10 @@ function getListsOfUser($user, $order, $orderType){
             break;
     }
 
-    switch ($orderType) {
+    if($order == 4){
+        $dtbO = ' AND title LIKE "' . $orderType . '%"';
+    }
+    else switch ((int)$orderType) {
         case 1:
             $dtbO =  $dtbO . ' ASC';
             break;
