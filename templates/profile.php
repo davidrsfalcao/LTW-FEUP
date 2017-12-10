@@ -32,7 +32,7 @@ $last_name = get_user_last_name($user);
 
     <?php
     if(!$view_mode){
-        echo('<form action="./action_upload.php?username=<?=$user?>" method="post" enctype="multipart/form-data" id="form">
+        echo('<form action="actions/upload.php?username='. $user .'" method="post" enctype="multipart/form-data" id="form">
         <input id="imageUpload" type="file"
         name="profile_photo" placeholder="Photo" required="required"capture>
         </form>
@@ -43,13 +43,13 @@ $last_name = get_user_last_name($user);
 
     <?php
     if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true && !$view_mode)){
-        echo ('<form action="./action_update_profile_image.php"  method="get">
+        echo ('<form action="actions/update_profile_image.php"  method="get">
         <input type="submit" name="" value="Save" class="profile_button save" />
         </form>');
         echo ('<script type="text/javascript">document.getElementById("profile_bottom").style.visibility = "hidden";</script>');
     }
     if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true && !$view_mode)){
-        echo ('<form action="./action_cancel_update_profile.php"  method="get">
+        echo ('<form action="actions/cancel_update_profile.php"  method="get">
         <input type="submit" name="" value="Cancel" class="profile_button cancel" />
         </form>');
     }
@@ -57,7 +57,7 @@ $last_name = get_user_last_name($user);
 
 </div>
 <div class="right_box">
-    <form action="action_update_user.php" method="post" id="edit_form" class="profile_form">
+    <form action="actions/update_user.php" method="post" id="edit_form" class="profile_form">
         <label for="name_1" class="bold_text profile_label">First Name: </label>
         <input type="text" name="first_name" value="<?=$first_name?>" id="name_1" readonly required/>
         <label for="name_2" class="bold_text profile_label">Last Name: </label>

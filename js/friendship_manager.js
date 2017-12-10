@@ -12,6 +12,6 @@ function add_friendship(){
             console.log(this.responseText);
         }
     };
-    xmlhttp.open("GET","action_add_friend.php?user1=root&user2=davidrsfalcao",true);
+    xmlhttp.open("GET","actions/add_friend.php?user1=root&user2=davidrsfalcao",true);
     xmlhttp.send();
 }

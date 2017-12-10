@@ -21,6 +21,6 @@
     <ul>
         <li><a class="selectable" href="profile.php?username=<?=$user?>">Profile</a></li>
         <li><a class="selectable" href="settings.php?username=<?=$user?>">Settings</a></li>
-        <li><a class="selectable" href="action_logout.php">Logout</a></li>
+        <li><a class="selectable" href="actions/logout.php">Logout</a></li>
     </ul>
 </li>

@@ -1,6 +1,6 @@
 <?php
-include_once('config/init.php');
-include('database/user.php');
+include_once(__DIR__ . '/../config/init.php');
+include('../database/user.php');
 
 $user = $_POST['username'];
 $password = $_POST['password'];

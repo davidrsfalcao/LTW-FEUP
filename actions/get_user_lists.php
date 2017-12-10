@@ -1,6 +1,6 @@
 <?php
-include_once('config/init.php');
-include_once('database/list.php');
+include_once(__DIR__ . '/../config/init.php');
+include_once('../database/list.php');
 $user = $_SESSION['username'];
 $order = (int)$_GET['order'];
 $orderType = (int)$_GET['orderType'];

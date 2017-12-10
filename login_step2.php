@@ -29,7 +29,7 @@ include_once('templates/header_forms.php');
         ?>
         <h2><?=$first_name?> <?=$last_name?></h2>
 
-        <form action="action_login.php?username=<?=$user?>" method="post" id="login_form">
+        <form action="actions/login.php?username=<?=$user?>" method="post" id="login_form">
             <button type="button" id="eye">
                 <img src="images/templates/eye.png" alt="eye" id="eye_visibility"/>
             </button>

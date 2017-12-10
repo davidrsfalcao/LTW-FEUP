@@ -1,7 +1,7 @@
 <?php
-    $originalFileName = "images/list/tmp/tmp.jpg";
+    $originalFileName = "../images/list/tmp/tmp.jpg";
     $originalImage = $_FILES['photos']['tmp_name'];
-    $dir = "images/list/tmp/";
+    $dir = "../images/list/tmp/";
     if (!file_exists($dir) && !is_dir($dir)) {
         mkdir($dir, 0777, true);
     }

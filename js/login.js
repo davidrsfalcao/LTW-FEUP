@@ -23,7 +23,7 @@ function verifyUser() {
             }
         }
     };
-    xmlhttp.open("GET","action_verify_username.php?username="+user,true);
+    xmlhttp.open("GET","actions/verify_username.php?username="+user,true);
     xmlhttp.send();
 }
 
@@ -50,7 +50,7 @@ function verifyPassword(user) {
             }
         }
     };
-    xmlhttp.open("POST","action_verify_password.php",true);
+    xmlhttp.open("POST","actions/verify_password.php",true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("username="+user+"&password="+pass);
 }

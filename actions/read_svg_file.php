@@ -9,5 +9,4 @@
     else {
         echo "404: " . $file_name . " not found";
     }
-
 ?>

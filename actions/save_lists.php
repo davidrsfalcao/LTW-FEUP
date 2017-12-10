@@ -1,6 +1,6 @@
 <?php
-include_once('config/init.php');
-include_once('database/list.php');
+include_once(__DIR__ . '/../config/init.php');
+include_once('../database/list.php');
 $user = $_GET['username'];
 $list_name = $_GET['list_name'];
 $creation_date = $_GET['creation_date'];
@@ -13,8 +13,7 @@ $itemID = getLastId('Item')+1;
 createList($listID, $user, $list_name, $creation_date, $reminder_date, $type);
 
 if($type == 2){
-    include_once('config/init.php');
-    rename('images/list/tmp/tmp.jpg', 'images/list/' . $itemID .'.jpg');
+    rename('../images/list/tmp/tmp.jpg', '../images/list/' . $itemID .'.jpg');
     createItem($itemID,$listID, $content);
 }
 else if($type == 0){

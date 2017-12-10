@@ -32,6 +32,6 @@ function setSVGContent(filename, elem) {
             elem.innerHTML = header + result + "</svg>";
         }
     };
-    xmlhttp.open("GET","templates/read_svg_file.php?filename="+filename,true);
+    xmlhttp.open("GET","actions/read_svg_file.php?filename="+filename,true);
     xmlhttp.send();
 }

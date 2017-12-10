@@ -1,6 +1,6 @@
 <?php
-include_once('config/init.php');
-include_once('database/user.php');
+include_once(__DIR__ .'/../config/init.php');
+include_once('../database/user.php');
 
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
@@ -15,5 +15,5 @@ $stmt->bindValue(':last_name', $last_name);
 $stmt->bindValue(':username', $user);
 $stmt->execute();
 
-header('Location: profile.php?username=' . $user);
+header('Location: ../profile.php?username=' . $user);
 ?>

@@ -243,6 +243,7 @@ function submitText(){
 
     let creation_date = createFormatedDate();
     let url = 'list_name='+list_name+'&creation_date='+creation_date+'&reminder_date='+ reminder_date + '&content=' + content + '&type=0';
+    console.log(url);
     submitList(url);
 }
 
@@ -331,7 +332,7 @@ function submitPhotoItem(){
 }
 
 function submitList(url) {
-    let fullURL = "action_save_lists.php?username="+user + "&" + url;
+    let fullURL = "actions/save_lists.php?username="+user + "&" + url;
 
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -365,7 +366,7 @@ function savePhoto(formData, url){
             }
         }
     };
-    xmlhttp.open("POST","action_save_tmp_file.php",true);
+    xmlhttp.open("POST","actions/save_tmp_file.php",true);
     xmlhttp.send(formData);
 }
 
@@ -384,7 +385,7 @@ function getUserLists(){
             }
         }
     };
-    xmlhttp.open("GET","action_getUserLists.php?order="+order + "&orderType="+orderType,true);
+    xmlhttp.open("GET","actions/get_user_lists.php?order="+order + "&orderType="+orderType,true);
     xmlhttp.send();
 }
 let userLists=[];
@@ -502,14 +503,14 @@ function showDetails(elem){
 
     }
 
-    if(userLists[id-1].type !== 2){
-        html += '<br><span>Content: </span><br>';
-        for(i = 0; i < userLists[id-1].itens.length; i++){
-            if(userLists[id-1].itens[i].visibility === 1){
-                html += '<p>' + userLists[id-1].itens[i].content + '</p>';
-            }
-        }
-    }
+    // if(userLists[id-1].type !== 2){
+    //     html += '<br><span>Content: </span><br>';
+    //     for(i = 0; i < userLists[id-1].itens.length; i++){
+    //         if(userLists[id-1].itens[i].visibility === 1){
+    //             html += '<p>' + userLists[id-1].itens[i].content + '</p>';
+    //         }
+    //     }
+    // }
 
     html += '<br><br><br><p class="details_message">Click to full view</p>';
 

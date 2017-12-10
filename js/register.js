@@ -25,7 +25,7 @@ function verifyUser() {
             }
         }
     };
-    xmlhttp.open("GET","action_verify_username.php?username="+user,true);
+    xmlhttp.open("GET","actions/verify_username.php?username="+user,true);
     xmlhttp.send();
 }
 

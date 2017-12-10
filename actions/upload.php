@@ -1,19 +1,19 @@
 <?php
-include_once('config/init.php');
+include_once(__DIR__ . '/../config/init.php');
 $user = $_SESSION['username'];
-$originalFileName = "images/avatars/tmp/$user.jpg";
+$originalFileName = "../images/avatars/tmp/$user.jpg";
 $originalImage = $_FILES['profile_photo']['tmp_name'];
 
-$dir = "images/avatars/tmp/";
+$dir = "../images/avatars/tmp/";
 if (!file_exists($dir) && !is_dir($dir)) {
     mkdir($dir, 0777);
 }
 
 if($originalImage == null){
-    header('Location: profile.php?username=' . $user . '&error=filesize');
+    header('Location: ../profile.php?username=' . $user . '&error=filesize');
     $_SESSION['flag_upload'] = false;
-    include_once('templates/clean_tmp_folder.php');
-    unlinkRecursive('images/avatars/tmp/', false );
+    include_once('clean_tmp_folder.php');
+    unlinkRecursive('../images/avatars/tmp/', false );
     exit();
 }
 
@@ -38,7 +38,7 @@ else if (preg_match('/bmp/i',$ext)){
     $imageTmp=imagecreatefrombmp($originalImage);
 }
 else {
-    header('Location: profile.php?username=' . $user . '&error=filetype');
+    header('Location: ../profile.php?username=' . $user . '&error=filetype');
     exit();
 }
 $width = imagesx($imageTmp);
@@ -51,5 +51,5 @@ imagedestroy($imageTmp);
 imagedestroy($final);
 clearstatcache();
 $_SESSION['flag_upload'] = true;
-header('Location: profile.php?username=' . $user);
+header('Location: ../profile.php?username=' . $user);
 ?>

@@ -6,7 +6,7 @@ include('templates/header_forms.php');
 <body>
     <div class="registerBox">
         <h2>Registration</h2>
-        <form action="action_register.php" method="post" id="form_register">
+        <form action="actions/register.php" method="post" id="form_register">
             <input type="text" name="first_name" placeholder="first name" id="f_n" autocomplete="off"/>
             <input type="text" name="last_name" placeholder="last name" id="l_n" autocomplete="off"/>
             <input type="text"  id="user" name="username" placeholder="username" autocomplete="off"/>
