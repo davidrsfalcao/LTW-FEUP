@@ -429,29 +429,43 @@ function updateGridLists(){
         div.setAttribute('onclick', 'zoom(this.innerHTML)');
         let type = userLists[i].type;
 
-        let html = '<div class="inside_list"><span id="listID">'+(i+1)+'</span>'
-        + '<h1>' + userLists[i].title + '</h1>'
-        + '<p><span class="selectorsBox">Creator:</span>' + userLists[i].creator_ID + '</p>'
-        + '<p><span class="selectorsBox">Created: </span>' + userLists[i].creation_date + '</p>'
-        + '<p><span class="selectorsBox">Limit: </span>' + userLists[i].reminder_date + '</p>'
-        + '</div>';
+        let html = '<div class="inside_list" onmouseenter="showDetails(this)" onmouseleave="hideDetails(this)"><span id="listID">'+(i+1)+'</span>';
 
-        div.innerHTML = html;
         let cc = ((i+1) % (colors.length -1)) + 1;
         div.style.background = colors[cc].background;
         div.style.color = colors[cc].color;
         if(type == 2){
-
             let itemId = userLists[i].itens[0].ID;
             let url = 'images/list/' + itemId + '.jpg';
             div.style.background = "#f3f3f3 url("+url+") no-repeat center center";
             div.style.backgroundSize = "cover";
 
         }
-
+        else {
+            html += '<h1 class="centered_in_box">' + userLists[i].title + '</h1>';
+        }
+        div.innerHTML = html;
         document.getElementById('display_lists_grid').appendChild(div);
     }
 
+}
+
+
+
+function showDetails(elem){
+    console.log(elem);
+    temp_html = elem.innerHTML;
+    console.log('ENTER' + temp_html);
+    let id = getListID(elem.innerHTML);
+    let html = '<span id="listID">'+(id)+'</span>'
+    +'<h1>' + userLists[id-1].title + '</h1>';
+    elem.innerHTML = html;
+
+}
+
+function hideDetails(elem){
+    console.log(temp_html);
+    elem.innerHTML = temp_html;
 }
 
 function refreshGrid(){

@@ -694,3 +694,13 @@ footer{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
+
+.inside_list{
+    width: 100%;
+    height: 100%;
+}
+
+.centered_in_box{
+    text-align: center;
+    padding-top: 40%;
+}
