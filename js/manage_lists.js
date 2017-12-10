@@ -440,6 +440,15 @@ function updateGridLists(){
         let cc = ((i+1) % (colors.length -1)) + 1;
         div.style.background = colors[cc].background;
         div.style.color = colors[cc].color;
+        if(type == 2){
+
+            let itemId = userLists[i].itens[0].ID;
+            let url = 'images/list/' + itemId + '.jpg';
+            div.style.background = "#f3f3f3 url("+url+") no-repeat center center";
+            div.style.backgroundSize = "cover";
+
+        }
+
         document.getElementById('display_lists_grid').appendChild(div);
     }
 

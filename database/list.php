@@ -31,7 +31,7 @@ function getListsOfUser($user, $order, $orderType){
 
     switch ($order) {
         case 1:
-            $dtbO =  $dtbO . ' title';
+            $dtbO =  $dtbO . ' LOWER(title)';
             break;
 
         case 2:
