@@ -503,6 +503,7 @@ header .main_box{
     color: white;
 }
 
+
 #btn_3{
     left: calc(50% + 20px + 2%);
     background: #FF6666;
@@ -512,6 +513,39 @@ header .main_box{
 
 #btn_3:hover{
     background: #CC0000;
+    color: white;
+}
+
+#btn_4{
+    left: calc(50% - 20px);
+    background: #33FF99;
+    color: black;
+}
+
+#btn_4:hover{
+    background: #00994C;
+    color: white;
+}
+
+#btn_5{
+    left: calc(50% - 20px);
+    background: #FF6666;
+    color: black;
+}
+
+#btn_5:hover{
+    background: #CC0000;
+    color: white;
+}
+
+#btn_6{
+    left: calc(50% - 20px);
+    background: #A9A9A9;
+    color: black;
+}
+
+#btn_6:hover{
+    background: #696969;
     color: white;
 }
 

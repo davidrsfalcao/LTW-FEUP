@@ -75,7 +75,11 @@ $last_name = get_user_last_name($user);
             <button id="btn_3" type="button" class="btn_profile" onclick="cancel_edit()"><span class="icon cross"></span></button>');
         }
         else {
-            //Check if is already friend         
+            //Check if is already friend
+            echo ('<button id="btn_4" type="button" class="btn_profile btn_green" onclick="add_friendship()"><span class="icon user-plus"></span></button>');
+            // already friends  icon user-minus btn_5
+            // pendent  icon hour-glass btn_6
+
         }
         ?>
 
@@ -87,4 +91,5 @@ $last_name = get_user_last_name($user);
 if(!$view_mode){
     echo ('<script src="js/upload_img_profile.js"></script><script src="js/edit_profile.js"></script>');
 }
+else echo ('<script src="js/friendship_manager.js"></script>');
 ?>

@@ -13,15 +13,21 @@ CREATE TABLE List(
     reminder_date DATE NOT NULL,
     type INTEGER NOT NULL,
     FOREIGN KEY(creator_ID) REFERENCES User(username)
-
 );
 
--- CREATE TABLE Share(
---     ID INTEGER,
---     user VARCHAR(64),
---     FOREIGN KEY(ID) REFERENCES List(ID),
---     FOREIGN KEY(user) REFERENCES User(username)
--- );
+CREATE TABLE Friendship(
+    ID INTEGER PRIMARY KEY,
+    user1 VARCHAR(64) REFERENCES User(username),
+    user2 VARCHAR(64) REFERENCES User(username)
+);
+
+CREATE TABLE Share(
+    ID INTEGER,
+    user VARCHAR(64),
+    FOREIGN KEY(ID) REFERENCES List(ID),
+    FOREIGN KEY(user) REFERENCES User(username),
+    PRIMARY KEY(ID,user)
+);
 
 CREATE TABLE Item (
     ID INTEGER PRIMARY KEY,
