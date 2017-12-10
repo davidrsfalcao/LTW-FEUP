@@ -495,7 +495,7 @@ function updateGridLists(){
         div.setAttribute('onclick', 'zoom(this.innerHTML)');
         let type = userLists[i].type;
 
-        let html = '<div class="inside_list" onmouseleave="hideDetails(this)"><span id="listID">'+(i+1)+'</span>';
+    let html = '<div class="inside_list" onmouseenter="showDetails(this)" onmouseleave="hideDetails(this)"><span id="listID">'+(i+1)+'</span>';
 
         let cc = ((i+1) % (colors.length -1)) + 1;
         div.style.background = colors[cc].background;
