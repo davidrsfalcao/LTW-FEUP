@@ -464,36 +464,53 @@ function showDetails(elem){
     + '<span>Creator: </span>';
 
     if (userLists[id-1].creator_ID == user){
-        html += 'me';
+        html += 'Me';
     }
     else {
         html += userLists[id-1].creator_ID;
     }
     html += '<br>';
-    html += '<span>Created: </span>' + userLists[id-1].creation_date + '<br>';
-    html += '<span>Reminder: </span>' + userLists[id-1].reminder_date + '<br>';
+
+    let creationDate = new Date(userLists[id-1].creation_date);
+    let creationString = creationDate.getDate() + '/' + (creationDate.getMonth()+1) + '/' + creationDate.getFullYear() + ' ' + creationDate.getHours() + ':' + creationDate.getMinutes();
+
+    let reminderDate = new Date(userLists[id-1].reminder_date);
+    let reminderString = reminderDate.getDate() + '/' + (reminderDate.getMonth()+1) + '/' + reminderDate.getFullYear() + ' ' + reminderDate.getHours() + ':' + reminderDate.getMinutes();
+
+    html += '<span>Created: </span>' + creationString + '<br>';
+    html += '<span>Reminder: </span>' + reminderString + '<br>';
     html += '<span>Type: </span>';
 
     switch (userLists[id-1].type) {
         case 0:{
-            html += 'text';
+            html += 'Text';
             break;
         }
         case 1:{
-            html += 'checklist';
+            html += 'Checklist';
             break;
         }
         case 2:{
-            html += 'photo';
+            html += 'Photo';
             break;
         }
 
         default:{
-            html += 'error';
+            html += 'Error';
             break;
         }
 
     }
+
+    if(userLists[id-1].type !== 2){
+        html += '<br><span>Content: </span><br>';
+        for(i = 0; i < userLists[id-1].itens.length; i++){
+            if(userLists[id-1].itens[i].visibility === 1){
+                html += '<p>' + userLists[id-1].itens[i].content + '</p>';
+            }
+        }
+    }
+
     html += '<br><br><br><p class="details_message">Click to full view</p>';
 
     elem.innerHTML = html;
