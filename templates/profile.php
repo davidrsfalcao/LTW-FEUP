@@ -1,5 +1,18 @@
 <?php
-$user = $_SESSION['username'];
+if (isset($_GET['username'])){
+    $user = $_GET['username'];
+
+    if($user != $_SESSION['username']){
+        $view_mode = true;
+    }
+    else $view_mode = false;
+
+
+}
+else{
+    $user = $_SESSION['username'];
+}
+
 $first_name = get_user_first_name($user);
 $last_name = get_user_last_name($user);
 ?>
@@ -16,21 +29,26 @@ $last_name = get_user_last_name($user);
         echo '<img src="images/avatars/avatar.jpg" class="profile_img" id="profileImage"/>';
     }
     ?>
-    <img src="images/templates/profile_bottom.png" class="profile_img" id="profile_bottom"/>
-
-    <form action="./action_upload.php?username=<?=$user?>" method="post" enctype="multipart/form-data" id="form">
-        <input id="imageUpload" type="file"
-        name="profile_photo" placeholder="Photo" required="required"capture>
-    </form>
 
     <?php
-    if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
+    if(!$view_mode){
+        echo('<form action="./action_upload.php?username=<?=$user?>" method="post" enctype="multipart/form-data" id="form">
+        <input id="imageUpload" type="file"
+        name="profile_photo" placeholder="Photo" required="required"capture>
+        </form>
+        <img src="images/templates/profile_bottom.png" class="profile_img" id="profile_bottom"/>');
+    }
+
+    ?>
+
+    <?php
+    if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true && !$view_mode)){
         echo ('<form action="./action_update_profile_image.php"  method="get">
         <input type="submit" name="" value="Save" class="profile_button save" />
         </form>');
         echo ('<script type="text/javascript">document.getElementById("profile_bottom").style.visibility = "hidden";</script>');
     }
-    if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true)){
+    if ((isset($_SESSION['flag_upload'])) && ($_SESSION['flag_upload'] == true && !$view_mode)){
         echo ('<form action="./action_cancel_update_profile.php"  method="get">
         <input type="submit" name="" value="Cancel" class="profile_button cancel" />
         </form>');
@@ -49,12 +67,24 @@ $last_name = get_user_last_name($user);
     </form>
 
     <div class="div_btns">
-        <button id="btn_1" type="button" class="btn_profile" onclick="save_edit()"><span class="icon checkmark"></span></button>
-        <button id="btn_2" type="button" class="btn_profile" onclick="begin_edit()"><span class="icon pencil2"></span></button>
-        <button id="btn_3" type="button" class="btn_profile" onclick="cancel_edit()"><span class="icon cross"></span></button>
+        <?php
+
+        if(!$view_mode){
+            echo (' <button id="btn_1" type="button" class="btn_profile" onclick="save_edit()"><span class="icon checkmark"></span></button>
+            <button id="btn_2" type="button" class="btn_profile" onclick="begin_edit()"><span class="icon pencil2"></span></button>
+            <button id="btn_3" type="button" class="btn_profile" onclick="cancel_edit()"><span class="icon cross"></span></button>');
+        }
+        else {
+            //Check if is already friend         
+        }
+        ?>
+
     </div>
 
 </div>
 
-<script src="js/upload_img_profile.js"></script>
-<script src="js/edit_profile.js"></script>
+<?php
+if(!$view_mode){
+    echo ('<script src="js/upload_img_profile.js"></script><script src="js/edit_profile.js"></script>');
+}
+?>
