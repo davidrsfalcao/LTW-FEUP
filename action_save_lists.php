@@ -10,7 +10,7 @@ $content = $_GET['content'];
 $listID = getLastId('List')+1;
 $itemID = getLastId('Item')+1;
 
-createList($listID, $user, $list_name, $reminder_date, $reminder_date, $type);
+createList($listID, $user, $list_name, $creation_date, $reminder_date, $type);
 
 if($type == 2){
     include_once('config/init.php');

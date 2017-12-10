@@ -16,5 +16,6 @@ function add_friendship($id, $user1, $user2){
     global $dbh;
     $stmt = $dbh->prepare('INSERT INTO Friendship VALUES (?, ?, ?)');
     $stmt->execute(array($id, $user1, $user2));
+    $stmt->execute(array($id+1, $user2, $user1));
 }
 ?>
