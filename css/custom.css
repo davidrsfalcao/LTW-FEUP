@@ -756,3 +756,8 @@ footer{
     font-size: 17px;
     text-decoration: underline;
 }
+
+.zoom_box {
+    padding-left: 5%;
+    padding-right: 5%;
+}

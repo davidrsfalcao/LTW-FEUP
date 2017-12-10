@@ -72,7 +72,8 @@ function zoom(html){
         box.style.color = colors[0].color;
     }
     else {
-        box.innerHTML = html;
+
+        box.innerHTML = showFullDetails(id);
         let cc = (id % (colors.length -1)) + 1;
         box.style.background = colors[cc].background;
         box.style.color = colors[cc].color;
@@ -445,7 +446,6 @@ function getUserLists(){
             if (this.responseText != ''){
                 handlerInputReceived(this.responseText);
             }
-            console.log(this.responseText);
         }
     };
     xmlhttp.open("GET","actions/get_user_lists.php?order="+order + "&orderType="+orderType,true);
@@ -495,7 +495,7 @@ function updateGridLists(){
         div.setAttribute('onclick', 'zoom(this.innerHTML)');
         let type = userLists[i].type;
 
-        let html = '<div class="inside_list" onclick="showFullDetails(this)" onmouseenter="showListHandler(this)" onmouseleave="hideDetails(this)"><span id="listID">'+(i+1)+'</span>';
+        let html = '<div class="inside_list" onmouseleave="hideDetails(this)"><span id="listID">'+(i+1)+'</span>';
 
         let cc = ((i+1) % (colors.length -1)) + 1;
         div.style.background = colors[cc].background;
@@ -568,12 +568,8 @@ function showDetails(elem){
 
 }
 
-function showFullDetails(elem){
-    fullListDetails = true;
-    let id = getListID(elem.innerHTML);
-    let cc = ((id) % (colors.length -1)) + 1;
-    elem.parentNode.style.background = colors[cc].background;
-    elem.parentNode.style.color = colors[cc].color;
+function showFullDetails(id){
+
     let html = '<span id="listID">'+(id)+'</span>'
         +'<h1>' + userLists[id-1].title + '</h1>'
         + '<br>'
@@ -624,16 +620,7 @@ function showFullDetails(elem){
         }
     }
 
-    elem.innerHTML = html;
-}
-
-function showListHandler(elem){
-    if(fullListDetails){
-        showFullDetails(elem);
-    }
-    else{
-        showDetails(elem);
-    }
+    return html;
 }
 
 function hideDetails(elem){
