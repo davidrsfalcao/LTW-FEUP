@@ -741,6 +741,12 @@ footer{
     padding-top: 40%;
 }
 
+.centered_bottom_box{
+    text-align: center;
+    padding-top: 30%;
+    font-size: 20px;
+}
+
 .inside_list h1{
     text-align: center;
 }

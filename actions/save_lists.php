@@ -11,7 +11,6 @@ $listID = getLastId('List')+1;
 $itemID = getLastId('Item')+1;
 
 createList($listID, $user, $list_name, $creation_date, $reminder_date, $type);
-
 if($type == 2){
     rename('../images/list/tmp/tmp.jpg', '../images/list/' . $itemID .'.jpg');
     createItem($itemID,$listID, $content);

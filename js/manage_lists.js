@@ -101,7 +101,6 @@ function mouseIsOverZoomBox(state){
     mouseIsOver = state;
 }
 
-
 function createAddList(){
     document.getElementById('display_lists_grid').innerHTML = null;
     let div = document.createElement('div');
@@ -396,7 +395,6 @@ function submitPhotoItem(){
 
 function submitList(url) {
     let fullURL = "actions/save_lists.php?username="+user + "&" + url;
-
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -509,6 +507,8 @@ function updateGridLists(){
         }
         else {
             html += '<h1 class="centered_in_box">' + userLists[i].title + '</h1>';
+            let date = createReadableDate(userLists[i].reminder_date);
+            html += '<h2 class="centered_bottom_box">' + date + '</h2>';
         }
         div.innerHTML = html;
         document.getElementById('display_lists_grid').appendChild(div);
@@ -638,6 +638,8 @@ function hideDetails(elem){
     }
     else {
         html += '<h1 class="centered_in_box">' + userLists[id-1].title + '</h1>';
+        let date = createReadableDate(userLists[id-1].reminder_date);
+        html += '<h2 class="centered_bottom_box">' + date + '</h2>';
     }
 
     elem.innerHTML = html;
