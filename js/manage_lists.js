@@ -212,6 +212,18 @@ function createReadableDate(dateString){
     return finalDate;
 }
 
+function getDaysBetweenDates(date1, date2){
+    let MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    let date_1 = new Date(date1);
+    let date_2 = new Date(date2);
+
+    let utc1 = Date.UTC(date_1.getFullYear(), date_1.getMonth(), date_1.getDate());
+    let utc2 = Date.UTC(date_2.getFullYear(), date_2.getMonth(), date_2.getDate());
+
+    return Math.floor((utc2 - utc1) / MS_PER_DAY);
+}
+
 function displayCreateList(box){
 
     let finalDate = createFormatedDate();
@@ -546,6 +558,7 @@ function showDetails(elem){
 
     let creationDate = createReadableDate(userLists[id-1].creation_date);
     let reminderDate = createReadableDate(userLists[id-1].reminder_date);
+    let remainingDays = getDaysBetweenDates(userLists[id-1].creation_date, userLists[id-1].reminder_date);
 
     html += '<span>Created: </span>' + creationDate + '<br>';
     html += '<span>Reminder: </span>' + reminderDate + '<br>';
@@ -630,8 +643,9 @@ function showFullDetails(id){
             }
             else checked = "checked";
 
-            html += '<p><input type="checkbox" onchange="updateItemVisibility(this.id)" id="'+ userLists[id-1].itens[i].ID +'" '+checked+' />'
-            +'<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p>';
+            html += '<div class="content_checking">'
+                + '<p><input type="checkbox" onchange="updateItemVisibility(this.id)" id="'+ userLists[id-1].itens[i].ID +'" '+checked+' />'
+                + '<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p></div>';
 
         }
     }

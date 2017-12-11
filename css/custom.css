@@ -767,4 +767,26 @@ footer{
 .zoom_box {
     padding-left: 5%;
     padding-right: 5%;
+    font-size: 125%;
+}
+
+.zoom_box span{
+    font-weight: bold;
+
+}
+
+.zoom_box input[type=checkbox]{
+    margin-right: 10px;
+    transform: scale(1.5);
+}
+
+.content_checking label{
+    padding: 2px;
+    position: relative;
+    outline: none;
+    border: 1px solid #cdcdcd;
+    border-color: rgba(0,0,0,.15);
+    background-color: white;
+    color: black;
+    font-size: 16px;
 }
