@@ -22,11 +22,11 @@ CREATE TABLE Friendship(
 );
 
 CREATE TABLE Share(
-    ID INTEGER,
+    ID INTEGER PRIMARY KEY,
+    list_ID INTEGER,
     user VARCHAR(64),
-    FOREIGN KEY(ID) REFERENCES List(ID),
+    FOREIGN KEY(list_ID) REFERENCES List(ID),
     FOREIGN KEY(user) REFERENCES User(username),
-    PRIMARY KEY(ID,user)
 );
 
 CREATE TABLE Item (

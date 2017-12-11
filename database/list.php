@@ -31,21 +31,33 @@ function getListsOfUser($user, $order, $orderType){
     switch ($order) {
         case 1:
             $dtbO =  $dtbO . ' LOWER(title)';
+            $dtb1 = ">0";
             break;
 
         case 2:
             $dtbO =  $dtbO . ' creation_date';
+            $dtb1 = ">0";
             break;
 
         case 3:
             $dtbO =  $dtbO . ' reminder_date';
+            $dtb1 = ">0";
+            break;
+
+        case 4:
+            $dtbO = '';
+            if((int)$orderType == 1){
+                $dtb1 = ">0";
+            }
+            else $dtb1 = "=0";
             break;
     }
 
-    if($order == 4){
+    if($order == 5){
         $dtbO = ' AND title LIKE "' . $orderType . '%"';
     }
-    else switch ((int)$orderType) {
+    else if($order != 4)
+        switch ((int)$orderType) {
         case 1:
             $dtbO =  $dtbO . ' ASC';
             break;
@@ -54,8 +66,11 @@ function getListsOfUser($user, $order, $orderType){
             $dtbO =  $dtbO . ' DESC;';
             break;
     }
+    $query = 'SELECT * FROM List AS list WHERE creator_ID = ? AND '
+    . '(SELECT COUNT(*) FROM Item WHERE Item.list_ID = list.ID AND '
+    . 'Item.visibility = 1) ' . $dtb1 . ' ' . $dtbO;
 
-    $stmt = $dbh->prepare('SELECT * FROM List WHERE creator_ID = ?' . $dtbO);
+    $stmt = $dbh->prepare($query);
     $stmt->execute(array($user));
     $lists = $stmt->fetchAll();
     return $lists;
@@ -68,4 +83,13 @@ function getItensOfList($list_id){
     $itens = $stmt->fetchAll();
     return $itens;
 }
+
+function update_item($id, $visibility){
+    global $dbh;
+    $stmt = $dbh->prepare("UPDATE Item SET visibility = ?  WHERE ID = ?");
+    $stmt->execute(array($visibility, $id));
+    return $id;
+
+}
+
 ?>

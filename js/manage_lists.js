@@ -8,6 +8,7 @@ colors[1] = blue;
 colors[2] = grey;
 
 let user;
+let token;
 let fullListDetails = false;
 
 function setUser(username){
@@ -25,14 +26,23 @@ function orderBy(value){
         '</select>'+
         '</form>';
     }
-    else {
+    else if(document.getElementById('orderBySelec').value == 5){
         document.getElementById('select_order').innerHTML =
         '<form>' +
         '<label for="orderByASCDES">Search: </label>' +
         '<input type="text" name="orderByASCDES" id="orderByASCDES" onkeydown="searchInput(event)" onkeyup="refreshGrid()"/>' +
         '</form>';
     }
-
+    else if(document.getElementById('orderBySelec').value == 4){
+        document.getElementById('select_order').innerHTML =
+        '<form>' +
+        '<label for="orderByASCDES">Order </label>' +
+        '<select name="orderByASCDES" id="orderByASCDES" onchange="refreshGrid()">' +
+        '<option value="1">Not Completed</option>'+
+        '<option value="2">Completed</option>'+
+        '</select>'+
+        '</form>';
+    }
     refreshGrid();
 }
 
@@ -93,7 +103,7 @@ function zoom(html){
 function verifyClickZoomBox(elem){
     if(mouseIsOver == false){
         elem.parentNode.removeChild(elem);
-		fullListDetails = false;
+        fullListDetails = false;
     }
 }
 
@@ -493,7 +503,7 @@ function updateGridLists(){
         div.setAttribute('onclick', 'zoom(this.innerHTML)');
         let type = userLists[i].type;
 
-    let html = '<div class="inside_list" onmouseenter="showDetails(this)" onmouseleave="hideDetails(this)"><span id="listID">'+(i+1)+'</span>';
+        let html = '<div class="inside_list" onmouseenter="showDetails(this)" onmouseleave="hideDetails(this)"><span id="listID">'+(i+1)+'</span>';
 
         let cc = ((i+1) % (colors.length -1)) + 1;
         div.style.background = colors[cc].background;
@@ -571,9 +581,9 @@ function showDetails(elem){
 function showFullDetails(id){
 
     let html = '<span id="listID">'+(id)+'</span>'
-        +'<h1>' + userLists[id-1].title + '</h1>'
-        + '<br>'
-        + '<span>Creator: </span>';
+    +'<h1>' + userLists[id-1].title + '</h1>'
+    + '<br>'
+    + '<span>Creator: </span>';
 
     if (userLists[id-1].creator_ID == user){
         html += 'Me';
@@ -614,13 +624,39 @@ function showFullDetails(id){
     if(userLists[id-1].type !== 2){
         html += '<br><span>Content: </span><br>';
         for(i = 0; i < userLists[id-1].itens.length; i++){
-            if(userLists[id-1].itens[i].visibility === 1){
-                html += '<p>' + userLists[id-1].itens[i].content + '</p>';
+            let checked;
+            if(userLists[id-1].itens[i].visibility == 1){
+                checked = "unchecked";
             }
+            else checked = "checked";
+
+            html += '<p><input type="checkbox" onchange="updateItemVisibility(this.id)" id="'+ userLists[id-1].itens[i].ID +'" '+checked+' />'
+            +'<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p>';
+
         }
     }
-
     return html;
+}
+
+function updateItemVisibility(id){
+    let visibility_tmp = !document.getElementById(id).checked;
+    let visibility = visibility_tmp ? 1 : 0;
+    let url = '?id='+ parseInt(id) +'&visibility='+visibility +'&validation='+token;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText == "Success"){
+                //update 
+            }
+        }
+    };
+    xmlhttp.open("GET","actions/update_item_visibility.php"+url,true);
+    xmlhttp.send();
+
 }
 
 function hideDetails(elem){
@@ -655,4 +691,8 @@ function refreshGrid(){
         zoom_box.parentNode.removeChild(zoom_box);
     }
 
+}
+
+function setToken(token1){
+    token = token1;
 }

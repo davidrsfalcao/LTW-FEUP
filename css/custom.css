@@ -631,6 +631,7 @@ footer{
 .display_lists_grid{
     display: grid;
     margin-top: 60px;
+    margin-bottom: 30px;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(300px, auto);
     grid-column-gap: 1em;

@@ -46,4 +46,13 @@ function get_user_last_name($username){
     return reset($last_name);
 }
 
+function update_user($user, $first_name, $last_name){
+    global $dbh;
+
+    $stmt = $dbh->prepare("UPDATE User SET first_name = :first_name , last_name = :last_name WHERE username = :username");
+    $stmt->bindValue(':first_name', $first_name);
+    $stmt->bindValue(':last_name', $last_name);
+    $stmt->bindValue(':username', $user);
+    $stmt->execute();
+}
 ?>

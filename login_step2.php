@@ -1,5 +1,7 @@
 <?php
 include_once('config/init.php');
+include_once('actions/generate_random_token.php');
+$token = generate_random_token();
 include_once('database/user.php');
 if(isset($_SESSION['username'])){
     header('Location: index.php?username=' . $_SESSION['username']);
@@ -15,6 +17,7 @@ else {
     $last_name = get_user_last_name($user);
 }
 include_once('templates/header_forms.php');
+
 ?>
 
 <body>
@@ -28,12 +31,12 @@ include_once('templates/header_forms.php');
         }
         ?>
         <h2><?=$first_name?> <?=$last_name?></h2>
-
         <form action="actions/login.php?username=<?=$user?>" method="post" id="login_form">
             <button type="button" id="eye">
                 <img src="images/templates/eye.png" alt="eye" id="eye_visibility"/>
             </button>
             <input type="password" name="password" id="pwd" placeholder="password"/>
+            <input type="hidden" name="validation" value="<?=$token?>" />
             <button class="form_button" type="button" onclick="verifyPassword('<?=$user?>')">Login</button>
         </form>
         <br />
