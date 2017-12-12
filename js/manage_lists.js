@@ -10,7 +10,7 @@ colors[2] = grey;
 let user;
 let fullListDetails = false;
 let refreshTime = 60000; /* 1 minuto */
-//setInterval(updateGridLists, refreshTime);
+setInterval(updateGridLists, refreshTime);
 
 function setUser(username){
     user = username;
