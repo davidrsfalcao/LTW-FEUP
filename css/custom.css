@@ -731,6 +731,7 @@ footer{
 }
 
 .inside_list{
+    position: relative;
     width: 100%;
     height: 100%;
     padding-left: 5%;
@@ -743,10 +744,14 @@ footer{
 }
 
 .centered_bottom_box{
-    text-align: center;
-    padding-top: 30%;
+    position: absolute;
+    top: 80%;
     font-size: 20px;
+    width: 100%;
+    left: 0;
+    text-align: center;
 }
+
 
 .inside_list h1{
     text-align: center;
@@ -789,4 +794,16 @@ footer{
     background-color: white;
     color: black;
     font-size: 16px;
+}
+
+.time{
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.time_remaining{
+    color: #88e670;
+}
+
+.time_late{
+    color: #f4706c;
 }

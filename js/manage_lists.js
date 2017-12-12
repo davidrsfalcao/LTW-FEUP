@@ -212,16 +212,71 @@ function createReadableDate(dateString){
     return finalDate;
 }
 
-function getDaysBetweenDates(date1, date2){
-    let MS_PER_DAY = 1000 * 60 * 60 * 24;
+function getMinutesBetweenDates(date1, date2){
+    let MS_PER_MINUTE = 1000 * 60;
 
     let date_1 = new Date(date1);
     let date_2 = new Date(date2);
 
-    let utc1 = Date.UTC(date_1.getFullYear(), date_1.getMonth(), date_1.getDate());
-    let utc2 = Date.UTC(date_2.getFullYear(), date_2.getMonth(), date_2.getDate());
+    return (date_2 - date_1) / MS_PER_MINUTE;
+}
 
-    return Math.floor((utc2 - utc1) / MS_PER_DAY);
+function displayDays(number){
+    if(number >= 1){
+        return (number + "d ");
+    }
+
+    return "";
+}
+
+function displayHours(number){
+
+    if(number >= 1){
+        return (number + "h ");
+    }
+
+
+    return "";
+}
+
+function displayMinutes(number){
+    if(number >= 1){
+        return (number + "min ");
+    }
+
+    return "";
+}
+
+function displayTimeBetweenDates(min){
+    let type;
+    if(min == 0){
+        return "Now";
+    }
+
+    if(min > 0){
+        type = 1;
+    }
+    else {
+        type = 2;
+    }
+
+    min = Math.abs(min);
+    let days = displayDays(Math.floor(min/1440));
+    let hours = displayHours(Math.floor(min%1440/60));
+    let minutes = displayMinutes(Math.floor(min%1440%60));
+
+    let result = days + hours + minutes;
+
+    switch (type) {
+        case 1:
+            return '<span class="time time_remaining">'+ result +'</span>';
+            break;
+
+        case 2:
+            return '<span class="time time_late">'+ result +'</span>';
+            break;
+
+    }
 }
 
 function displayCreateList(box){
@@ -529,9 +584,13 @@ function updateGridLists(){
         }
         else {
             html += '<h1 class="centered_in_box">' + userLists[i].title + '</h1>';
-            let date = createReadableDate(userLists[i].reminder_date);
-            html += '<h2 class="centered_bottom_box">' + date + '</h2>';
         }
+        let date2 = userLists[i].reminder_date;
+        let date1 = createFormatedDate();
+        let time = getMinutesBetweenDates(date1, date2);
+        let string_time = displayTimeBetweenDates(time);
+
+        html += '<h2 class="centered_bottom_box">' + string_time + '</h2>';
         div.innerHTML = html;
         document.getElementById('display_lists_grid').appendChild(div);
     }
@@ -558,7 +617,7 @@ function showDetails(elem){
 
     let creationDate = createReadableDate(userLists[id-1].creation_date);
     let reminderDate = createReadableDate(userLists[id-1].reminder_date);
-    let remainingDays = getDaysBetweenDates(userLists[id-1].creation_date, userLists[id-1].reminder_date);
+    let remainingDays = getMinutesBetweenDates(userLists[id-1].creation_date, userLists[id-1].reminder_date);
 
     html += '<span>Created: </span>' + creationDate + '<br>';
     html += '<span>Reminder: </span>' + reminderDate + '<br>';
@@ -644,8 +703,8 @@ function showFullDetails(id){
             else checked = "checked";
 
             html += '<div class="content_checking">'
-                + '<p><input type="checkbox" onchange="updateItemVisibility(this.id)" id="'+ userLists[id-1].itens[i].ID +'" '+checked+' />'
-                + '<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p></div>';
+            + '<p><input type="checkbox" onchange="updateItemVisibility(this.id)" id="'+ userLists[id-1].itens[i].ID +'" '+checked+' />'
+            + '<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p></div>';
 
         }
     }
@@ -664,7 +723,7 @@ function updateItemVisibility(id){
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText == "Success"){
-                //update 
+                //update
             }
         }
     };
@@ -688,10 +747,13 @@ function hideDetails(elem){
     }
     else {
         html += '<h1 class="centered_in_box">' + userLists[id-1].title + '</h1>';
-        let date = createReadableDate(userLists[id-1].reminder_date);
-        html += '<h2 class="centered_bottom_box">' + date + '</h2>';
     }
+    let date2 = userLists[id-1].reminder_date;
+    let date1 = createFormatedDate();
+    let time = getMinutesBetweenDates(date1, date2);
+    let string_time = displayTimeBetweenDates(time);
 
+    html += '<h2 class="centered_bottom_box">' + string_time + '</h2>';
     elem.innerHTML = html;
 }
 
