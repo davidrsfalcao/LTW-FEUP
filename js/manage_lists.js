@@ -703,23 +703,29 @@ function showFullDetails(id){
 
     if(userLists[id-1].type !== 2){
         html += '<br><span>Content: </span><br>';
+
+        //Display first all unchecked
         for(i = 0; i < userLists[id-1].itens.length; i++){
-            let checked;
             if(userLists[id-1].itens[i].visibility == 1){
-                checked = "unchecked";
+                html += '<div class="content_checking">'
+                + '<p><input type="checkbox" onchange="generate_random_token(this.id, this.parentNode)" id="'+ userLists[id-1].itens[i].ID +'" unchecked />'
+                + '<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p></div>';
             }
-            else checked = "checked";
 
-            html += '<div class="content_checking">'
-            + '<p><input type="checkbox" onchange="generate_random_token(this.id)" id="'+ userLists[id-1].itens[i].ID +'" '+checked+' />'
-            + '<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p></div>';
-
+        }
+        //So after display the checked ones
+        for(i = 0; i < userLists[id-1].itens.length; i++){
+            if(userLists[id-1].itens[i].visibility == 0){
+                html += '<div class="content_checking">'
+                + '<p><input type="checkbox" onchange="generate_random_token(this.id, this.parentNode)" id="'+ userLists[id-1].itens[i].ID +'" checked />'
+                + '<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p></div>';
+            }
         }
     }
     return html;
 }
 
-function updateItemVisibility(id, token){
+function updateItemVisibility(id, token, list_ID){
     let visibility_tmp = !document.getElementById(id).checked;
     let visibility = visibility_tmp ? 1 : 0;
     let url = 'id='+ parseInt(id) +'&visibility='+visibility +'&validation='+token;
@@ -731,7 +737,11 @@ function updateItemVisibility(id, token){
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText == "Success"){
-                //done with sucess
+                for(let i=0; i<userLists[list_ID-1].itens.length;i++ ){
+                    if(userLists[list_ID-1].itens[i].ID == id){
+                        userLists[list_ID-1].itens[i].visibility = ! userLists[list_ID-1].itens[i].visibility;
+                    }
+                }
             }
         }
     };
@@ -741,7 +751,9 @@ function updateItemVisibility(id, token){
 
 }
 
-function generate_random_token(id) {
+function generate_random_token(id, parentNode) {
+    let html = parentNode.parentNode.parentNode.innerHTML;
+    let index = getListID(html);
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -752,7 +764,7 @@ function generate_random_token(id) {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             let token = this.responseText;
-            updateItemVisibility(id, token);
+            updateItemVisibility(id, token, index);
         }
     };
     xmlhttp.open("POST","actions/generate_random_token.php",true);
