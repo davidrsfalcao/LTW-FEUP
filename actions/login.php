@@ -1,6 +1,7 @@
 <?php
 session_start();
 $username = $_GET['username'];
+$password = $_POST['password'];
 $token = $_POST['validation'];
 
 if(isset($_SESSION['token']) && ($token == $_SESSION['token']) && $token!= null){
@@ -9,7 +10,7 @@ if(isset($_SESSION['token']) && ($token == $_SESSION['token']) && $token!= null)
     exit();
 }
 else {
-    echo "Access Denied";
+    echo ('<script>alert("Access Denied")</script><script>window.location.replace("../index.php")</script>');
     exit();
 }
 ?>

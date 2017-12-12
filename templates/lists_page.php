@@ -36,4 +36,3 @@
 <script>createAddList()</script>
 <script>setUser("<?=$_SESSION['username']?>")</script>
 <script>getUserLists()</script>
-<script>setToken('<?=$token?>')</script>

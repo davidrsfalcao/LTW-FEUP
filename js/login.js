@@ -1,5 +1,4 @@
 var user_exist = false;
-
 /*
 Request the database to confirm if user exists
 */
@@ -42,7 +41,7 @@ function verifyPassword(user) {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText == 1){
-            document.getElementById('login_form').submit();
+                generate_random_token();
             }
             else {
                 document.getElementById("pwd").style.background = "#FF6666";
@@ -129,4 +128,24 @@ Initialize user on login_step2
 let user;
 function initializeUser(user1){
     user = user1;
+}
+
+function generate_random_token() {
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let token = this.responseText;
+            document.getElementById('validation').value = token;
+            document.getElementById('login_form').submit();
+        }
+    };
+    xmlhttp.open("POST","actions/generate_random_token.php",true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
 }

@@ -1,7 +1,5 @@
 <?php
 include_once('config/init.php');
-include_once('actions/generate_random_token.php');
-$token = generate_random_token();
 include_once('database/user.php');
 if(isset($_SESSION['username'])){
     header('Location: index.php?username=' . $_SESSION['username']);
@@ -36,7 +34,7 @@ include_once('templates/header_forms.php');
                 <img src="images/templates/eye.png" alt="eye" id="eye_visibility"/>
             </button>
             <input type="password" name="password" id="pwd" placeholder="password"/>
-            <input type="hidden" name="validation" value="<?=$token?>" />
+            <input type="hidden" id="validation" name="validation" value="" />
             <button class="form_button" type="button" onclick="verifyPassword('<?=$user?>')">Login</button>
         </form>
         <br />

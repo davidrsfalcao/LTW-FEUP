@@ -8,7 +8,6 @@ colors[1] = blue;
 colors[2] = grey;
 
 let user;
-let token;
 let fullListDetails = false;
 let refreshTime = 60000; /* 1 minuto */
 setInterval(updateGridLists, refreshTime);
@@ -712,7 +711,7 @@ function showFullDetails(id){
             else checked = "checked";
 
             html += '<div class="content_checking">'
-            + '<p><input type="checkbox" onchange="updateItemVisibility(this.id)" id="'+ userLists[id-1].itens[i].ID +'" '+checked+' />'
+            + '<p><input type="checkbox" onchange="generate_random_token(this.id)" id="'+ userLists[id-1].itens[i].ID +'" '+checked+' />'
             + '<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p></div>';
 
         }
@@ -720,10 +719,10 @@ function showFullDetails(id){
     return html;
 }
 
-function updateItemVisibility(id){
+function updateItemVisibility(id, token){
     let visibility_tmp = !document.getElementById(id).checked;
     let visibility = visibility_tmp ? 1 : 0;
-    let url = '?id='+ parseInt(id) +'&visibility='+visibility +'&validation='+token;
+    let url = 'id='+ parseInt(id) +'&visibility='+visibility +'&validation='+token;
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     } else {
@@ -732,13 +731,33 @@ function updateItemVisibility(id){
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText == "Success"){
-                //update
+                //done with sucess
             }
         }
     };
-    xmlhttp.open("GET","actions/update_item_visibility.php"+url,true);
-    xmlhttp.send();
+    xmlhttp.open("POST","actions/update_item_visibility.php",true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(url);
 
+}
+
+function generate_random_token(id) {
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let token = this.responseText;
+            updateItemVisibility(id, token);
+        }
+    };
+    xmlhttp.open("POST","actions/generate_random_token.php",true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
 }
 
 function hideDetails(elem){
@@ -775,10 +794,6 @@ function refreshGrid(){
         zoom_box.parentNode.removeChild(zoom_box);
     }
 
-}
-
-function setToken(token1){
-    token = token1;
 }
 
 function deleteList(){
