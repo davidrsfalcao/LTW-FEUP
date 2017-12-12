@@ -45,25 +45,25 @@ function verifyErrors(){
     error = false;
 
     //First name not null
-    if(document.getElementById("f_n").value == ""){
+    if(document.getElementById("f_n").value == "" || denySpecialChars(document.getElementById("f_n").value, "First Name")){
         error = true;
         document.getElementById("f_n").style.background = "#FF6666";
     }
 
     //Last name not null
-    if(document.getElementById("l_n").value == ""){
+    if(document.getElementById("l_n").value == "" || denySpecialChars(document.getElementById("l_n").value, "Last Name")){
         error = true;
         document.getElementById("l_n").style.background = "#FF6666";
     }
 
     //username not null and not already exist
-    if(document.getElementById("user").value == "" || user_exist){
+    if(document.getElementById("user").value == "" || user_exist || denySpecialChars(document.getElementById("user").value, "Username")){
         error = true;
         document.getElementById("user").style.background = "#FF6666";
     }
 
     //password not null
-    if(document.getElementById("pwd").value == ""){
+    if(document.getElementById("pwd").value == "" || denySpecialChars(document.getElementById("pwd").value, "Password")){
         error = true;
         document.getElementById("pwd").style.background = "#FF6666";
     }
@@ -114,3 +114,13 @@ document.onkeydown = function(e) {
         try_submit();
     }
 };
+
+function denySpecialChars(string, location){
+	var alphaExp = /^[a-zA-Z0-9]+$/;
+	if(string.match(alphaExp)){
+		return false;
+	}else{
+		alert(location + ": input denied.\n");
+		return true;
+	}
+}

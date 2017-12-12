@@ -3,3 +3,4 @@ Options All -Indexes
 
 
 RedirectMatch 404 \.db$
+RedirectMatch 404 \.sql$
