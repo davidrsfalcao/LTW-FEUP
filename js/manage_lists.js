@@ -334,15 +334,26 @@ let checklist = false;
 let list_name;
 let reminder_date;
 
+function denySpecialChars(string){
+	var alphaExp = /^[a-zA-Z0-9,.!]+$/;
+	if(string.match(alphaExp)){
+		return false;
+	}else{
+		alert("Input denied.\n");
+		return true;
+	}
+}
+
 function verifyForms(){
     let error = false;
-    if(document.getElementById('list_name').value == ""){
+    if(document.getElementById('list_name').value == "" || denySpecialChars(document.getElementById('list_name').value)){
         document.getElementById("list_name").style.borderColor = "#FF0000";
         error = true;
     }
     else {
         list_name = document.getElementById('list_name').value;
         document.getElementById("list_name").style.borderColor = "";
+        error = denySpecialChars(list_name);
     }
 
     if(document.getElementById('reminder_date').value ==""){
@@ -376,7 +387,7 @@ function submitText(){
         error = true;
     }
 
-    if(document.getElementById('input_text_box').value == ""){
+    if(document.getElementById('input_text_box').value == "" || denySpecialChars(document.getElementById('input_text_box').value)){
         document.getElementById("input_text_box").style.borderColor = "#FF0000";
         error = true;
     }
@@ -441,7 +452,7 @@ function submitCheckList(){
     let j=0;
     for(let i=0; i<child.length; i++){
         let temp = document.getElementById('input_checklist_box'+i).value;
-        if(temp != ''){
+        if(temp != '' && !denySpecialChars(document.getElementById('input_checklist_box'+i).value)){
             checklistText[j] = temp;
             j++;
         }
