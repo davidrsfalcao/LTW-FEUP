@@ -17,7 +17,7 @@ function verifyPassword(user) {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText == 1){
-				document.getElementById("pwd").style.background = "";				
+				document.getElementById("pwd").style.background = "";
 				isCorrect = true;
 				generate_random_token();
 				showOptions();
@@ -38,17 +38,17 @@ function verifyPassword(user) {
 */
 
 function showOptions(){
-	
+
 	if(isCorrect == true){
 		//show the two options
 		//A button to delete the account
 		//The two boxes to introduce the new password
-		
+
 		document.getElementById("old_password").style.display = 'none';
 		document.getElementById("options").style.display = 'initial';
-		
+
 	}
-	
+
 }
 
 /*
@@ -61,7 +61,7 @@ function handlerInputPassword(){
 }
 
 /*
-Handler input ENTER 
+Handler input ENTER
 */
 let pwdInput = document.getElementById("pwd");
 if (pwdInput){
@@ -78,20 +78,17 @@ if (pwdInput){
     }
 }
 
-
-
-
 function changePassword(){
-	
+
 	let password;
-	
+
 	if(document.getElementById("password_1").value != document.getElementById("password_2").value && document.getElementById("password_1").value != ""){
 		document.getElementById("password_2").style.background = "#FF6666";
 		alert("Passwords do not match!");
 		return;
 	}
 	else password = document.getElementById("password_1").value;
-	
+
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -133,9 +130,13 @@ function generate_random_token() {
 /*
 *Function to delete user
 */
-
 function delete_user(){
-	
+
+	if(confirm("Are you sure you want to delete your account?\nThis is irreversible")== false){
+		return;
+	}
+
+
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -153,7 +154,5 @@ function delete_user(){
     xmlhttp.open("POST","actions/delete_user.php",true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("username=" + username+ "&validation=" + token);
-	
+
 }
-
-
