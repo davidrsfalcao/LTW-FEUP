@@ -89,7 +89,16 @@ function update_item($id, $visibility){
     $stmt = $dbh->prepare("UPDATE Item SET visibility = ?  WHERE ID = ?");
     $stmt->execute(array($visibility, $id));
     return $id;
-
 }
 
+function delete_list($id){
+    global $dbh;
+    /* delete all list itens*/
+    $stmt = $dbh->prepare('DELETE FROM Item WHERE list_ID = ?');
+    $stmt->execute(array($id));
+
+    /* delete list */
+    $stmt = $dbh->prepare('DELETE FROM List WHERE ID = ?');
+    $stmt->execute(array($id));
+}
 ?>

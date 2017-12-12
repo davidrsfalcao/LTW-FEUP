@@ -84,7 +84,7 @@ function zoom(html){
     }
     else {
         let trash = '<form>'
-        +'<span class="trash_icon" onclick="deleteList()" >'
+        +'<span class="trash_icon" onclick="deleteList(this)" >'
         +'<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">'
         +'<title>bin</title>'
         +'<path d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>'
@@ -708,7 +708,7 @@ function showFullDetails(id){
         for(i = 0; i < userLists[id-1].itens.length; i++){
             if(userLists[id-1].itens[i].visibility == 1){
                 html += '<div class="content_checking">'
-                + '<p><input type="checkbox" onchange="generate_random_token(this.id, this.parentNode)" id="'+ userLists[id-1].itens[i].ID +'" unchecked />'
+                + '<p><input type="checkbox" onchange="generate_random_token_for_edit(this.id, this.parentNode)" id="'+ userLists[id-1].itens[i].ID +'" unchecked />'
                 + '<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p></div>';
             }
 
@@ -717,7 +717,7 @@ function showFullDetails(id){
         for(i = 0; i < userLists[id-1].itens.length; i++){
             if(userLists[id-1].itens[i].visibility == 0){
                 html += '<div class="content_checking">'
-                + '<p><input type="checkbox" onchange="generate_random_token(this.id, this.parentNode)" id="'+ userLists[id-1].itens[i].ID +'" checked />'
+                + '<p><input type="checkbox" onchange="generate_random_token_for_edit(this.id, this.parentNode)" id="'+ userLists[id-1].itens[i].ID +'" checked />'
                 + '<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p></div>';
             }
         }
@@ -751,7 +751,7 @@ function updateItemVisibility(id, token, list_ID){
 
 }
 
-function generate_random_token(id, parentNode) {
+function generate_random_token_for_edit(id, parentNode) {
     let html = parentNode.parentNode.parentNode.innerHTML;
     let index = getListID(html);
     if (window.XMLHttpRequest) {
@@ -808,9 +808,55 @@ function refreshGrid(){
 
 }
 
-function deleteList(){
+function deleteList(childnode){
+    let html = childnode.parentNode.parentNode.innerHTML;
+    let index = getListID(html);
+    let id = userLists[index-1].ID;
 
-    confirm('Are you sure you want to delete this list?'
-    + '\nThis is irreversible');
+    if(confirm('Are you sure you want to delete this list?\nThis is irreversible') == false){
+        return;
+    }
+    else generate_random_token_for_delete(id);
+
+
+}
+
+function generate_random_token_for_delete(id) {
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let token = this.responseText;
+            action_delete_list(id, token);
+        }
+    };
+    xmlhttp.open("POST","actions/generate_random_token.php",true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+}
+
+function action_delete_list(id, token){
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText == "Success"){
+                refreshGrid();
+            }
+        }
+    };
+    xmlhttp.open("POST","actions/delete_list.php",true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("id=" + id + "&validation=" + token);
 
 }
