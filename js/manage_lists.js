@@ -1,5 +1,5 @@
 var green = {background:"#00CC66", color:"white"};
-var grey = {background:"#C0C0C0", color:"rgb(0,153,153)"};
+var grey = {background:"#c7c7c7", color:"rgb(0,153,153)"};
 var blue = {background:"rgb(0,153,153)", color:"white"};
 
 var colors = [];
@@ -259,7 +259,7 @@ function displayMinutes(number){
 function displayTimeBetweenDates(min){
     let type;
     if(min == 0){
-        return "Now";
+        return '<span class="time">Now</span>';
     }
 
     if(min > 0){
