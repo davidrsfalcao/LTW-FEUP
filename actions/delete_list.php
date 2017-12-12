@@ -6,12 +6,12 @@ $id = (int)$_POST['id'];
 $token = $_POST['validation'];
 
 if(isset($_SESSION['token']) && ($token == $_SESSION['token']) && $token!= null){
-    delete_list($id);
+    echo delete_list($id);
     echo "Success";
     exit();
 }
 else {
-    echo ("Access Denied");
+    echo "Access Denied";
     exit();
 }
 

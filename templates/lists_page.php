@@ -1,8 +1,3 @@
-<?php
-    include_once('actions/generate_random_token.php');
-    $token = generate_random_token();
-?>
-
 <div class="list_selector">
     <div class="select_type form_list">
         <form>

@@ -10,7 +10,7 @@ colors[2] = grey;
 let user;
 let fullListDetails = false;
 let refreshTime = 60000; /* 1 minuto */
-setInterval(updateGridLists, refreshTime);
+//setInterval(updateGridLists, refreshTime);
 
 function setUser(username){
     user = username;
@@ -851,7 +851,16 @@ function action_delete_list(id, token){
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText == "Success"){
-                refreshGrid();
+                for(let i=0; i< userLists.length; i++){
+                    if(userLists[i].ID == id){
+                        userLists.splice(i,1);
+                    }
+                }
+                if(document.getElementsByClassName('zoom_background').length == 1){
+                    let zoom = document.getElementsByClassName('zoom_background')[0];
+                    document.getElementsByClassName('zoom_background')[0].parentNode.removeChild(zoom);
+                }
+                updateGridLists();
             }
         }
     };

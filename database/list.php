@@ -93,12 +93,10 @@ function update_item($id, $visibility){
 
 function delete_list($id){
     global $dbh;
-    /* delete all list itens*/
     $stmt = $dbh->prepare('DELETE FROM Item WHERE list_ID = ?');
     $stmt->execute(array($id));
 
-    /* delete list */
-    $stmt = $dbh->prepare('DELETE FROM List WHERE ID = ?');
-    $stmt->execute(array($id));
+    $stmt1 = $dbh->prepare('DELETE FROM List WHERE ID = ?');
+    $stmt1->execute(array($id));
 }
 ?>
