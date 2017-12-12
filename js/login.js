@@ -130,6 +130,9 @@ function initializeUser(user1){
     user = user1;
 }
 
+/*
+Generate random token before submiting the form
+*/
 function generate_random_token() {
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
