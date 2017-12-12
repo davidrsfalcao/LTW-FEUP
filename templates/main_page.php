@@ -49,22 +49,11 @@
         <img src="images/templates/macbookpro.png" alt="">
     </div>
 
-    <div class="reminder_box">
-        <h3>
-            Reminder
-        </h3>
-    </div>
 
-    <div class="checklist_box">
-        <h3>
-            Checklist
-        </h3>
-    </div>
-
-    <div class="photo_box">
-        <h3>
-            Photo List
-        </h3>
+    <div class="slideshow">
+        <img id="f3" src="images/templates/reminder.png">
+        <img id="f2" src="images/templates/photolist.png">
+        <img id="f1" src="images/templates/checklist.png">
     </div>
 
 </div>

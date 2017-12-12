@@ -170,7 +170,7 @@ header .main_box{
     "a a a a a a a a"
     "b b b b c c c c"
     "d d d d e e e e"
-    "f f f g g h h h";
+    "f f f f f f f f";
     align-items: center;
     background-color: white;
 }
@@ -252,45 +252,44 @@ header .main_box{
     margin:auto;
 }
 
-.reminder_box{
-    grid-area:f;
-    background: url(../images/templates/reminder.png);
-    background-size: cover;
-    height: 200px;
+.slideshow {
+  grid-area: f;
+  height: 250px;
+  display: block;
+  position: relative;
 }
 
-.reminder_box h3{
-    color: white;
-    font-size: 40px;
-    text-align: center;
-    padding-top: 70px;
+.slideshow img {
+    -webkit-animation-name: fade;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 18s;
+    animation-name: fade;
+    animation-iteration-count: infinite;
+    animation-duration: 12s;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
 }
 
-.checklist_box{
-    grid-area:g;
-    background: url(../images/templates/checklist.png);
-    background-size: cover;
-    height: 200px;
-}
-.checklist_box h3{
-    color: white;
-    font-size: 40px;
-    padding-left: 120px;
-    padding-top: 60px;
+@keyframes fade {
+    0% {opacity: 0;}
+    10% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
 }
 
-.photo_box{
-    grid-area:h;
-    background: url(../images/templates/photolist.png);
-    background-size: cover;
-    height: 200px;
+#f1 {
 }
+#f2 {
+    -webkit-animation-delay: -8s;
 
-.photo_box h3{
-    color: white;
-    font-size: 40px;
-    padding-left: 240px;
-    padding-top: 60px;
+}
+#f3 {
+    -webkit-animation-delay: -4s;
+
 }
 
 #form_logout{
@@ -798,6 +797,8 @@ footer{
     padding: 2px;
     position: relative;
     outline: none;
+    display: inline-block;
+    width: 70%;
     border: 1px solid #cdcdcd;
     border-color: rgba(0,0,0,.15);
     background-color: white;
@@ -818,7 +819,7 @@ footer{
 }
 
 .trash_icon{
-    position: absolute;
-    top: 85%;
-    left: 90%;
+    position: fixed;
+    top: 75%;
+    left: 70%;
 }

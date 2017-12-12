@@ -335,7 +335,7 @@ let list_name;
 let reminder_date;
 
 function denySpecialChars(string){
-	var alphaExp = /^[a-zA-Z0-9,.!]+$/;
+	var alphaExp = /^[a-zA-Z0-9,.! ]+$/;
 	if(string.match(alphaExp)){
 		return false;
 	}else{
@@ -811,6 +811,7 @@ function hideDetails(elem){
 function refreshGrid(){
     userLists=[];
     document.getElementById('display_lists_grid').innerHTML = "";
+    createAddList();
     getUserLists();
     let zoom_box = document.getElementsByClassName('zoom_background')[0];
     if(zoom_box != null){
