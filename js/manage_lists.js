@@ -10,6 +10,8 @@ colors[2] = grey;
 let user;
 let token;
 let fullListDetails = false;
+let refreshTime = 60000; /* 1 minuto */
+setInterval(updateGridLists, refreshTime);
 
 function setUser(username){
     user = username;
@@ -164,6 +166,7 @@ function createFormatedDate(){
     else {
         finalDate += minutes;
     }
+
     return finalDate;
 }
 
@@ -269,12 +272,12 @@ function displayTimeBetweenDates(min){
 
     switch (type) {
         case 1:
-            return '<span class="time time_remaining">'+ result +'</span>';
-            break;
+        return '<span class="time time_remaining">'+ result +'</span>';
+        break;
 
         case 2:
-            return '<span class="time time_late">'+ result +'</span>';
-            break;
+        return '<span class="time time_late">'+ result +'</span>';
+        break;
 
     }
 }
@@ -563,7 +566,7 @@ function formatInputList(tmp_lists){
 }
 
 function updateGridLists(){
-
+    createAddList();
     for (let i = 0; i < userLists.length; i++) {
         let div = document.createElement('div');
         div.className='list';
@@ -594,6 +597,8 @@ function updateGridLists(){
         div.innerHTML = html;
         document.getElementById('display_lists_grid').appendChild(div);
     }
+
+    console.log("HERE");
 
 }
 
@@ -760,7 +765,6 @@ function hideDetails(elem){
 function refreshGrid(){
     userLists=[];
     document.getElementById('display_lists_grid').innerHTML = "";
-    createAddList();
     getUserLists();
     let zoom_box = document.getElementsByClassName('zoom_background')[0];
     if(zoom_box != null){
