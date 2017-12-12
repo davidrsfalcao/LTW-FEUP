@@ -1,2 +1,5 @@
 # Disable directory browsing
 Options All -Indexes
+
+
+RedirectMatch 404 \.db$
