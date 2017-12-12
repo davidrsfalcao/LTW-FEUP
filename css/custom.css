@@ -16,7 +16,7 @@ body {
     background-color: white;
     position: fixed;
     box-shadow: 0px 3px 0.1px black;
-    z-index: 999;
+    z-index: 99999;
 }
 
 .navigation_bar p {
@@ -608,6 +608,7 @@ footer{
     border-bottom: 3px solid black;
     border-left: 3px solid black;
     border-right: 3px solid black;
+    z-index: 9999;
 
 }
 
@@ -676,7 +677,8 @@ footer{
 
 .zoom_box h1{
     text-align: center;
-    padding: 1em;
+    padding-top: 10px;
+    padding-bottom: 10px !important;
 }
 
 .zoom_box p{
@@ -806,4 +808,10 @@ footer{
 
 .time_late{
     color: #f4706c;
+}
+
+.trash_icon{
+    position: absolute;
+    top: 85%;
+    left: 90%;
 }
