@@ -55,4 +55,24 @@ function update_user($user, $first_name, $last_name){
     $stmt->bindValue(':username', $user);
     $stmt->execute();
 }
+
+function update_password($user, $password){
+    global $dbh;
+	
+	$options = ['cost' => 12];
+    $stmt = $dbh->prepare("UPDATE User SET password = :password WHERE username = :username");
+    $stmt->bindValue(':username', $user);
+	$hash = password_hash($password, PASSWORD_DEFAULT, $options);
+	$stmt->bindValue(':password', $hash );
+    $stmt->execute();
+}
+
+function delete_user($user){
+    global $dbh;
+	
+    $stmt = $dbh->prepare("DELETE FROM User WHERE username = :username");
+    $stmt->bindValue(':username', $user);
+    $stmt->execute();
+}
+
 ?>

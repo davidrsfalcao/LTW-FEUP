@@ -822,3 +822,22 @@ footer{
     top: 85%;
     left: 90%;
 }
+
+.central_box .old_password{
+
+}
+
+.central_box .options{
+	display: none;
+}
+
+.options #delete_button{
+	width: 100%;
+	margin-top: 25px;
+}
+
+.options h3{
+	text-align: center;
+	color: red;
+}
+
