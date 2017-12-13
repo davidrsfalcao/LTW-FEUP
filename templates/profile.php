@@ -39,7 +39,6 @@ $last_name = get_user_last_name($user);
         </form>
         <img src="images/templates/profile_bottom.png" class="profile_img" id="profile_bottom"/>');
     }
-
     ?>
 
     <?php
@@ -67,7 +66,7 @@ $last_name = get_user_last_name($user);
         <input type="text" name="username" value="<?=$user?>" id="user_1" readonly required/>
     </form>
 
-    <div class="div_btns">
+    <div class="div_btns" id="div_btns_profile">
         <?php
 
         if(!$view_mode){
@@ -75,13 +74,12 @@ $last_name = get_user_last_name($user);
             <button id="btn_2" type="button" class="btn_profile" onclick="begin_edit()"><span class="icon pencil2"></span></button>
             <button id="btn_3" type="button" class="btn_profile" onclick="cancel_edit()"><span class="icon cross"></span></button>');
         }
-        // else {
-        //     // echoget_friendship_status("$user");
-        //     echo ('<button id="btn_4" type="button" class="btn_profile btn_green" onclick="add_friendship()"><span class="icon user-plus"></span></button>');
-        //     // already friends  icon user-minus btn_5
-        //     // pendent  icon hour-glass btn_6
-        //
-        // }
+        else {
+            echo '<button id="btn_4" type="button" class="btn_profile btn_green" onclick="handlerFriendships(0)"><span class="icon user-plus"></span></button>';
+            echo '<button id="btn_6" type="button" class="btn_profile btn_green" onclick="handlerFriendships(2)"><span class="icon hour-glass"></span></button>';
+            echo '<button id="btn_5" type="button" class="btn_profile btn_green" onclick="handlerFriendships(1)"><span class="icon user-minus"></span></button>';
+
+        }
         ?>
 
     </div>
@@ -91,5 +89,5 @@ $last_name = get_user_last_name($user);
 if(!$view_mode){
     echo ('<script src="js/upload_img_profile.js"></script><script src="js/edit_profile.js"></script>');
 }
-else echo ('<script src="js/friendship_manager.js"></script>');
+else echo ('<script src="js/friendship_manager.js"></script><script>get_friendship_status("'. $user .'")</script>');
 ?>

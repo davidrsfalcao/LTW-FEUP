@@ -4,6 +4,13 @@ if (searchBar){
         if(input.key == "Enter"){
             input.preventDefault();
         }
+        else if(input.key == "Tab"){
+            let sugests = document.getElementById('sugestionUser').value;
+            if(sugests != ""){
+                let first = sugests.split("#")[0];
+                this.value = first;
+            }
+        }
     }
 }
 

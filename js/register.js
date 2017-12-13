@@ -116,7 +116,7 @@ document.onkeydown = function(e) {
 };
 
 function denySpecialChars(string, location){
-	var alphaExp = /^[a-zA-Z0-9'~^]+$/;
+	var alphaExp = /^[a-zA-Z0-9'ãéó^]+$/;
 	if(string.match(alphaExp)){
 		return false;
 	}else{

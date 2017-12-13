@@ -17,8 +17,18 @@ CREATE TABLE List(
 
 CREATE TABLE Friendship(
     ID INTEGER PRIMARY KEY,
-    user1 VARCHAR(64) REFERENCES User(username),
-    user2 VARCHAR(64) REFERENCES User(username)
+    user1 VARCHAR(64),
+    user2 VARCHAR(64),
+    FOREIGN KEY(user1) REFERENCES User(username),
+    FOREIGN KEY(user2) REFERENCES User(username)
+);
+
+CREATE TABLE Friendship_request(
+    ID INTEGER PRIMARY KEY,
+    user_from VARCHAR(64),
+    user_to VARCHAR(64),
+    FOREIGN KEY(user_from) REFERENCES User(username),
+    FOREIGN KEY(user_to) REFERENCES User(username)
 );
 
 CREATE TABLE Share(
@@ -26,7 +36,15 @@ CREATE TABLE Share(
     list_ID INTEGER,
     user VARCHAR(64),
     FOREIGN KEY(list_ID) REFERENCES List(ID),
-    FOREIGN KEY(user) REFERENCES User(username),
+    FOREIGN KEY(user) REFERENCES User(username)
+);
+
+CREATE TABLE Share_request(
+    ID INTEGER PRIMARY KEY,
+    list_ID INTEGER,
+    user VARCHAR(64),
+    FOREIGN KEY(list_ID) REFERENCES List(ID),
+    FOREIGN KEY(user) REFERENCES User(username)
 );
 
 CREATE TABLE Item (

@@ -1,15 +1,20 @@
 <?php
 include_once(__DIR__ . '/../config/init.php');
-include_once('../database/user.php');
+include_once('../database/friendship.php');
 
 $user2 = $_POST['user2'];
 $user = $_SESSION['username'];
 
-$sugest = get_sugestions_user($input, $user);
-$number =  count($sugest);
+$friends = are_friends($user, $user2);
 
-for ($i=0; $i < $number ; $i++) {
-    $user = $sugest[$i];
-    echo $user['username'] . "#";
+if($friends > 0){
+    echo 1;
+}
+else {
+    $request = sent_request($user, $user2);
+    if($request > 0){
+        echo 2;
+    }
+    else echo 0;
 }
 ?>

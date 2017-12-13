@@ -15,7 +15,6 @@
         </li>');
     }
 ?>
-
 <li onmousemove="onFocus()" onmouseleave="onLeave()">
     <a class="selectable" href="#"><?=$first_name?> <?=$last_name?><span class="icon plus" id="arrow_down"></a>
     <ul>

@@ -34,6 +34,48 @@ function are_friends($user1, $user2){
     $stmt->execute(array($user1, $user2));
     $friends = $stmt->fetch();
 
-    return $friends;
+    return reset($friends);
 }
+
+function sent_request($user1, $user2){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT COUNT(*) FROM Friendship_request WHERE user_from = ? AND user_to = ?');
+    $stmt->execute(array($user1, $user2));
+    $request = $stmt->fetch();
+
+    return reset($request);
+}
+
+function send_friendship_request($user, $user2){
+    global $dbh;
+
+    $id = getLastId('Friendship_request') + 1;
+    $stmt = $dbh->prepare('INSERT INTO Friendship_request VALUES (?, ?, ?)');
+    $stmt->execute(array($id, $user, $user2));
+}
+
+function delete_friendship($user1, $user2){
+
+    global $dbh;
+    $stmt = $dbh->prepare("DELETE FROM Friendship WHERE user1 = ? AND user2 = ?");
+    $stmt->execute(array($user1, $user2));
+    $stmt->execute(array($user2, $user1));
+}
+
+function delete_friendship_request($user1, $user2){
+    global $dbh;
+
+    $stmt = $dbh->prepare("DELETE FROM Friendship_request WHERE user_from = ? AND user_to = ?");
+    $stmt->execute(array($user1, $user2));
+}
+
+function get_user_friend_requests($user){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * FROM Friendship_request WHERE user_to = ?');
+    $stmt->execute(array($user));
+    $request = $stmt->fetchAll();
+
+    return $request;
+}
+
 ?>
