@@ -343,13 +343,13 @@ let list_name;
 let reminder_date;
 
 function denySpecialChars(string){
-	var alphaExp = /^[a-zA-Z0-9,.! ^`´~-]+$/;
-	if(string.match(alphaExp)){
-		return false;
-	}else{
-		alert("Input denied.\n");
-		return true;
-	}
+    var alphaExp = /^[a-zA-Z0-9,.! ^`´~-]+$/;
+    if(string.match(alphaExp)){
+        return false;
+    }else{
+        alert("Input denied.\n");
+        return true;
+    }
 }
 
 function verifyForms(){
@@ -740,6 +740,11 @@ function showFullDetails(id){
                 + '<label for="'+ userLists[id-1].itens[i].ID +'">'+ userLists[id-1].itens[i].content + '</label></p></div>';
             }
         }
+    }
+    else {
+        html += '<div class="content_checking">'
+        + '<p><input type="checkbox" onchange="generate_random_token_for_edit(this.id, this.parentNode)" id="'+ userLists[id-1].itens[0].ID +'" unchecked />'
+        + '<label for="'+ userLists[id-1].itens[0].ID +'">'+ 'photo' + '</label></p></div>';
     }
     return html;
 }
