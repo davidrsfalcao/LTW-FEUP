@@ -209,7 +209,6 @@ header .main_box{
 
 .prom_box{
     grid-area:c;
-    text-align:justify;
     padding-left: 0px;
     padding-right: 180px;
 }
@@ -221,19 +220,35 @@ header .main_box{
 .prom_box h1{
     line-height: 100px;
     font-size: 50px;
+    margin-left: 17.5%;
+}
+
+.prom_box p{
+    width: 70%;
+    text-align:justify;
 }
 
 .explanation_box{
     grid-area:d;
     background-color: #393838;
-    text-align: center;
     height: 400px;
     padding-top: 30px;
     color: white;
 }
 
 .explanation_box h2{
+    margin-left: 30%;
+    margin-top: 25px;
     font-size: 40px;
+    text-align: center;
+}
+
+.explanation_box p{
+    width: 50%;
+    border-color: red;
+    margin-left: 40%;
+    margin-top: 25px;
+    text-align: justify;
 }
 
 .macbook_box{
