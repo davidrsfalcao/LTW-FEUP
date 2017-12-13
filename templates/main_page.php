@@ -20,28 +20,32 @@
 
     <div class="prom_box">
         <h2>Don't worry, you're not the only one!</h2>
-        <p>People forget things, it's a fact,
-            no one is immune to that! Age, stress,
-            busy life ...  are only a few causes of forgetfulness.
-            But, for many causes, we have only 1 solution :
-            <br>
-            <br>
-            <h1> Easy Notes </h1>
+        <br>
+        <p>
+            People forget things, it's a fact! No one is immune to forgetting!
+            Aging, being stressed, having a busy life...  there are many factors leading to forgetfulness.
         </p>
+        <br>
+        <p>
+            Don't let that stop you from living your everyday life! We provide you a simple solution:
+        </p>
+        <br>
+        <h1> Easy Notes </h1>
     </div>
 
     <div class="explanation_box">
         <h2 >Simplicity</h2>
         <p>
-            Bla bla bla Bla <br>
-            Bla bla bla Bla <br>
-            Bla bla bla Bla <br>
-            Bla bla bla Bla <br>
-            Bla bla bla Bla <br>
-            Bla bla bla Bla <br>
-            <br>
-            <br>
-            Estava a pensar colocar uma animação aqui
+            Easy Notes provides a simple and interactive list manager.
+            If you're in the need to organize your everyday life in
+            a fast and intuitive way, we're the solution for you!
+        </p>
+        <p>
+            We provide a smooth service and make sure you wont ever forget
+            even your most mundane tasks!
+        </p>
+        <p>
+            Join now and try it out!
         </p>
     </div>
 
