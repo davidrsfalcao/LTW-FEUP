@@ -76,7 +76,7 @@ function getListsOfUser($user, $order, $orderType){
     . 'Item.visibility = 1) ' . $dtb1 . ' ' . $dtbO;
 
     if($order == 6){
-        $query = 'SELECT * FROM List WHERE ID IN (SELECT ID FROM Share WHERE user = ? ) ' . $dtbO ;
+        $query = 'SELECT * FROM List WHERE ID IN (SELECT list_ID FROM Share WHERE user = ? ) ' . $dtbO ;
     }
 
     $stmt = $dbh->prepare($query);
