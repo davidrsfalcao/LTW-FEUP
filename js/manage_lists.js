@@ -742,8 +742,13 @@ function showFullDetails(id){
         }
     }
     else {
+        let state;
+        if(userLists[id-1].itens[0].visibility == 1){
+            state= "unchecked";
+        }
+        else state= "checked";
         html += '<div class="content_checking">'
-        + '<p><input type="checkbox" onchange="generate_random_token_for_edit(this.id, this.parentNode)" id="'+ userLists[id-1].itens[0].ID +'" unchecked />'
+        + '<p><input type="checkbox" onchange="generate_random_token_for_edit(this.id, this.parentNode)" id="'+ userLists[id-1].itens[0].ID +'" '+state+' />'
         + '<label for="'+ userLists[id-1].itens[0].ID +'">'+ 'photo' + '</label></p></div>';
     }
     return html;
