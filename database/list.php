@@ -51,6 +51,11 @@ function getListsOfUser($user, $order, $orderType){
             }
             else $dtb1 = "=0";
             break;
+
+        default:
+            $dtbO =  $dtbO . ' LOWER(title)';
+            $dtb1 = ">0";
+
     }
 
     if($order == 5){
@@ -69,6 +74,10 @@ function getListsOfUser($user, $order, $orderType){
     $query = 'SELECT * FROM List AS list WHERE creator_ID = ? AND '
     . '(SELECT COUNT(*) FROM Item WHERE Item.list_ID = list.ID AND '
     . 'Item.visibility = 1) ' . $dtb1 . ' ' . $dtbO;
+
+    if($order == 6){
+        $query = 'SELECT * FROM List WHERE ID IN (SELECT ID FROM Share WHERE user = ? ) ' . $dtbO ;
+    }
 
     $stmt = $dbh->prepare($query);
     $stmt->execute(array($user));
@@ -98,5 +107,13 @@ function delete_list($id){
 
     $stmt1 = $dbh->prepare('DELETE FROM List WHERE ID = ?');
     $stmt1->execute(array($id));
+}
+
+function share_list_user($id, $user){
+    global $dbh;
+
+    $next_id = getLastId('Share') + 1;
+    $stmt = $dbh->prepare('INSERT INTO Share VALUES (?, ?, ?)');
+    $stmt->execute(array($next_id, $id, $user));
 }
 ?>

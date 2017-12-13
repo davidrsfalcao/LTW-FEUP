@@ -876,6 +876,12 @@ footer{
     left: 70%;
 }
 
+.share_icon{
+    position: fixed;
+    top: 75%;
+    left: 30%;
+}
+
 .central_box .options{
     display: none;
 }

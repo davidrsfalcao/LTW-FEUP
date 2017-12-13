@@ -8,6 +8,7 @@
                 <option value="3">Reminder Date</option>
                 <option value="4">Conclusion</option>
                 <option value="5">Search</option>
+                <option value="6">Shared</option>
             </select>
         </form>
     </div>

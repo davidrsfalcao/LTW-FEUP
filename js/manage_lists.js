@@ -17,7 +17,7 @@ function setUser(username){
 }
 
 function orderBy(value){
-    if(document.getElementById('orderBySelec').value < 4){
+    if(document.getElementById('orderBySelec').value < 4 || document.getElementById('orderBySelec').value == 6){
         document.getElementById('select_order').innerHTML =
         '<form>' +
         '<label for="orderByASCDES">Order </label>' +
@@ -92,7 +92,15 @@ function zoom(html){
         +'</svg></span>'
         +'</form>';
 
-        box.innerHTML = showFullDetails(id) + trash;
+        let share = '<form>'
+        +'<span class="share_icon" onclick="get_user_friends()" >'
+        +'<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">'
+        +'<title>share</title>'
+        +'<path d="M8 20c0 0 1.838-6 12-6v6l12-8-12-8v6c-8 0-12 4.99-12 10zM22 24h-18v-12h3.934c0.315-0.372 0.654-0.729 1.015-1.068 1.374-1.287 3.018-2.27 4.879-2.932h-13.827v20h26v-8.395l-4 2.667v1.728z"></path>'
+        +'</svg></span>'
+        +'</form>';
+
+        box.innerHTML = showFullDetails(id) + share + trash;
         let cc = (id % (colors.length -1)) + 1;
         box.style.background = colors[cc].background;
         box.style.color = colors[cc].color;
@@ -880,4 +888,49 @@ function action_delete_list(id, token){
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("id=" + id + "&validation=" + token);
 
+}
+
+function share_list(){
+    let html = document.getElementsByClassName('share_icon')[0].parentNode.parentNode.innerHTML;
+    let index = getListID(html);
+    let id = userLists[index-1].ID;
+    let list = this.responseText.split('##');
+
+    let share_with=[];
+
+    for (var i = 0; i < list.length; i++) {
+        if(list[i] != ""){
+            let res = confirm("Do you want to share this list with "+ list[i]+"?");
+            if(res){
+                share_with.push(list[i]);
+            }
+        }
+    }
+    let result = "";
+    for (var i = 0; i < share_with.length; i++) {
+        if(i==0){
+            result += share_with[i];
+        }
+        else result += ("/" + share_with[i]);
+    }
+
+    share(result, id);
+}
+
+function share(friends, id){
+    let request = new XMLHttpRequest();
+    request.open('get', 'actions/share_list_with_friends.php?friends='+friends + "&id="+id, true);
+    request.addEventListener('load', teste1);
+    request.send();
+}
+
+function teste1(){
+    console.log(this.responseText);
+}
+
+function get_user_friends(){
+    let request = new XMLHttpRequest();
+    request.open('get', 'actions/get_user_friends_username.php', true);
+    request.addEventListener('load', share_list);
+    request.send();
 }
