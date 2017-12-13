@@ -13,6 +13,7 @@ else{
     $user = $_SESSION['username'];
 }
 
+
 $first_name = get_user_first_name($user);
 $last_name = get_user_last_name($user);
 ?>
@@ -74,17 +75,16 @@ $last_name = get_user_last_name($user);
             <button id="btn_2" type="button" class="btn_profile" onclick="begin_edit()"><span class="icon pencil2"></span></button>
             <button id="btn_3" type="button" class="btn_profile" onclick="cancel_edit()"><span class="icon cross"></span></button>');
         }
-        else {
-            //Check if is already friend
-            echo ('<button id="btn_4" type="button" class="btn_profile btn_green" onclick="add_friendship()"><span class="icon user-plus"></span></button>');
-            // already friends  icon user-minus btn_5
-            // pendent  icon hour-glass btn_6
-
-        }
+        // else {
+        //     // echoget_friendship_status("$user");
+        //     echo ('<button id="btn_4" type="button" class="btn_profile btn_green" onclick="add_friendship()"><span class="icon user-plus"></span></button>');
+        //     // already friends  icon user-minus btn_5
+        //     // pendent  icon hour-glass btn_6
+        //
+        // }
         ?>
 
     </div>
-
 </div>
 
 <?php

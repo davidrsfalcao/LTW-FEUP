@@ -335,7 +335,7 @@ let list_name;
 let reminder_date;
 
 function denySpecialChars(string){
-	var alphaExp = /^[a-zA-Z0-9,.! ]+$/;
+	var alphaExp = /^[a-zA-Z0-9,.! ^`´~-]+$/;
 	if(string.match(alphaExp)){
 		return false;
 	}else{

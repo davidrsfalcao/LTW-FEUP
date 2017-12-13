@@ -253,10 +253,10 @@ header .main_box{
 }
 
 .slideshow {
-  grid-area: f;
-  height: 250px;
-  display: block;
-  position: relative;
+    grid-area: f;
+    height: 250px;
+    display: block;
+    position: relative;
 }
 
 .slideshow img {
@@ -628,6 +628,17 @@ footer{
     color: white;
 }
 
+#sugestionUser_div{
+    padding-left: 20px;
+    text-align: left !important;
+}
+
+#sugestionUser{
+    margin-left: 10px;
+    width: 70%;
+    overflow-x: hidden;
+}
+
 .display_lists_grid{
     display: grid;
     margin-top: 40px;
@@ -745,6 +756,32 @@ footer{
     /*box-shadow: 7px 7px rgba(94, 94, 94, 0.65);*/
     box-shadow: 7px 7px rgba(0, 0, 0, 0.5);
 }
+.list_friend{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.list_friend h1{
+    text-align: center;
+}
+
+.list_friend span{
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.friend_name{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 85%;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
 
 .centered_in_box{
     text-align: center;
@@ -824,20 +861,19 @@ footer{
     left: 70%;
 }
 
-.central_box .old_password{
-
-}
-
 .central_box .options{
-	display: none;
+    display: none;
 }
 
 .options #delete_button{
-	width: 100%;
-	margin-top: 25px;
+    width: 100%;
+    margin-top: 25px;
 }
 
 .options h3{
-	text-align: center;
+    text-align: center;
 }
 
+#goSearchUser{
+    width: 40px;
+}

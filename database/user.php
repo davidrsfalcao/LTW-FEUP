@@ -58,7 +58,7 @@ function update_user($user, $first_name, $last_name){
 
 function update_password($user, $password){
     global $dbh;
-	
+
 	$options = ['cost' => 12];
     $stmt = $dbh->prepare("UPDATE User SET password = :password WHERE username = :username");
     $stmt->bindValue(':username', $user);
@@ -69,10 +69,18 @@ function update_password($user, $password){
 
 function delete_user($user){
     global $dbh;
-	
+
     $stmt = $dbh->prepare("DELETE FROM User WHERE username = :username");
     $stmt->bindValue(':username', $user);
     $stmt->execute();
 }
 
+function get_sugestions_user($input, $user){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * FROM User WHERE NOT username = ? AND username LIKE "'. $input .'%"');
+    $stmt->execute(array($user));
+    $sugest = $stmt->fetchAll();
+
+    return $sugest;
+}
 ?>
