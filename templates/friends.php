@@ -9,7 +9,7 @@
 
     <div class="select_order form_list" id="sugestionUser_div">
         <form>
-            <label for="sugestionUser">Sugestions: </label>
+            <label for="sugestionUser">Suggestions: </label>
             <input type="text" name="sugestionUser" id="sugestionUser"  readonly/>
         </form>
     </div>
