@@ -923,7 +923,7 @@ function share_list(){
         }
         else result += ("/" + share_with[i]);
     }
-
+    console.log(id);
     share(result, id);
 }
 
