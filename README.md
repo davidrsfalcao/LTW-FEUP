@@ -13,7 +13,9 @@
 ***
 
 <br>
+
 # Funcionalidades
+
 * criação de listas (notas, checklists e listas de imagens)
 * tempo para o fim da lista atualizado ao minuto
 * crop automático da foto de perfil
