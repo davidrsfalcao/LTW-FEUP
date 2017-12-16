@@ -1,5 +1,5 @@
 # LTW-FEUP
-* Projeto Final
+Projeto Final de Linguagens e Tecnologias Web, 3º ano, FEUP
 ***
 <h2>Página Inicial</h2>
 
